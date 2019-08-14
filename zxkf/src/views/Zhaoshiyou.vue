@@ -1,12 +1,12 @@
 <template>
     <div>
-        
+        hello world
     </div>
 </template>
 <script>
 export default {
     data(){
-        reture{
+        return{
 
         }
     },
@@ -18,7 +18,7 @@ export default {
                 msg:'send success'
             };
             url = "/reg"
-            this.axios(url,qs.stringify(obj))
+            this.axios.post(url,qs.stringify(obj))
             .then(res=>{
                 console.log(res);
 

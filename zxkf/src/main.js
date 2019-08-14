@@ -5,6 +5,12 @@ import store from './store'
 import qs from 'qs'
 // 引入axios
 import axios from "axios"
+// 引入mint-ui
+import MintUI from 'mint-ui'
+//2.单独引入mini-ui组件库中样式文件
+import "mint-ui/lib/style.css"
+// 将MintUI 注册到Vue实例中
+Vue.use(MintUI);                         
 //配置axios基础
 axios.defaults.baseURL = "http://127.0.0.1:3000"
 //配置axios，保存session信息，也可以表示在跨域请求是否使用session对象的凭证）
