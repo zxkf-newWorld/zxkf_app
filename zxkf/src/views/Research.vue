@@ -1,0 +1,118 @@
+<template>
+  <div>
+    <div class="study">
+      <!-- 在线看房研究院 -->
+      <div class="study-title">
+        <span>在线研究院</span>
+      </div>
+      <!-- 房间商品列表:显示4个商品 -->
+      <ul>
+        <li>
+          <div class="wrap bor">
+            <img src="../assets/research-pic1.png" />
+            <div class="title">地铁周边</div>
+            <div class="des">地铁站附近2公里房源</div>
+          </div>
+        </li>
+        <li>
+          <div class="wrap pl-3 bor">
+            <img src="../assets/research-pic2.png" />
+            <div class="title">品质好房</div>
+            <div class="des">2000元左右，理想生活</div>
+          </div>
+        </li>
+        <li>
+          <div class="wrap bor">
+            <img src="../assets/research-pic3.png" />
+            <div class="title">轻松月付</div>
+            <div class="des">从此告别押一付三</div>
+          </div>
+        </li>
+        <li>
+          <div class="wrap pl-3 bor">
+            <img src="../assets/research-pic4.jpg" />
+            <div class="title">精选单间</div>
+            <div class="des">1500以下，精致合租</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {};
+  }
+};
+</script>
+<style scoped>
+.study {
+  width: 100%;
+  margin-top: 0.3rem;
+  background-color: #fff!important;
+}
+ul {
+  padding: 0.3rem;
+  background: #fff!important;
+}
+
+ul li {
+  width: 47.5%;
+  float: left;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff!important;
+
+  margin-bottom: 0.32rem;
+}
+.study-title {
+  height: 1.12rem;
+  line-height: 1.12rem;
+  font-weight: 700;
+  padding: 0.3rem 0;
+  text-align: left;
+  padding-left: 0.6rem;
+}
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.wrap > img {
+  width: 100%;
+  height: 2.1rem;
+}
+.title {
+  font-size: 0.26rem;
+  font-weight: 700;
+  margin-top: 0.22rem;
+  text-align: left;
+}
+.des {
+  font-size: 0.24rem;
+  text-overflow: ellipsis;
+  margin-top: 0.12rem;
+  margin-bottom: 0.32rem;
+  text-align: left;
+}
+.pl-3 {
+  padding-left: 0.3rem;
+}
+/* 底边线 */
+.bor {
+  border-bottom: 1px solid #ccc;
+}
+/* .wrap li{
+        position: relative;
+        float: left;
+        width: 47.5%;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: .32rem;
+        overflow: hidden;
+        color: #505050;
+    } */
+/* .wrap li div img{
+        width: 100%;
+    } */
+</style>

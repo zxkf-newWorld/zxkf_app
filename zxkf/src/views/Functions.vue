@@ -27,6 +27,7 @@
                 </a>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </div>
 </template>
 <script>
@@ -44,6 +45,7 @@ export default {
         outline: none;
         padding: .4rem 0;
         overflow: hidden;
+        background: #fff;
     }
     .myUl li{
         list-style: none;

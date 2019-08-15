@@ -3,4 +3,20 @@ body{
     font-family: Hiragino Sans GB,Helvetica,sans-serif;
     box-sizing: border-box;
     font-size: 14px;
+    background: #f0f0f0;
+}
+/* 清除浮动 */
+.clearfix{
+    display: block;
+    content: "";
+    clear: both;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+ul>li{
+    list-style: none;
+    
 }
