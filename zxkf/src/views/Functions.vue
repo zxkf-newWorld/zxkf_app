@@ -27,7 +27,7 @@
                 </a>
             </li>
         </ul>
-        <div class="clearfix"></div>
+        <div style="clear: both;"></div>
     </div>
 </template>
 <script>

@@ -5,6 +5,8 @@ import Index from  './views/Index.vue'
 import Zhaoshiyou from './views/Zhaoshiyou.vue'
 import Carousel  from './views/Carousel.vue'
 import Searchbox from './views/Searchbox.vue'
+import Parent from './views/Parent.vue'
+import Childele from './views/Childele.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -13,5 +15,7 @@ export default new Router({
     { path:'/Zhaoshiyou',component:Zhaoshiyou},
     { path:'/Carousel',component:Carousel},
     { path:'/Searchbox',component:Searchbox},
+    { path:'/Parent',component:Parent},
+    { path:'/Childele',component:Childele},
   ]
 })

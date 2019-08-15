@@ -20,3 +20,8 @@ ul>li{
     list-style: none;
     
 }
+img{
+    border: none;
+    vertical-align: middle;
+    font-size: 0;
+}
