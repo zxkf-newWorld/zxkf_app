@@ -82,6 +82,206 @@
                         </div>   
                     </div>
                 </li>
+                <li class="good-item">
+                    <div class="house-card">
+                        <div class="base-info">
+                            <div class="main-photo">
+                                <img src="../assets/like/like4.png"/>
+                                <div class="live-photo">平台实拍 · 8</div>
+                            </div>
+                            <div class="detail">
+                                <p class="title">
+                                    <span>合租</span>
+                                    <span>川杨新苑四期</span>
+                                </p>
+                                <p class="room-info">25M² | 6/20层 | 朝西北-次卧</p>
+                                <p class="lables">
+                                    <span class="lable">独卫</span>
+                                    <span class="lable">新上架</span>
+                                    <span class="lable">电梯房</span>
+                                    <span class="lable">非一楼</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="extra-info">
+                            <div class="landlord-info">
+                                <div class="owner">
+                                    <div class="logo">
+                                    </div>
+                                    <div class="name">朱先生</div>
+                                    <div class="tag"></div>
+                                </div>
+                                <div class="score_comment">
+                                    <div class="score">
+                                        评分：
+                                        <b>4.5</b>
+                                    </div>
+                                    <div class="comment_number">125条评论</div>
+                                </div>
+                                <div class="one_comment">"干净舒适"</div>
+                            </div>
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="number">￥2546</span>/月
+                                </div>
+                                <div class="shuidianmeiwang-text">
+                                    <span>水电煤网费涨就赔</span>
+                                    <span>&nbsp;随时入住</span>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </li>
+                <li class="good-item">
+                    <div class="house-card">
+                        <div class="base-info">
+                            <div class="main-photo">
+                                <img src="../assets/like/like4.png"/>
+                                <div class="live-photo">平台实拍 · 8</div>
+                            </div>
+                            <div class="detail">
+                                <p class="title">
+                                    <span>合租</span>
+                                    <span>川杨新苑四期</span>
+                                </p>
+                                <p class="room-info">25M² | 6/20层 | 朝西北-次卧</p>
+                                <p class="lables">
+                                    <span class="lable">独卫</span>
+                                    <span class="lable">新上架</span>
+                                    <span class="lable">电梯房</span>
+                                    <span class="lable">非一楼</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="extra-info">
+                            <div class="landlord-info">
+                                <div class="owner">
+                                    <div class="logo">
+                                    </div>
+                                    <div class="name">朱先生</div>
+                                    <div class="tag"></div>
+                                </div>
+                                <div class="score_comment">
+                                    <div class="score">
+                                        评分：
+                                        <b>4.5</b>
+                                    </div>
+                                    <div class="comment_number">125条评论</div>
+                                </div>
+                                <div class="one_comment">"干净舒适"</div>
+                            </div>
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="number">￥2546</span>/月
+                                </div>
+                                <div class="shuidianmeiwang-text">
+                                    <span>水电煤网费涨就赔</span>
+                                    <span>&nbsp;随时入住</span>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </li>
+                <li class="good-item">
+                    <div class="house-card">
+                        <div class="base-info">
+                            <div class="main-photo">
+                                <img src="../assets/like/like4.png"/>
+                                <div class="live-photo">平台实拍 · 8</div>
+                            </div>
+                            <div class="detail">
+                                <p class="title">
+                                    <span>合租</span>
+                                    <span>川杨新苑四期</span>
+                                </p>
+                                <p class="room-info">25M² | 6/20层 | 朝西北-次卧</p>
+                                <p class="lables">
+                                    <span class="lable">独卫</span>
+                                    <span class="lable">新上架</span>
+                                    <span class="lable">电梯房</span>
+                                    <span class="lable">非一楼</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="extra-info">
+                            <div class="landlord-info">
+                                <div class="owner">
+                                    <div class="logo">
+                                    </div>
+                                    <div class="name">朱先生</div>
+                                    <div class="tag"></div>
+                                </div>
+                                <div class="score_comment">
+                                    <div class="score">
+                                        评分：
+                                        <b>4.5</b>
+                                    </div>
+                                    <div class="comment_number">125条评论</div>
+                                </div>
+                                <div class="one_comment">"干净舒适"</div>
+                            </div>
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="number">￥2546</span>/月
+                                </div>
+                                <div class="shuidianmeiwang-text">
+                                    <span>水电煤网费涨就赔</span>
+                                    <span>&nbsp;随时入住</span>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </li>
+                <li class="good-item">
+                    <div class="house-card">
+                        <div class="base-info">
+                            <div class="main-photo">
+                                <img src="../assets/like/like4.png"/>
+                                <div class="live-photo">平台实拍 · 8</div>
+                            </div>
+                            <div class="detail">
+                                <p class="title">
+                                    <span>合租</span>
+                                    <span>川杨新苑四期</span>
+                                </p>
+                                <p class="room-info">25M² | 6/20层 | 朝西北-次卧</p>
+                                <p class="lables">
+                                    <span class="lable">独卫</span>
+                                    <span class="lable">新上架</span>
+                                    <span class="lable">电梯房</span>
+                                    <span class="lable">非一楼</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="extra-info">
+                            <div class="landlord-info">
+                                <div class="owner">
+                                    <div class="logo">
+                                    </div>
+                                    <div class="name">朱先生</div>
+                                    <div class="tag"></div>
+                                </div>
+                                <div class="score_comment">
+                                    <div class="score">
+                                        评分：
+                                        <b>4.5</b>
+                                    </div>
+                                    <div class="comment_number">125条评论</div>
+                                </div>
+                                <div class="one_comment">"干净舒适"</div>
+                            </div>
+                            <div class="price-info">
+                                <div class="price">
+                                    <span class="number">￥2546</span>/月
+                                </div>
+                                <div class="shuidianmeiwang-text">
+                                    <span>水电煤网费涨就赔</span>
+                                    <span>&nbsp;随时入住</span>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </li>
                 <!-- <li class="good-item">
                     <div class="house-card">
                         <div class="base-info">
@@ -232,8 +432,9 @@ export default {
         flex-wrap: nowrap;
         -webkit-box-pack: start;
         -ms-flex-pack: start;
-        justify-content: flex-end;
+        justify-content: flex-start;
         margin-top: .1rem;
+        margin-left: 0.74rem;
     }
     .house-card .base-info .detail .lables .lable{
         height: 100%;
