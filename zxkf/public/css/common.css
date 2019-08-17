@@ -25,3 +25,15 @@ img{
     vertical-align: middle;
     font-size: 0;
 }
+a,a:hover,a:active,a:visited,a:link,a:focus{
+    /* -webkit-tap-highlight-color:rgba(0,0,0,0); */
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    background: none;
+    text-decoration: none;
+}
+
+b,em,i{
+    font-style: normal;
+    font-weight: 400;
+}
