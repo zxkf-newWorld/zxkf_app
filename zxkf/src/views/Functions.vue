@@ -3,26 +3,26 @@
         <!-- 功能栏：首页：整租，合租，品牌公寓，找室友 -->
         <ul class="myUl">
             <li>
-                <a href="javascirpt:;">
-                    <img src="../assets/zhengzu.png" alt="">
+                <a href="javascirpt:;" data-city="citys[0]" @click="toFullRent">
+                    <img src="../assets/zhengzu.png">
                     <div>整租</div>
                 </a>
             </li>
-            <li>
-                <a href="javascirpt:;">
-                    <img src="../assets/hezu.png" alt="">
+            <li> data-city="citys"
+                <a href="javascirpt:;" data-city="citys" @click="toJointRent">
+                    <img src="../assets/hezu.png">
                     <div>合租</div>
                 </a>
             </li>
             <li>
-                <a href="javascirpt:;">
-                    <img src="../assets/gongyu.png" alt="">
+                <a href="javascirpt:;" data-city="citys" @click="">
+                    <img src="../assets/gongyu.png">
                     <div>品牌公寓</div>
                 </a>
             </li>
             <li>
-                <a href="javascirpt:;">
-                    <img src="../assets/shiyou.png" alt="">
+                <a href="javascirpt:;" data-city="citys" @click="FindRoomMates">
+                    <img src="../assets/shiyou.png">
                     <div>找室友</div>
                 </a>
             </li>
@@ -32,7 +32,16 @@
 </template>
 <script>
 export default {
-    
+    data() {
+        return {
+            citys:[],
+        }
+    },
+    methods: {
+        toFullRent(e){
+            let city = e.target.dataset.citys[0]
+        },
+    },
 }
 </script>
 <style scoped>
