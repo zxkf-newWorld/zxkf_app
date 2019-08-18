@@ -8,20 +8,20 @@
                     <div>整租</div>
                 </a>
             </li>
-            <li> data-city="citys"
-                <a href="javascirpt:;" data-city="citys" @click="toJointRent">
+            <li>
+                <a href="javascirpt:;" data-city="citys[1]" @click="toJointRent">
                     <img src="../assets/hezu.png">
                     <div>合租</div>
                 </a>
             </li>
             <li>
-                <a href="javascirpt:;" data-city="citys" @click="">
+                <a href="javascirpt:;" data-city="citys[2]" @click="Pinpai">
                     <img src="../assets/gongyu.png">
                     <div>品牌公寓</div>
                 </a>
             </li>
             <li>
-                <a href="javascirpt:;" data-city="citys" @click="FindRoomMates">
+                <a href="javascirpt:;" data-city="citys[3]" @click="FindRoomMates">
                     <img src="../assets/shiyou.png">
                     <div>找室友</div>
                 </a>
@@ -34,12 +34,78 @@
 export default {
     data() {
         return {
-            citys:[],
+            citys:["西安","榆林","延安","新平"],
         }
     },
     methods: {
         toFullRent(e){
-            let city = e.target.dataset.citys[0]
+            // 整租
+            var url = "/index/fullrent"
+            // city：动态通过城市动态获取
+            // let city = e.target.dataset.citys[0]
+            
+            let cityBelong = "西安";
+            let title = 0;
+            let obj = {title,cityBelong};
+            this.axios.get(url,obj)
+            .then((res)=>{
+                console.log(res);
+                if (res.data.code == 1) {
+                    this.$toast("您已进入整租");
+                }
+            })
+
+        },
+        toJointRent(){
+            //合租
+            let cityBelong = "西安";
+            let title = 0;
+            var obj = {cityBelong,title};
+            var url = "index/fullrent"
+            this.axios.get(url,obj)
+            .then(res=>{
+                if(res.data.code == 1){
+                    console.log(res);
+                    this.$toast("您已进入合租");
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+            });
+        },
+        Pinpai(){
+            // 品牌公寓
+            let cityBelong = "西安";
+            let title = 0;
+            var obj = {cityBelong,title};
+            var url = "index/fullrent"
+            this.axios.get(url,obj)
+            .then(res=>{
+                if(res.data.code == 1){
+                    console.log(res);
+                    this.$toast("您已进入品牌");
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+            });
+        },
+        FindRoomMates(){
+            // 找室友
+            let cityBelong = "西安";
+            let title = 0;
+            var obj = {cityBelong,title};
+            var url = "index/fullrent"
+            this.axios.get(url,obj)
+            .then(res=>{
+                if(res.data.code == 1){
+                    console.log(res);
+                    this.$toast("您已进入找室友");
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+            });
         },
     },
 }

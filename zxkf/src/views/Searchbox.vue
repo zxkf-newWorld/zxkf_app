@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mt-field type="text" placeholder="请输入您要搜索的房源" class="myInput"></mt-field>
+        <mt-field type="text" placeholder="请输入您要搜索的房源/单间/合租/整租" class="myInput"></mt-field>
     </div>
 </template>
 <script>

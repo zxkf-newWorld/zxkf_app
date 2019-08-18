@@ -12,7 +12,7 @@ import "mint-ui/lib/style.css"
 // 将MintUI 注册到Vue实例中
 Vue.use(MintUI);                         
 //配置axios基础
-axios.defaults.baseURL = "http://127.0.0.1:3000"
+axios.defaults.baseURL = "http://127.0.0.1:8090"
 //配置axios，保存session信息，也可以表示在跨域请求是否使用session对象的凭证）
 axios.defaults.withCredentials = true;
 // 将axios注册示例中

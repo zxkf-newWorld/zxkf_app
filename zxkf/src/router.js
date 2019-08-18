@@ -7,6 +7,7 @@ import Carousel  from './views/Carousel.vue'
 import Searchbox from './views/Searchbox.vue'
 import Parent from './views/Parent.vue'
 import Childele from './views/Childele.vue'
+import Functions from './views/Functions.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -17,5 +18,6 @@ export default new Router({
     { path:'/Searchbox',component:Searchbox},
     { path:'/Parent',component:Parent},
     { path:'/Childele',component:Childele},
+    { path:'/Functions',component:Functions},
   ]
 })
