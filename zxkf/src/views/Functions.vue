@@ -40,14 +40,16 @@ export default {
     methods: {
         toFullRent(e){
             // 整租
-            var url = "/index/fullrent"
+            let url = "/index/fullrent";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
             
             let cityBelong = "西安";
             let title = 0;
-            let obj = {title,cityBelong};
-            this.axios.get(url,obj)
+            var obj = {title,cityBelong};
+            this.axios.get(url,{
+                params:obj
+            })
             .then((res)=>{
                 console.log(res);
                 if (res.data.code == 1) {
@@ -61,7 +63,7 @@ export default {
             let cityBelong = "西安";
             let title = 0;
             var obj = {cityBelong,title};
-            var url = "index/fullrent"
+            var url = "index/fullrent";
             this.axios.get(url,obj)
             .then(res=>{
                 if(res.data.code == 1){

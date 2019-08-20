@@ -264,7 +264,7 @@ export default {
     data(){
         return{
             arrs:[],//商品列表
-            title:"合租",//租住类型：整租、合租
+            title:0,//租住类型：1:整租、0：合租
             address:"",//地址
             price:0,//价格
             floor:"",//楼层
@@ -277,22 +277,19 @@ export default {
     methods: {
         onLoad(){
             // 首页加载猜你喜欢商品列表展示
-            let citybelong = this.citybelong;
-            citybelong = "西安";
+            let cityBelong = this.citybelong;
             // 默认显示合租
             let title = this.title;
-            // let obj = {citybelong,title};
+            console.log(cityBelong,title);
+            var obj = {title,cityBelong};
             let url = "/index/fullrent";
             this.axios.get(url,{
-                params:{
-                    title,
-                    citybelong
-                }
-            })
+                params:obj
+            })//已经发送过去了数据
             .then(res=>{
+                console.log(res);
                 if(res.data.code == 1){
                     console.log("首页--猜你喜欢商品列表--加载成功");
-                    console.log(res.data);
                     // 动态获取数据
                     this.arrs = res.data.dataArray;
                     for (let i = 0; i < this.arrs.length; i++) {
@@ -300,7 +297,7 @@ export default {
                         let data = res.data.dataArray[i]
                         console.log(data);
                         this.citybelong = data.citybelong;
-                        this.title = (data.title==1?"整租":"合租");
+                        this.title = data.title==0?'合租':'整租';
                         this.price = data.price;
                         this.floor = data.floor;
                         this.houselayout = data.houselayout;
