@@ -43,7 +43,6 @@ export default {
             let url = "/index/fullrent";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
-            
             let cityBelong = "西安";
             let title = 0;
             var obj = {title,cityBelong};
@@ -60,54 +59,57 @@ export default {
         },
         toJointRent(){
             //合租
+            let url = "/index/fullrent";
+            // city：动态通过城市动态获取
+            // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";
             let title = 0;
-            var obj = {cityBelong,title};
-            var url = "index/fullrent";
-            this.axios.get(url,obj)
-            .then(res=>{
-                if(res.data.code == 1){
-                    console.log(res);
+            var obj = {title,cityBelong};
+            this.axios.get(url,{
+                params:obj
+            })
+            .then((res)=>{
+                console.log(res);
+                if (res.data.code == 1) {
                     this.$toast("您已进入合租");
                 }
             })
-            .catch(err=>{
-                console.log(err);
-            });
         },
         Pinpai(){
             // 品牌公寓
+            let url = "/index/fullrent";
+            // city：动态通过城市动态获取
+            // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";
             let title = 0;
-            var obj = {cityBelong,title};
-            var url = "index/fullrent"
-            this.axios.get(url,obj)
-            .then(res=>{
-                if(res.data.code == 1){
-                    console.log(res);
-                    this.$toast("您已进入品牌");
+            var obj = {title,cityBelong};
+            this.axios.get(url,{
+                params:obj
+            })
+            .then((res)=>{
+                console.log(res);
+                if (res.data.code == 1) {
+                    this.$toast("您已进入品牌公寓");
                 }
             })
-            .catch(err=>{
-                console.log(err);
-            });
         },
         FindRoomMates(){
             // 找室友
+            let url = "/index/fullrent";
+            // city：动态通过城市动态获取
+            // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";
             let title = 0;
-            var obj = {cityBelong,title};
-            var url = "index/fullrent"
-            this.axios.get(url,obj)
-            .then(res=>{
-                if(res.data.code == 1){
-                    console.log(res);
+            var obj = {title,cityBelong};
+            this.axios.get(url,{
+                params:obj
+            })
+            .then((res)=>{
+                console.log(res);
+                if (res.data.code == 1) {
                     this.$toast("您已进入找室友");
                 }
             })
-            .catch(err=>{
-                console.log(err);
-            });
         },
     },
 }

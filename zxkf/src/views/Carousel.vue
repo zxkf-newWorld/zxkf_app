@@ -3,16 +3,16 @@
     <swiper :options="swiperOption" class="swiper-container swiper-pagination2" ref="mySwiper">
       <!-- 添加的图片 -->
       <swiper-slide>
-        <img class="banner-img" src="../assets/carouselpic1.png" />
+        <img class="banner-img" src="../../public/carou/timg.jpg" />
       </swiper-slide>
       <swiper-slide>
-        <img class="banner-img" src="../assets/carouselpic2.png" />
+        <img class="banner-img" src="../../public/carou/timg2.jpg" />
       </swiper-slide>
       <swiper-slide>
-        <img class="banner-img" src="../assets/carouselpic3.png" />
+        <img class="banner-img" src="../../public/carou/timg3.jpg" />
       </swiper-slide>
       <swiper-slide>
-        <img class="banner-img" src="../assets/firsthead.jpg" />
+        <img class="banner-img" src="../../public/carou/timg4.jpg" />
       </swiper-slide>
       <!-- Optional controls -->
        <div class="swiper-scrollbar" slot="scrollbar"></div>
