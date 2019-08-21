@@ -8,9 +8,6 @@ import Searchbox from './views/Searchbox.vue'
 import Parent from './views/Parent.vue'
 import Childele from './views/Childele.vue'
 import Functions from './views/Functions.vue'
-// 为Login&Reg.vue组件指定路径
-import Login from "./views/Login.vue"
-import Reg from "./views/Reg.vue"
 Vue.use(Router)
 
 export default new Router({

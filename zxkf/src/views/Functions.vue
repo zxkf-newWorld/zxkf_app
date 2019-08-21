@@ -44,7 +44,7 @@ export default {
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";
-            let title = 0;
+            let title = 1;
             var obj = {title,cityBelong};
             this.axios.get(url,{
                 params:obj
@@ -76,12 +76,12 @@ export default {
             })
         },
         Pinpai(){
-            // 品牌公寓
+            // 品牌公寓 title:2
             let url = "/index/fullrent";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";
-            let title = 0;
+            let title = 2;
             var obj = {title,cityBelong};
             this.axios.get(url,{
                 params:obj
@@ -90,16 +90,18 @@ export default {
                 console.log(res);
                 if (res.data.code == 1) {
                     this.$toast("您已进入品牌公寓");
+                }else{
+                    this.$toast("暂无相关信息，我们会尽快处理");
                 }
             })
         },
         FindRoomMates(){
-            // 找室友
+            // 找室友 title:3
             let url = "/index/fullrent";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";
-            let title = 0;
+            let title = 3;
             var obj = {title,cityBelong};
             this.axios.get(url,{
                 params:obj
@@ -108,6 +110,8 @@ export default {
                 console.log(res);
                 if (res.data.code == 1) {
                     this.$toast("您已进入找室友");
+                }else{
+                    this.$toast("暂无相关信息，我们会尽快处理");
                 }
             })
         },
