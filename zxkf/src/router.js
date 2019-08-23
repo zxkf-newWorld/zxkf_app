@@ -11,6 +11,12 @@ import Functions from './views/first-page/Functions.vue'
 // 为Login&Reg.vue组件指定路径
 import Login from "./views/first-page/Login.vue"
 import Reg from "./views/first-page/Reg.vue"
+// 我得页面相关组件
+import Myself from "./views/myself/Myself.vue"
+import Zhengzu from './components/blt/Zhengzu.vue'
+import Details from './components/blt/Details.vue'
+import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
+import Slider from './components/blt/Slider.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +29,11 @@ export default new Router({
     { path:'/Childele',component:Childele},
     { path:'/Functions',component:Functions},
     { path: '/Login', component: Login },
-    { path: '/Reg', component: Reg }
+    { path: '/Reg', component: Reg },
+    { path: '/Myself', component: Myself },
+	  { path: "/Zhengzu", component: Zhengzu },
+    { path: "/Details", component: Details },
+    { path: "/ZhengzuSelect", component: ZhengzuSelect },
+    { path: "/Slider", component: Slider }
   ]
 })

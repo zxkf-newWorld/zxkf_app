@@ -24,13 +24,13 @@
       <!-- 右上登录按钮 -->
       <div class="top-left-img" @click="toCityPosition">
         <a href="javascript:;">
-          <img src="../../assets/login-active2.png" alt="">
+          <img src="../../assets/position1.png" alt="">
         </a>
       </div>
       <!-- 左上定位按钮 -->
       <div class="top-right-img" @click="toLogin">
         <a href="javascript:;">
-          <img src="../../assets/position1.png" alt="">
+          <img src="../../assets/login-active2.png" alt="">
         </a>
       </div>
     </div>
@@ -89,7 +89,7 @@ export default {
   methods: {
     // 跳转到登录
     toLogin(){
-      this.$router.push('/Login')
+      this.$router.push('/Myself')
     },
     // 城市定位
     toCityPosition(){}
@@ -105,8 +105,10 @@ export default {
     height: 257px;
   }
   .login-city  img{
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
+    margin-top: 8px ;
+    margin-right: 4px;
   }
   .login-city .top-left-img,.login-city .top-right-img{
     width: 40px;

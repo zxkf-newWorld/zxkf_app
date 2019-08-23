@@ -53,6 +53,7 @@ export default {
                 console.log(res);
                 if (res.data.code == 1) {
                     this.$toast("您已进入整租");
+                    this.$router.push('/Zhengzu');
                 }
             })
 
