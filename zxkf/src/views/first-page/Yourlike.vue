@@ -264,7 +264,7 @@ export default {
         width: .48rem;
         height: .48rem;
         margin-left: 0px;
-        background-image: url(../../public/img/like/baletu.jpg);
+        background-image: url(../../../public/img/like/baletu.jpg);
         background-size: 100% 100%;
         background-position: 50%;
         background-repeat: no-repeat;
@@ -282,7 +282,7 @@ export default {
     .extra-info .landlord-info .owner .tag{
         width: .44rem;
         height: .24rem;
-        background-image: url(../../public/img/like/host.png);
+        background-image: url(../../../public/img/like/host.png);
         background-size: 100% 100%;
         background-position: 50%;
         background-repeat: no-repeat;

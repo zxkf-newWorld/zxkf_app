@@ -1,6 +1,10 @@
 <template>
   <div class="app-reg">
     <!-- zxkf/reg.vue  -->
+    <a href="javscript:;">
+        <!-- <img src="../img/left (2).png" class="imgs"> -->
+        <span class="app-res-reg">欢迎注册</span>
+      </a>
     <!--用户名-->
     <mt-field :placeholder="unameholder" v-model="uname" class="myinput"></mt-field>
     <!--密码-->
@@ -17,10 +21,10 @@
 export default {
   data() {
     return {
-      uname: "jason",
-      upwd: "123456748496",
-      phone: "13366669996",
-      email: "qq@qq.com",
+      uname: "",
+      upwd: "",
+      phone: "",
+      email: "",
       unameholder: "用户名4-12位",
       upwdholder: "密码8-12",
       phoneholder: "请输入正确的11位手机号",
@@ -73,20 +77,20 @@ export default {
       }
 
       //4:验证密码   出错提示，并停止执行
-      if (!/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(e)) {
-        this.$toast("邮箱格式不正确");
-        return;
-      } else {
-        this.axios.get(url + "?email=" + this.email).then(res => {
-          if (res.data.code == -1) {
-            this.$toast("邮箱已被注册");
-            return;
-          }
-        });
-      }
+      // if (!/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(e)) {
+      //   this.$toast("邮箱格式不正确");
+      //   return;
+      // } else {
+      //   this.axios.get(url + "?email=" + this.email).then(res => {
+      //     if (res.data.code == -1) {
+      //       this.$toast("邮箱已被注册");
+      //       return;
+      //     }
+      //   });
+      // }
 
       //5:发送ajax请求 axios
-      setTimeout(()=>{
+      setTimeout(function() {
         this.axios.post(url, this.qs.stringify(obj)).then(res => {
           //获取服务器返回的结果，注册成功或者失败
           if (res.data.code == -1) {
@@ -102,4 +106,26 @@ export default {
     }
   }
 };
+
 </script>
+<style>
+.app-reg{
+  position: relative;
+}
+.app-reg> a>.app-res-reg{
+  position:absolute;
+  top:6px;
+  left:163px;
+}
+.app-reg>a{
+  text-decoration:none;
+  text-align: center;
+}
+ .app-reg> a img{
+   display: inline-block;
+   height: 30px;
+   vertical-align:middle;
+   top:0px;
+   left: 0px;
+ }
+</style>

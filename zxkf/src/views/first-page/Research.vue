@@ -10,28 +10,28 @@
         <ul>
           <li>
             <div class="wrap bor" @click="nearSubway">
-              <img src="../assets/research-pic1.png" />
+              <img src="../../assets/research-pic1.png" />
               <div class="title">地铁周边</div>
               <div class="des">地铁站附近2公里房源</div>
             </div>
           </li>
           <li>
             <div class="wrap pl-3 bor" @click="pinzhi">
-              <img src="../assets/research-pic2.png" />
+              <img src="../../assets/research-pic2.png" />
               <div class="title">品质好房</div>
               <div class="des">2000元左右，理想生活</div>
             </div>
           </li>
           <li>
             <div class="wrap bor" @click="payMonth">
-              <img src="../assets/research-pic3.png" />
+              <img src="../../assets/research-pic3.png" />
               <div class="title">轻松月付</div>
               <div class="des">从此告别押一付三</div>
             </div>
           </li>
           <li>
             <div class="wrap pl-3 bor" @click="singleRoom">
-              <img src="../assets/research-pic4.jpg" />
+              <img src="../../assets/research-pic4.jpg" />
               <div class="title">精选单间</div>
               <div class="des">1500以下，精致合租</div>
             </div>

@@ -2,15 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Index from  './views/Index.vue'
-import Zhaoshiyou from './views/Zhaoshiyou.vue'
-import Carousel  from './views/Carousel.vue'
-import Searchbox from './views/Searchbox.vue'
-import Parent from './views/Parent.vue'
-import Childele from './views/Childele.vue'
-import Functions from './views/Functions.vue'
+import Zhaoshiyou from './views/first-page/Zhaoshiyou.vue'
+import Carousel  from './views/first-page/Carousel.vue'
+import Searchbox from './views/first-page/Searchbox.vue'
+import Parent from './views/first-page/Parent.vue'
+import Childele from './views/first-page/Childele.vue'
+import Functions from './views/first-page/Functions.vue'
 // 为Login&Reg.vue组件指定路径
-import Login from "./views/Login.vue"
-import Reg from "./views/Reg.vue"
+import Login from "./views/first-page/Login.vue"
+import Reg from "./views/first-page/Reg.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -22,7 +22,7 @@ export default new Router({
     { path:'/Parent',component:Parent},
     { path:'/Childele',component:Childele},
     { path:'/Functions',component:Functions},
-	{ path: '/Login', component: Login },
+    { path: '/Login', component: Login },
     { path: '/Reg', component: Reg }
   ]
 })

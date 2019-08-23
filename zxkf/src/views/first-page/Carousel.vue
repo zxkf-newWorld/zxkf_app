@@ -3,16 +3,16 @@
     <swiper :options="swiperOption" class="swiper-container swiper-pagination2" ref="mySwiper">
       <!-- 添加的图片 -->
       <swiper-slide>
-        <img class="banner-img" src="../../public/carou/timg.jpg" />
+        <img class="banner-img" src="../../../public/carou/timg.jpg" />
       </swiper-slide>
       <swiper-slide>
-        <img class="banner-img" src="../../public/carou/timg2.jpg" />
+        <img class="banner-img" src="../../../public/carou/timg2.jpg" />
       </swiper-slide>
       <swiper-slide>
-        <img class="banner-img" src="../../public/carou/timg3.jpg" />
+        <img class="banner-img" src="../../../public/carou/timg3.jpg" />
       </swiper-slide>
       <swiper-slide>
-        <img class="banner-img" src="../../public/carou/timg4.jpg" />
+        <img class="banner-img" src="../../../public/carou/timg4.jpg" />
       </swiper-slide>
       <!-- Optional controls -->
        <div class="swiper-scrollbar" slot="scrollbar"></div>
@@ -20,6 +20,20 @@
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div> -->
     </swiper>
+    <div class="login-city">
+      <!-- 右上登录按钮 -->
+      <div class="top-left-img" @click="toCityPosition">
+        <a href="javascript:;">
+          <img src="../../assets/login-active2.png" alt="">
+        </a>
+      </div>
+      <!-- 左上定位按钮 -->
+      <div class="top-right-img" @click="toLogin">
+        <a href="javascript:;">
+          <img src="../../assets/position1.png" alt="">
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -72,6 +86,14 @@ export default {
       return this.$refs.mySwiper.swiper;
     }
   },
+  methods: {
+    // 跳转到登录
+    toLogin(){
+      this.$router.push('/Login')
+    },
+    // 城市定位
+    toCityPosition(){}
+  },
   mounted() {
     this.swiper.slideTo(0, 0, false);
   }
@@ -81,5 +103,28 @@ export default {
   div>img{
     width: 100%;
     height: 257px;
+  }
+  .login-city  img{
+    width: 35px;
+    height: 35px;
+  }
+  .login-city .top-left-img,.login-city .top-right-img{
+    width: 40px;
+    height: 40px;
+    background:rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+  }
+  .login-city .top-left-img{
+    position: absolute;
+    z-index: 20;
+    top: 10px;
+    left: 10px;
+  }
+  .login-city .top-right-img{
+    position: absolute;
+    z-index: 20;
+    top: 10px;
+    right: 10px;
+    opacity: 0.9;
   }
 </style>

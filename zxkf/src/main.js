@@ -21,6 +21,14 @@ Vue.prototype.axios = axios;
 // 将qs添加到Vue原型上
 Vue.prototype.qs = qs;
 
+// 地图的配置+引入
+import hljs from 'highlight.js'
+import 'highlight.js/styles/railscasts.css' 
+
+Vue.directive('hljs', el => {
+  let blocks = el.querySelectorAll('pre')
+  Array.prototype.forEach.call(blocks, hljs.highlightBlock)
+})
 
 // 引入boot
 // import "../public/js/bootstrap.js"

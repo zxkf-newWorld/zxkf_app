@@ -4,25 +4,25 @@
         <ul class="myUl">
             <li>
                 <a href="javascirpt:;" data-city="citys[0]" @click="toFullRent">
-                    <img src="../assets/zhengzu.png">
+                    <img src="../../assets/zhengzu.png">
                     <div>整租</div>
                 </a>
             </li>
             <li>
                 <a href="javascirpt:;" data-city="citys[1]" @click="toJointRent">
-                    <img src="../assets/hezu.png">
+                    <img src="../../assets/hezu.png">
                     <div>合租</div>
                 </a>
             </li>
             <li>
                 <a href="javascirpt:;" data-city="citys[2]" @click="Pinpai">
-                    <img src="../assets/gongyu.png">
+                    <img src="../../assets/gongyu.png">
                     <div>品牌公寓</div>
                 </a>
             </li>
             <li>
                 <a href="javascirpt:;" data-city="citys[3]" @click="FindRoomMates">
-                    <img src="../assets/shiyou.png">
+                    <img src="../../assets/shiyou.png">
                     <div>找室友</div>
                 </a>
             </li>
