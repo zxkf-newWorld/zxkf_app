@@ -3,7 +3,7 @@
         <!-- 详情部分 -->
         <div class="details">
             <!--返回按钮-->
-            <div class="backBtn">
+            <div class="backBtn" @click="backForward">
                 <span>&nbsp;</span>
             </div>
             <!-- 返回顶部按钮 -->
@@ -136,6 +136,12 @@ export default {
         return {
             popupVisible:true,
 
+        }
+    },
+    methods:{
+        backForward(){
+            // 返回上一页
+            this.$router.go(-1);
         }
     }
 }

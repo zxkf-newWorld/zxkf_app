@@ -1,10 +1,22 @@
 <template>
   <div class="app-reg">
     <!-- zxkf/reg.vue  -->
-    <a href="javscript:;">
-        <!-- <img src="../img/left (2).png" class="imgs"> -->
-        <span class="app-res-reg">欢迎注册</span>
-      </a>
+    <!-- <div >
+      <img src="../../assets/left.png" alt="">
+    </div> -->
+    <div class="reg-head" >
+      <div @click="toHome">
+        <img src="../../assets/left.png">
+      </div>
+      <div class="welcome-zxkf">
+        欢迎注册
+      </div>
+      <!-- <img src="../img/left (2).png" class="imgs"> -->
+      <!-- <span class="app-res-reg">欢迎注册</span> -->
+    </div>
+    <div>
+      
+    </div>
     <!--用户名-->
     <mt-field :placeholder="unameholder" v-model="uname" class="myinput"></mt-field>
     <!--密码-->
@@ -35,6 +47,10 @@ export default {
   //   this.reg();
   // },
   methods: {
+    toHome(){
+      // 跳转到首页
+      this.$router.push("Index");
+    },
     reg() {
       // console.log(this.qs);
       // 完成注册
@@ -109,6 +125,30 @@ export default {
 
 </script>
 <style>
+.reg-head{
+  width: 100%;
+  height: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d80d56;
+}
+.reg-head div > img{
+  width: .4rem;
+}
+.reg-head .welcome-zxkf{
+  margin-left: 50%;
+  position: absolute;
+  height: .4rem;
+  line-height: .4rem;
+  left: -1rem;
+  /* top:.2rem; */
+  font-size: .5rem;
+  color: #fff;
+}
+/* .reg-head div{
+  text-align: left;
+} */
 .app-reg{
   position: relative;
 }

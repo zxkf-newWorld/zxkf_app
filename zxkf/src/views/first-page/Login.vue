@@ -2,10 +2,10 @@
   <div class="app-login">
     <!--xz/Login.vue-->
     <div class="tabLogin">
-      <a href>
-        <img src="" class="imgs">
-      </a>
-      <img src="" class="imgs1">
+      <div @click="toHome">
+        <img src="../../assets/newlogo2.png" class="imgs">
+      </div>
+      <img src="../../assets/newlogo2.png" class="imgs1">
     </div>
     <mt-button class="mhbutton" @click="login">快速登陆</mt-button>
     <mt-button class="mhbutton" @click="login">账号登陆</mt-button>
@@ -31,6 +31,10 @@ export default {
     };
   },
   methods: {
+    toHome(){
+      // 跳转到首页
+      this.$router.push("Index");
+    },
     login() {
       //完成登录 47
       var u = this.uname;
@@ -78,6 +82,8 @@ export default {
   background: url();
   margin: 0 35px;
   border-bottom: none;
+  border: none!important;
+  box-shadow: none;
 }
 .app-login > .myinput {
   width: 100%;
@@ -88,7 +94,7 @@ export default {
   background-size: 7%;
   background-position: 50px 12px;
   border:2px solid #F2F2F2;
-  border-radius: 30%;
+  /* border-radius: 30%; */
 }
 .app-login > .myinput1 {
   width: 100%;
@@ -99,16 +105,26 @@ export default {
   background-size: 6%;
   background-position: 50px 15px;
   border:2px solid #F2F2F2;
-  border-radius: 30%;
+  /* border-radius: 30%; */
 }
 .app-login > .mhbutton:hover {
   border-bottom: 2px solid red;
 }
-.tabLogin > a .imgs {
+.tabLogin{
+  background-color: #e8323f!important;
+}
+.tabLogin > a{
+  
+}
+.tabLogin > img{
+  height: 1.2rem;
+  margin-top: 1.2rem;
+}
+.tabLogin > div .imgs {
   position: absolute;
   top: 20px;
   left: 10px;
-  width: 20px;
+  width: .8rem;
 }
 .tabLogin > .imgs1 {
   position: absolute;
@@ -129,13 +145,18 @@ export default {
   background-color: red;
 }
 .mbutton1 {
-  background-color: #fff;
+  background-color: #e8323f;
+  color: #fff;
 }
 .call {
   position: absolute;
   top: 0px;
   left: 0px;
   /* width:20px; */
+}
+.botText-login{
+  font-size: .2rem;
+  box-shadow: none;
 }
 </style>
 

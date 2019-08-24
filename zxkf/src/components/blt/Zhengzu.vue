@@ -56,7 +56,7 @@
         </mt-popup>
         
         <!-- 主体-房源信息 -->
-        <div class="house-list">
+        <div class="house-list" @click="toDetails">
             <div class="house-card">
                 <div class="base-info">
                     <div class="main-photo">
@@ -451,6 +451,10 @@ export default {
             // 跳到我的页面
             this.$router.push("Myself");
         },
+        toDetails(){
+            // 跳转到详情页面
+            this.$router.push("Details");
+        }
        
     },
     components:{

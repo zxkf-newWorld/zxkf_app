@@ -12,7 +12,6 @@
 <script>
 import mapDrag from "./mapDrag.vue";
 export default {
-  name:'#ap',
   components: {
     mapDrag
   },
