@@ -43,6 +43,7 @@ export default {
             let url = "/index/fullrent";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
+            // 动态获取定位城市，默认为西安
             let cityBelong = "西安";
             let title = 1;
             var obj = {title,cityBelong};
@@ -53,7 +54,7 @@ export default {
                 console.log(res);
                 if (res.data.code == 1) {
                     this.$toast("您已进入整租");
-                    this.$router.push('/Zhengzu');
+                    this.$router.push('/Zhengzu');//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
                 }
             })
 
@@ -63,16 +64,18 @@ export default {
             let url = "/index/fullrent";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
-            let cityBelong = "西安";
+            let cityBelong = "西安";//默认所在城市是西安
             let title = 0;
             var obj = {title,cityBelong};
             this.axios.get(url,{
                 params:obj
             })
             .then((res)=>{
-                console.log(res);
+                console.log(res);//测试接收的数据是否请求成功
                 if (res.data.code == 1) {
                     this.$toast("您已进入合租");
+                    // 进入合租页面
+                    // this.$router.push("/hezu");//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
                 }
             })
         },
@@ -98,7 +101,7 @@ export default {
         },
         FindRoomMates(){
             // 找室友 title:3
-            let url = "/index/fullrent";
+            let url = "/index/findRoomMates";
             // city：动态通过城市动态获取
             // let city = e.target.dataset.citys[0]
             let cityBelong = "西安";

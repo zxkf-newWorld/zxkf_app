@@ -21,6 +21,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    { path:'/',component:Index},
     { path:'/Index',component:Index},
     { path:'/Zhaoshiyou',component:Zhaoshiyou},
     { path:'/Carousel',component:Carousel},
@@ -31,7 +32,7 @@ export default new Router({
     { path: '/Login', component: Login },
     { path: '/Reg', component: Reg },
     { path: '/Myself', component: Myself },
-	  { path: "/Zhengzu", component: Zhengzu },
+    { path: "/Zhengzu", component: Zhengzu },
     { path: "/Details", component: Details },
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider }
