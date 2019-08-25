@@ -113,7 +113,10 @@ export default {
             .then((res)=>{
                 console.log(res);
                 if (res.data.code == 1) {
+                    //查询成功跳转到找室友页面
+                    this.$router.push("Roommate");
                     this.$toast("您已进入找室友");
+                
                 }else{
                     this.$toast("暂无相关信息，我们会尽快处理");
                 }

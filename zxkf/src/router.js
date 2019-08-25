@@ -13,6 +13,7 @@ import Login from "./views/first-page/Login.vue"
 import Reg from "./views/first-page/Reg.vue"
 // 我得页面相关组件
 import Myself from "./views/myself/Myself.vue"
+import Roommate from "./views/findroommate/Roommate.vue"
 import Zhengzu from './components/blt/Zhengzu.vue'
 import Details from './components/blt/Details.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
@@ -35,6 +36,7 @@ export default new Router({
     { path: "/Zhengzu", component: Zhengzu },
     { path: "/Details", component: Details },
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
-    { path: "/Slider", component: Slider }
+    { path: "/Slider", component: Slider },
+    { path: "/Roommate", component: Roommate }
   ]
 })
