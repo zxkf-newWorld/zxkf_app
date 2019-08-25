@@ -17,15 +17,15 @@
                             <!-- 右侧：房屋详情：租住类型+地址+具体信息 -->
                             <div class="detail">
                                 <p class="title">
-                                    <span>{{title}}</span>
-                                    <span>{{address}}</span>
+                                    <span>{{arrs[i].title==1?'整租':'合租'}}&nbsp;</span>
+                                    <span>{{arrs[i].address}}</span>
                                 </p>
-                                <p class="room-info">{{housesize}}M² | {{floor}}层 | {{houselayout}}</p>
+                                <p class="room-info">{{arrs[i].housesize}}M² | {{arrs[i].floor}}层 | {{arrs[i].houselayout}}</p>
                                 <p class="lables">
-                                    <span class="lable">独卫</span>
-                                    <span class="lable">新上架</span>
-                                    <span class="lable">电梯房</span>
-                                    <span class="lable">非一楼</span>
+                                    <span class="lable">{{arrs[i].onlyrestroom==1?'独卫':''}}</span>
+                                    <span class="lable">{{arrs[i].newpublish==1?'新上架':''}}</span>
+                                    <span class="lable">{{arrs[i].elevatorrome==1?'电梯房':''}}</span>
+                                    <span class="lable">{{arrs[i].notfirstfloor==1?'非一楼':''}}</span>
                                 </p>
                             </div>
                         </div>
@@ -51,11 +51,11 @@
                             <!-- 右侧： 价钱+优惠广告 -->
                             <div class="price-info">
                                 <div class="price">
-                                    <span class="number">￥{{price}}</span>/月
+                                    <span class="number">￥{{arrs[i].price}}</span>/月
                                 </div>
                                 <div class="shuidianmeiwang-text">
-                                    <span>水电煤网费涨就赔</span>
-                                    <span>&nbsp;随时入住</span>
+                                    <span>{{arrs[i].annoucement}}</span>
+                                    <span>&nbsp;{{arrs[i].liverandom}}</span>
                                 </div>
                             </div>
                         </div>   
@@ -101,16 +101,6 @@ export default {
                     this.arrs = res.data.dataArray;
                     for (let i = 0; i < this.arrs.length; i++) {
                         console.log("首页--猜你喜欢商品列表-"+i+"-加载成功");
-                        // 将返回结果的数据下的属性赋给变量
-                        let data = res.data.dataArray[i]
-                        this.citybelong = data.citybelong;
-                        this.title = data.title==0?'合租':'整租';
-                        this.price = data.price;
-                        this.floor = data.floor;
-                        this.houselayout = data.houselayout;
-                        this.imgurl = data.imgurl;
-                        this.address = data.address;
-                        this.housesize = data.housesize;
                     }
                     console.log("首页--猜你喜欢商品列表--加载完成");
                 }else{
