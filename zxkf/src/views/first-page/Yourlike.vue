@@ -72,13 +72,7 @@ export default {
         return{
             imageUrl:[],//图片路径
             arrs:[],//商品列表
-            title:0,//租住类型：1:整租、0：合租
-            address:"",//地址
-            price:0,//价格
-            floor:"",//楼层
-            houselayout:"",//房屋布局
-            imgurl:"",//房屋图片名称
-            housesize:"",//房屋面积
+            title:0,//租住类型：0:整租、1：合租
             citybelong:"西安"//所在城市：默认：西安
         }
     },
@@ -90,7 +84,7 @@ export default {
             // 默认显示合租：1：整租， 0：合租
             let title = this.title;
             var obj = {title,cityBelong};
-            let url = "/index/fullrent";
+            let url = "/index/jointrent";
             this.axios.get(url,{
                 params:obj
             })//已经发送过去了数据

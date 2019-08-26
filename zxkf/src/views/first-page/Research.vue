@@ -9,29 +9,29 @@
         <!-- 房间商品列表:显示4个商品 -->
         <ul>
           <li>
-            <div class="wrap bor" @click="nearSubway">
-              <img src="../../assets/research-pic1.png" />
+            <div class="wrap bor" @click="toFunctions($event)" >
+              <img src="../../assets/research-pic1.png" data-choice="地铁周边"/>
               <div class="title">地铁周边</div>
               <div class="des">地铁站附近2公里房源</div>
             </div>
           </li>
           <li>
-            <div class="wrap pl-3 bor" @click="pinzhi">
-              <img src="../../assets/research-pic2.png" />
+            <div class="wrap pl-3 bor" @click="toFunctions($event)" >
+              <img src="../../assets/research-pic2.png" data-choice="品质好房"/>
               <div class="title">品质好房</div>
               <div class="des">2000元左右，理想生活</div>
             </div>
           </li>
           <li>
-            <div class="wrap bor" @click="payMonth">
-              <img src="../../assets/research-pic3.png" />
+            <div class="wrap bor" @click="toFunctions($event)" >
+              <img src="../../assets/research-pic3.png" data-choice="轻松月付"/>
               <div class="title">轻松月付</div>
               <div class="des">从此告别押一付三</div>
             </div>
           </li>
           <li>
-            <div class="wrap pl-3 bor" @click="singleRoom">
-              <img src="../../assets/research-pic4.jpg" />
+            <div class="wrap pl-3 bor" @click="toFunctions($event)" >
+              <img src="../../assets/research-pic4.jpg" data-choice="精选单间"/>
               <div class="title">精选单间</div>
               <div class="des">1500以下，精致合租</div>
             </div>
@@ -45,19 +45,29 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
-    nearSubway(){
-      // 查询地址
-      let url = "/index/fullrent"
-      let subway = 1;
-      var obj = {subscribe}
-      this.axios.get(url,);
+    toFunctions(e){
+      // 跳转到相关的房屋信息列表
+      let url = "index/tofunctions";
+      // 获取自定义属性值，并创建参数对象params
+      let datas = e.target.dataset;
+      let params = {
+        choice:datas.choice
+      }
+      // 发送请求
+      this.axios.get(url,{//传递参数
+        params
+      })
+        .then(success=>{
+          console.log(success);
+        })
+        .catch(err=>{
+          console.log(err);
+        });
     },
-    pinzhi(){},
-    payMonth(){},
-    singleRoom(){},
   },
 };
 </script>
