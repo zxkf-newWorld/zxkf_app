@@ -1,18 +1,19 @@
 <template>
     <div class="roommate">
+      <my-head></my-head>
       <ul class="list_room">
-        <li v-for="(item,index) in list" :key="index">
+        <li v-for="(item,index) in list" :key="index" @click="jumpDetail(item.rid)">
           <div class="room_left">
-            <img :src="item.img" alt="图片加载中..." >
+            <img :src="item.img" alt="图片加载中...">
           </div>
           <div class="room_right">
-            <h4>{{item.title}} 
+            <h4>{{item.address }} 
               <div class="font_red">￥{{item.price}}</div>
             </h4>
             <div class="font_red d1">
               <div>{{item.type}}</div>
-              <div>{{item.set}}</div>
-              <div>{{item.date}}</div>
+              <div>{{item.getset}}</div>
+              <div>{{item.date}}入住</div>
             </div>
             <div >{{item.ditie}}</div>
             <div class="d1" style="padding:0">
@@ -25,21 +26,41 @@
     </div>
 </template>
 <script>
+import Header from '../../components/blt/Header.vue'
 export default {
     data(){
         return{
+          cityBelong:'西安',
           list:[
-            {id:"1",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"1",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"1",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"1",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
-            {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
+            // {id:"1",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
+            // {id:"2",img:"./img/roomate/02.jpg",title:"浦东新区东源名都西区",price:"2200 ",type:"单间",set:"限男",date:"09月01日入住",ditie:"1号线锦江乐园",newDate:"2019.09.14"},
+            // {id:"1",img:"./img/roomate/03.jpg",title:"徐汇区家乐苑",price:"2200 ",type:"单间",set:"限女",date:"09月04日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
+            // {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限男",date:"09月01日入住",ditie:"1号线锦江乐园",newDate:"2019.09.18"},
+            // {id:"1",img:"./img/roomate/02.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限男",date:"09月03日入住",ditie:"1号线共富新村",newDate:"2019.09.15"},
+            // {id:"2",img:"./img/roomate/03.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线锦江乐园",newDate:"2019.09.12"},
+            // {id:"1",img:"./img/roomate/02.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月05日入住",ditie:"2号线金京路",newDate:"2019.09.12"},
+            // {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
           ]        
         }
-    }
+    },
+    components:{
+      "my-head":Header
+    },
+    mounted() {
+      var url = "index/findRoomMates";
+      this.axios.get(url).then(res => {
+        //获取服务器返回的结果，登陆成功或者失败
+       this.list=res.data.dataArray;
+       console.log(this.list)
+      }).catch(err=>{
+          console.log(err)
+      })
+    },
+    methods: {
+      jumpDetail(rid){
+        this.$router.push("Roommatedetail/"+rid);
+      }
+    },
 }
 </script>
 <style  scoped>
@@ -64,7 +85,7 @@ export default {
      width:100%;
     }
     .room_left{
-      width:40%;
+      width:30%;
       text-align: center;
       padding:5px;
     }

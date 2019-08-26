@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Index from  './views/Index.vue'
-import Zhaoshiyou from './views/first-page/Zhaoshiyou.vue'
 import Carousel  from './views/first-page/Carousel.vue'
 import Searchbox from './views/first-page/Searchbox.vue'
 import Parent from './views/first-page/Parent.vue'
@@ -14,8 +13,10 @@ import Reg from "./views/first-page/Reg.vue"
 // 我得页面相关组件
 import Myself from "./views/myself/Myself.vue"
 import Roommate from "./views/findroommate/Roommate.vue"
+import Roommatedetail from "./views/findroommate/Roommatedetail.vue"
 import Zhengzu from './components/blt/Zhengzu.vue'
 import Details from './components/blt/Details.vue'
+import Header from './components/blt/Header.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
 Vue.use(Router)
@@ -24,7 +25,6 @@ export default new Router({
   routes: [
     { path:'/',component:Index},
     { path:'/Index',component:Index},
-    { path:'/Zhaoshiyou',component:Zhaoshiyou},
     { path:'/Carousel',component:Carousel},
     { path:'/Searchbox',component:Searchbox},
     { path:'/Parent',component:Parent},
@@ -35,8 +35,12 @@ export default new Router({
     { path: '/Myself', component: Myself },
     { path: "/Zhengzu", component: Zhengzu },
     { path: "/Details", component: Details },
+    { path: "/Header", component: Header },
+    
+
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },
-    { path: "/Roommate", component: Roommate }
+    { path: "/Roommate", component: Roommate },
+    { path: "/Roommatedetail/:rid", component: Roommatedetail },
   ]
 })

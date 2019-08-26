@@ -26,7 +26,7 @@
     <!-- 邮箱 -->
     <mt-field :placeholder="emailholder" v-model="email" class="myinput" type="text"></mt-field>
     <!--注册按钮-->
-    <mt-button size="large" class="mybutton" @click="reg">注册</mt-button>
+    <mt-button size="large" class="mybutton primary" @click="reg">注册</mt-button>
   </div>
 </template>
 <script>
@@ -131,7 +131,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d80d56;
+   background: #ee3943;
 }
 .reg-head div > img{
   width: .4rem;
@@ -143,7 +143,7 @@ export default {
   line-height: .4rem;
   left: -1rem;
   /* top:.2rem; */
-  font-size: .5rem;
+  font-size: .4rem;
   color: #fff;
 }
 /* .reg-head div{

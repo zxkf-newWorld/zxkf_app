@@ -3,23 +3,7 @@
         <!-- 返回顶部组件 -->
         <totop></totop>
         <!-- 页头 -->
-        <div class="search-header">
-            <div class="home-icon" @click="toHome">
-                <img src="../../../public/zhengzu/home.png">
-            </div>
-            <div @click="cities" class="city-select">
-                <span>西安</span>    
-                <img src="../../../public/zhengzu/sanjiao.png">
-            </div>
-            <!-- 隐藏显示的城市选择列表 -->
-            <city :cityShow.sync="cityShow" v-model="cityShow"></city>
-            <div class="search-box">
-                <img src="../../../public/zhengzu/fangdajin.png">输入区域、小区搜索源
-            </div>
-            <div class="my" @click="toMyself">
-                <img src="../../../public/zhengzu/my.png">
-            </div> 
-        </div> 
+        <my-head></my-head>
         <!-- 主体-条件设置 -->
         <div class="tab-out">
             <ul>
@@ -420,11 +404,13 @@
 <script>
 import City from './City.vue'
 import ToTop from './ToTop.vue'
+import Header from './Header.vue'
+
 export default {
     data(){
         return {
             sortShow:false,//控制sort()
-            cityShow:false,//控制城市选择列表的变量
+            //cityShow:false,//控制城市选择列表的变量
             data: []
         }
     },
@@ -436,21 +422,6 @@ export default {
                 this.sortShow=false;
             }
         },
-        cities(){
-            if(!this.cityShow){
-                this.cityShow=true;
-            }else{
-                this.cityShow=false;
-            } 
-        },
-        toHome(){
-            // 跳到首页
-            this.$router.push("Index");
-        },
-        toMyself(){
-            // 跳到我的页面
-            this.$router.push("Myself");
-        },
         toDetails(){
             // 跳转到详情页面
             this.$router.push("Details");
@@ -458,8 +429,8 @@ export default {
        
     },
     components:{
-        "city":City,
-        "totop":ToTop
+        "totop":ToTop,
+        "my-head":Header
     },
     
 }
