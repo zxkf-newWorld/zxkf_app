@@ -35,19 +35,19 @@
                 {{details.content}}
             </div>
             <ul class="describe-img clearfix"> 
-                <li>
+                <li @click="fullPic">
+                    <img  :src="details.img" alt="" >
+                </li>
+                <li @click="fullPic">
                     <img  :src="details.img" alt="">
                 </li>
-                <li>
-                    <img  :src="details.img" alt="">
-                </li>
-                <li>
+                <li @click="fullPic">
                     <img  :src="details.img" alt="">
                 </li>
             </ul>
         </div>
-        <div class="detail_img" v-show="isif">
-            <span class="icon iconfont icon-guanbi guanbi"></span>
+        <div id="detail_img" class="detail_img" v-show="isif">
+            <span class="icon iconfont icon-guanbi clone" @click="closeFullPic"></span>
             <img  :src="details.img" alt="">
         </div>
         <div class="foot">
@@ -65,6 +65,10 @@ export default {
         return{
           details:[],
           isif:false,
+<<<<<<< HEAD
+=======
+          clientHeight:""
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
         }
     },
     mounted() {
@@ -79,11 +83,24 @@ export default {
             // console.log(err);
             throw err;
         })
+        // this.clientHeight =   `${document.getElementById("app").clientHeight}`  
+        this.clientHeight =   `${document.body.clientHeight}`  
+        document.getElementById("detail_img").style.height=this.clientHeight+"px";
     },
     methods: {
         back(){
             this.$router.push('/Roommate');
-        }
+        },
+        fullPic(){ 
+          this.isif=true
+           var body= document.body
+           body.style.overflow="hidden"
+        },
+        closeFullPic(){ 
+            this.isif=false;
+             var body= document.body
+            body.style.overflow="auto"
+        },
     },
 }
 </script>
@@ -246,20 +263,20 @@ export default {
         top:0.78rem;
         left: 0;
         width: 100%;
-        height:100%;
-        border:1px solid red;
+        /* height:820px; */
         background: rgba(0,0,0,.8);
-        line-height:100%;
+        /* line-height:520px; */
+        z-index: 999;
      }
      .detail_img img{
-         margin-top: 2rem;
+         margin-top: 3rem;
          width: 100%;
-         height: 50%;
+         height: 270px;
      }
-     .guanbi{
+     .clone{
          position: absolute;
-         top:10px;
-         right:10px;
+         top:5px;
+         right:6px;
          color:#fff;
          font-size: 32px;
      }

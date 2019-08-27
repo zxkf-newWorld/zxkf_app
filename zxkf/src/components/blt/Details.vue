@@ -3,23 +3,19 @@
         <!-- 详情部分 -->
         <div class="details">
             <!--返回按钮-->
-            <div class="backBtn" @click="backForward">
+            <div class="backBtn" @click="goBack">
                 <span>&nbsp;</span>
             </div>
             <!-- 返回顶部按钮 -->
-            <div class="toTop">
-                <p>回顶部</p>
-            </div>
+            <totop></totop>
             <!--轮播图-->
-            <div class="carousel">
-                <ul>
-                    <li><img src="../../../public/details/room.jpg"></li>
-                </ul>
-                <div class="swiper-count">
-                    <div class="swiper-count-text">1/6</div>
-                    <div class="swiper-count-bg"></div>
-                </div>
+            <div class="swipe-box">
+                <mt-swipe id="swipe">
+                    <mt-swipe-item v-for="(img,i) of details.imgs" :key="i"><img :src="img"></mt-swipe-item>
+                </mt-swipe>
+                <div class="swiper-count-text">{{1}}/{{details.imgs.length}}</div>
             </div>
+            
             <!--认证-->
             <div class="renzheng"><img src="../../../public/details/renzheng.png"></div>
             <!--房屋详情信息-->
@@ -27,47 +23,42 @@
                 <ul>
                     <!-- 详情文字内容-->
                     <li>
-                        <h1>合租 - 玫瑰坊</h1>
-                        <p class="house-price"><span class="house-price-numble">¥1350/月</span></p>
+                        <h1>{{details.rentType}} - {{details.hName}}</h1>
+                        <p class="house-price"><span class="house-price-numble">¥{{details.price}}/月</span></p>
                         <p style="height: 0.2rem;">&nbsp;</p>
                     </li>
                     <li>
                         <ul class="house-ms">
-                            <li>朝北-次卧</li>
-                            <li>18M²</li>
-                            <li>电梯10/24层</li>
+                            <li>{{details.direction}}-{{details.roomType}}</li>
+                            <li>{{details.area}}</li>
+                            <li>{{details.liftNum}}</li>
                         </ul>    
                     </li>
                     <li>
                         <ul class="house-label">
-                            <li>近地铁</li>
-                            <li>新上架</li>
-                            <li>电梯房</li>
-                            <li>非一楼</li>
+                            <li v-for="(item,i) of details.trait" :key="i">{{item}}</li>
                         </ul>
                     </li>
                 </ul>
                 <!-- 详情地理信息 -->
                 <div class="mapText">
                     <ul>
-                        <li><div class="active"><span class="iconDz"></span>地址</div></li>
-                        <li><div><span class="iconJt"></span>交通</div></li>
-                        <li><div><span class="iconPt"></span>周边配套</div></li>
+                        <li @click="changeMapText(i)" v-for="(item,i) of mapTextList" :key="i"><div :class="{active:i==mapTextIndex}"><img :src="i==mapTextIndex?mapTextUrlChecked[i]:mapTextUrl[i]">{{item.title}}</div></li>
+                        
                     </ul>
-                    <div class="mapTextConter" style="">碑林&nbsp;东关正街&nbsp;长乐坊18号
+                    <div class="mapTextConter" v-show="0==mapTextIndex">{{details.address}}
                     </div>
-                    <div class="mapTextConter" style="display:none;">
-                        203路;228路;237路;240路;408路;410路;512路;517路;709路;709路区间;K622路 <br>
-                        1号线(康复路站)，步行14分钟|3号线(长乐公园站)|1号线;3号线(通化门站)|1号线(朝阳门站)
+                    <div class="mapTextConter" v-show="1==mapTextIndex">
+                        {{details.traffic}}
                     </div>
-                    <div class="mapTextConter" style="display:none">
+                    <div class="mapTextConter" v-show="2==mapTextIndex">
                         <ul>
-                            <li><span> 饮食：</span>王李记冷锅串串、澄城水盆羊肉、小六汤包、桥头米线涮牛肚、重庆四座火锅
+                            <li v-for="(item,i) of details.around" :key="i"><span> {{item.nName}}：</span>{{item.items}}
                             </li>
-                            <li><span> 购物：</span>华东万悦城、西北商贸中心、益田假日世界、东门美博城、五环交大Outlets工厂店
+                            <!-- <li><span> 购物：</span>华东万悦城、西北商贸中心、益田假日世界、东门美博城、五环交大Outlets工厂店
                             </li>
                             <li><span> 生活：</span>西安碑林郭西京诊所、交通银行ATM、雅诗美发沙龙
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -76,7 +67,7 @@
                     <img src="../../../public/details/map.png">
                     <div class="map-text-wrapper">
                         <p  class="map-text"><span class="dingwei"></span>
-                            碑林&nbsp;东关正街&nbsp;长乐坊18号
+                            {{details.address}}
                         </p>
                     </div>
                 </div>
@@ -84,15 +75,21 @@
                 <div>
                     <div class="tabSheshi">
                         <ul>
-                            <li><span class="active">独用设施</span></li> <li><span class="">公用设施</span></li>
+                            <li><span @click="sheshiTab" :class="{active:sheshiIndex==0}" data-index=0>独用设施</span></li> 
+                            <li><span @click="sheshiTab" :class="{active:sheshiIndex==1}" data-index=1>公用设施</span></li>
                         </ul>
                     </div>
-                    <ul id="example-1" class="icon-list" style="">
+                    <ul class="icon-list" v-show="sheshiIndex==0">
                         <li><img src="../../../public/details/1.png"></li>
                         <li><img src="../../../public/details/2.png"></li>
                         <li><img src="../../../public/details/3.png"></li>
                         <li><img src="../../../public/details/4.png"></li>
                         <li><img src="../../../public/details/5.png"></li>
+                    </ul>
+                    <ul class="icon-list" v-show="sheshiIndex==1">
+                        <li><img src="../../../public/details/6.png"></li>
+                        <li><img src="../../../public/details/7.png"></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -117,12 +114,12 @@
             <!-- 页面顶部功能区 -->
             <div class="details-footer">
                 <ul>
-                    <li class="shoucang">
-                        <img src="../../../public/details/sc.png">
-                        <img style="display:none" src="../../../public/details/ysc.png">
+                    <li class="shoucang" @click="collect">
+                        <img src="../../../public/details/sc.png" v-show="!isSC">
+                        <img src="../../../public/details/ysc.png" v-show="isSC">
                     </li>
-                    <li class="into">进入门店</li>
-                    <li class="call">电话房东
+                    <li class="into" @click="showMSG">预约看房</li>
+                    <li class="call" @click="callOwner">电话房东
                         <img class="tishi" src="../../../public/details/tishi_phone.png">
                     </li>
                 </ul>
@@ -131,19 +128,99 @@
     </div>
 </template>
 <script>
+import ToTop from './ToTop.vue'
 export default {
     data(){
         return {
             popupVisible:true,
+            mapTextIndex:0,//控制mapText三个板块切换的中间量
+            mapTextList:[
+                {title:"地址",imgUrl:"../../../public/details/position.png"},
+                {title:"交通",imgUrl:"../../../public/details/traffic.png"},
+                {title:"周边配套",imgUrl:"../../../public/details/near.png"},
+            ],
+            sheshiIndex:0,
+            details:{
+                hName:"玫瑰坊",
+                rentType:"合租",
+                roomType:"次卧",
+                direction:"朝北",
+                area:"18㎡",
+                liftNum:"电梯28/33层",
+                price:"2000",
+                trait:["近地铁","电梯房","非一楼","新上架"],
+                address:"碑林-东关正街-长乐坊18号",
+                traffic:"203路;228路;237路;240路;408路;410路;512路;517路;709路;709路区间;K622路 ",
+                around:[
+                    {nName:"饮食",items:"李家大院、兄弟大灶台、亨牛老火锅、雷子面馆、兄弟大灶台"},
+                    {nName:"购物",items:"东泰商城、华东购物广场、中泰广场、汉娜尚妃、精品百货购物中心"},
+                    {nName:"生活",items:"西安铁一中滨河学校、信誉药行、灞桥生态湿地公园"},
+                ],
+                equipment:[
+                    {equipType:"独用设施",items:[]}
+                ],
+                imgs:[
+                "./details/house1.png",
+                "./details/house2.png",
+                "./details/house3.png",
+                "./details/house4.png",
+                "./details/house5.png",
+                "./details/house6.png",
+                ],
+            },
+            isSC:false,
+            mapTextUrl:[
+                "./details/position.png",
+                "./details/traffic.png",
+                "./details/near.png"
+            ],
+            mapTextUrlChecked:[
+                "./details/position-red.png",
+                "./details/traffic-red.png",
+                "./details/near-red.png"
+            ],
 
         }
     },
     methods:{
-        backForward(){
-            // 返回上一页
+        changeMapText(i){//切换mapText三个板块的切换函数
+            this.mapTextIndex=i;
+        },
+        sheshiTab(e){
+            console.log(e.target);
+            this.sheshiIndex=e.target.dataset.index;
+            console.log(this.sheshiIndex);
+        },
+        collect(){
+            if(this.isSC==false){
+                this.isSC=true;
+                this.$toast({
+                    message:"收藏成功",
+                    duration:1500,
+
+                });
+            }else{
+                this.isSC=false;
+                this.$toast("已取消收藏");
+            }
+        },
+        goBack(){
             this.$router.go(-1);
+        },
+        showMSG(){
+            this.$messagebox.prompt("请填写您的手机号码，我们会尽快联系您").then(({value,action})=>{
+                this.$toast('已接收您的预约，请耐心等待');
+            })
+        },
+        callOwner(){
+            this.$messagebox.alert("是否拨通房东电话？").then(action=>{
+
+            })
         }
-    }
+    },
+    components:{
+        "totop":ToTop,
+    },
 }
 </script>
 <style scoped>
@@ -155,7 +232,7 @@ export default {
     }
     /***************************返回按钮***************************/
     .backBtn{
-        z-index: 110;
+        z-index: 999;
         position: absolute;
         top: .3rem;
         left: .3rem;
@@ -189,7 +266,6 @@ export default {
         bottom: 1.28rem;
         right: .3rem;
         animation: .7s opacity2 0s;
-        -webkit-animation: .7s opacity2 0s;
     }
     .toTop>p{
         position: absolute;
@@ -199,7 +275,33 @@ export default {
         text-align: center;
     }
     /***************************轮播图样式*******************************/
-    .carousel{
+    .swipe-box{
+        position: relative;
+    }
+    #swipe{
+        width:100%;
+        height:4.16rem;
+        position: relative;
+        z-index: 99;    
+    }
+    #swipe img{
+        width:100%;
+        vertical-align: middle;
+        font-size: 0;
+    }
+    .swiper-count-text{
+        z-index: 110;
+        width: .8rem;
+        height: .8rem;
+        position: absolute;
+        bottom: .2rem;
+        right: .2rem;
+        text-align: center;
+        background-color: rgba(0,0,0,.5);
+        border-radius: 50%;
+        color:#fff;
+    }
+    /* .carousel{
         width:100%;
         height:4.16rem;
         position: relative;
@@ -220,7 +322,7 @@ export default {
         width:100%;
         vertical-align: middle;
         font-size: 0;
-    }
+    } */
     /************************轮播图数量**************************/
     .swiper-count-text{
         z-index: 100;
@@ -345,25 +447,11 @@ export default {
         color: #ee3943;
         border-bottom: .04rem solid #ee3943;
     }
-    .mapText>ul>li>div>span{
-        display: inline-block;
+    .mapText>ul>li>div img{
         vertical-align: middle;
-        margin-right: .1rem;
-        width: .26rem;
-        height: .26rem;
-        padding: 0;
-    }
-    .iconDz{
-        background: url(../../../public/details/position-red.png) top no-repeat;
-        background-size: .22rem .26rem;
-    }
-    .iconJt{
-        background: url(../../../public/details/trafic.png) top no-repeat;
-        background-size: .22rem .26rem;
-    }
-    .iconPt{
-        background: url(../../../public/details/near.png) top no-repeat;
-        background-size: .22rem .26rem;
+        width:.22rem;
+        height:.26rem;
+        margin-right:.1rem;
     }
     .mapTextConter{
         padding: .4rem;

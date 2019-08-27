@@ -1,6 +1,6 @@
 <template>
     <div id="goTop">
-        <div class="toTop" v-show="goTopShow" @click="goTop">
+        <div class="toTop" v-if="goTopShow" @click="goTop">
             <p>回顶部</p>
         </div>
     </div>

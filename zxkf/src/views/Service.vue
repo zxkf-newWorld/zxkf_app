@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 	<div class="app">
     <!-- 客服头标题 -->
 		<div class="xw-header">
@@ -31,6 +32,38 @@
 		</div>
 
 		<div class="xw-content"  @touchstart="toShowMaskInfo=false"  ref="xwBody">    
+=======
+ <div class="app">
+    <!-- 客服头标题 -->
+     <div class="xw-header">
+        <!-- <div class="xw-ring-wrap">
+        <a :class="[bellStatus ? '' : 'xw-ring-icon-toggle', 'xw-ring-icon']" @touchstart="hint('checkStaus')"></a>
+        </div> -->
+        <div class="xw-header-back">
+          <span class="xw-header-title" @click="back">返回&nbsp;&nbsp;&nbsp;</span>
+        </div>
+       <div class="xw-header-content" @touchstart="showInfo">
+         <div v-if="!toShowMaskInfo" :class="[toShowMaskInfo ? '' : 'bounceInRight' , 'animated']">
+             <img src="../assets/images/logo.jpg" class="xw-header-avatar">
+               <div class="xw-header-title-wrap">
+                   <div class="xw-header-title">小蜜客服</div>
+               </div>
+         </div>
+       </div>
+           <!-- 小蜜客服弹出的具体信息 -->
+       <div v-show="toShowMaskInfo" :class="[toShowMaskInfo ? 'bounceInDown' : '' , 'xw-show-info-box', 'animated']">
+         <div class="xw-logo">
+           <h4>小蜜客服</h4>
+         </div>
+         <div class="xw-header-info">
+             <p class="animated bounceInLeft">
+               小蜜客服产品，智能机器人为您自助服务。
+             </p>
+         </div>
+       </div>
+    </div>
+    <div class="xw-content"  @touchstart="toShowMaskInfo=false"  ref="xwBody">    
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
         <div class="xw-chat-wrap" >
             <ul>
               <li v-for="(messageList,i) of records" :key="i">
@@ -46,7 +79,10 @@
                     </div>
                   </div>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
                 <!-- 用户发送的消息模板-->
                 <div v-else>
                   <div class="xw-chat-time">{{messageList.time}}</div>
@@ -62,32 +98,50 @@
               </li>
             </ul>
         </div>
+<<<<<<< HEAD
 		</div>
         <!-- 文本输入 -->
         <div class="xw-footer-wrap" @touchstart="toShowMaskInfo=false">
           <div class="xw-footer-content">
+=======
+    </div>
+        <!-- 文本输入 -->
+    <div class="xw-footer-wrap" @touchstart="toShowMaskInfo=false">
+        <div class="xw-footer-content">
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
             <div class="xw-vmodel-wrap">
                <textarea class="xw-content-textarea" placeholder="请输入您的问题" v-model="content" @focus="onFocusText"></textarea>
             </div>
             <div class="xw-chat-tool">
               <div class="xw-chat-tool-item">
                   <transition  name="fade">
+<<<<<<< HEAD
                       <a href="javascript:void(0)" class="xw-send-btn-text" v-if="content.trim().length" @click="sendMsg">发送</a>
+=======
+                    <a href="javascript:void(0)" class="xw-send-btn-text" v-if="content.trim().length" @click="sendMsg">发送</a>
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
                   </transition >
               </div>
               <div class="xw-chat-tool-item" >
                 <a href="javascript:;" :class="[showEmoji ? 'xw-face' :'xw-face-close','xw-chat-tool-btn']" @click="emojiFuc"></a>
               </div>
+<<<<<<< HEAD
               <div class="xw-ring-wrap">
 		           <a :class="[bellStatus ? '' : 'xw-ring-icon-toggle', 'xw-ring-icon']" @touchstart="hint('checkStaus')"></a>
 		          </div>
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
               <div class="xw-chat-tool-item">
                 <a :class="[showMoreOpratin ? 'xw-hide-operation-close' :'xw-hide-operation','xw-chat-tool-btn']" @click="showMoreOpratin=!showMoreOpratin"></a>
                 <transition name="fade">
                 <div class="xw-window-text" v-if="showMoreOpratin">
                   <label for="uploadImg">
                    <span>
+<<<<<<< HEAD
 	                  <input type="file" name="image"  accept="image/*"  multiple style="display:none;" id="uploadImg">图片
+=======
+                   <input type="file" name="image"  accept="image/*"  multiple style="display:none;" id="uploadImg">图片
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
                   </span>
                 </label>
                   <!-- <span @click="videoFuc">视频</span> -->
@@ -98,6 +152,7 @@
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
           <!--  <emojiSlider :isShow="showEmoji" :EXPS="EXPS"></emojiSlider> -->
           <!-- 表情开始 -->
@@ -187,10 +242,92 @@ showScore: false,//显示评分
         ScoreDB: {
       scoreDatas: [
             {
+=======
+          <!-- 表情开始 -->
+         <transition name="slide-fade" style="display:none">
+           <div class="xw-window-text xw-face-emoji-ul" v-if="showEmoji">
+             <div class="xw-chat-ul-box">
+               <mt-swipe :auto="0">
+                 <mt-swipe-item v-for="n in Math.ceil(EXPS.length/15)" :key="n">
+                   <li v-for="(item, index) in getEmotionData(n,15)" class="xw-faceEmoji" :key="index">
+                     <img :src="item.file" :data="item.code" v-on:click="content+=item.code">
+                   </li>
+                 </mt-swipe-item>
+               </mt-swipe>
+            </div>
+           </div>
+         </transition>
+        </div>
+   <!-- 提示音 -->
+     <audio style="display:none"  preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio">
+        <source :src="myaudio" type="audio/mpeg"/>
+    </audio>
+     <!-- 右上角的通话小窗口 -->
+     <div class="xw-samll-pop-wrap animated bounceInUp" v-if="showNarrowPopVal">
+       <span class="xw-big-pop" @click="showBigPopFuc">显示大窗</span>
+     </div>
+     <!-- 客服窗口 -->
+     <div class="xw-pop-server animated bounceInRight" v-if="videoVal">
+       <h5>客服</h5>
+       <span class="xw-narrow-pop" @click="showNarrowPopFuc">显示小窗</span>
+     </div>
+     <!-- 顾客窗口 -->
+     <div class="xw-pop-customer animated bounceInLeft" v-if="videoVal">
+       顾客
+       <div>
+         <a class="xw-hang-up" href="#"><img src="/public/images/hang-up.png" class="xw-hang-up-icon"></a>
+       </div>
+     </div>
+     <!--客服评分-->
+   <evaluate :ScoreDB="ScoreDB" :showScore="showScore" @on-star="selectStar"               @confirm-star="confrmStar"> 
+      </evaluate>
+      <Toast :showToast="showToast">{{toastText}}</Toast>
+ </div>
+</template>
+<script>
+import evaluate from '../components/evaluate.vue'
+import Toast from '../components/toast'
+import {getEmojiData} from '../api/api.js'
+ export default {
+  components: {
+       evaluate,
+       Toast
+    },
+    data() {
+return {
+  comment:{},
+  showEmoji: true,//是否显示表情
+  showToast:false,//显示提示框
+  toastText:'',
+  showMoreOpratin:false,//是否显示更多操作
+  toShowMaskInfo: false,//点击头部是否显示相信信息
+  bellStatus: true,//头部区域铃声图标
+  myaudio: '/public/audio/msg.mp3',//铃音
+  videoVal: false,//点击视频文字时候
+  showNarrowPopVal: false,//点击切换成小窗口
+  testContents: ["你想咨询点什么","这些价格上都是有差异的", '这个问题还没遇到过', '你说什么，我听不明白', '我们尽快为您解决', '请稍后--','当前客服忙', '您还有什么咨询的吗', '正在查询', 'gone with the wind'],
+  content: '',
+  //聊天记录
+  records: [{
+  type: 1,
+  time: new Date().toLocaleTimeString(),
+  content: '您好！欢迎来到小蜜客服。'
+  }, 
+   {
+   type: 2,
+   time: new Date().toLocaleTimeString(),  
+   content: '您好'
+ }],
+showScore: false,//显示评分
+        ScoreDB: {
+      scoreDatas: [
+      {
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
         scoreTitle: '服务指数',
         scoreFlag: 0,
         scoreArr: [1, 2, 3, 4, 5]
       },
+<<<<<<< HEAD
             {
         scoreTitle: '接通速度',
         scoreFlag: 1,
@@ -204,6 +341,21 @@ showScore: false,//显示评分
 ],
 maxVal: [0, 0, 0]
 },
+=======
+      {
+        scoreTitle: '接通速度',
+        scoreFlag: 1,
+        scoreArr: [1, 2, 3, 4, 5]
+      },
+      {
+      scoreTitle: '办事效率',
+      scoreFlag: 2,
+      scoreArr: [1, 2, 3, 4, 5]
+      }
+    ],
+     maxVal: [0, 0, 0]
+   },
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 imgFile :{},
 EXPS: [],
       }
@@ -288,7 +440,10 @@ methods: {
     for (var j = index; j < Target.length; j++) {
       Target[j] = -1;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
     //评分结果数
     var tempArr = [];
     tempArr = this.ScoreDB.maxVal.slice(0);
@@ -306,7 +461,10 @@ methods: {
 
   },2000)
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
   //滚动到底
   scrollToBottom(){
     setTimeout(()=>{
@@ -326,10 +484,17 @@ methods: {
     this.scrollToBottom();
   },
    _loadEmojiData(){
+<<<<<<< HEAD
    		getEmojiData().then((res)=>{
    			var json = eval('('+res+')');
    			this.EXPS=json.EXPS.slice(0);
    		});
+=======
+      getEmojiData().then((res)=>{
+       var json = eval('('+res+')');
+       this.EXPS=json.EXPS.slice(0);
+     });
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
    }
 }
   }
@@ -618,7 +783,10 @@ ul{
   text-indent: -9999px;
   overflow: visible;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-body-wrap-scroll,.xw-body-wrap-scroll-main{
    position: absolute;
   left: 0;
@@ -628,15 +796,21 @@ ul{
   overflow: hidden;
   /* overflow-scrolling: auto; */
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-header {
   z-index: 2;
   max-height: 360px;
   background: #ed4858;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-header-content {
   position: relative;
   overflow: hidden;
@@ -644,7 +818,10 @@ ul{
   min-height: 50px;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-servicer:after,
 .xw-chat-servicer:before,
 .xw-chat-customer:after,
@@ -658,7 +835,10 @@ ul{
   display: table;
   content: "";
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-header-avatar {
   float: left;
   height: 40px;
@@ -668,13 +848,19 @@ ul{
   margin-right: 8px;
   margin-top: 5px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-header-title-wrap {
   padding: 6px 0;
   float: left;
   width: 60px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-header-title{
   font-size: 14px;
   color: #fff;
@@ -684,14 +870,20 @@ ul{
   padding: 18px 0;
   float:right;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-wrap {
   overflow: auto;
   padding-left: 16px;
   padding-bottom: 20px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-wrap .xw-chat-time,
 .xw-chat-wrap time {
   line-height: 1;
@@ -703,14 +895,20 @@ ul{
   color: #999;
   text-shadow: 1px 1px 1px hsla(0, 0%, 100%, .6);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-servicer,
 .xw-chat-customer {
   position: relative;
   margin-bottom: 16px;
   padding: 0 10px 0 45px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-servicer-avantar-wrap {
   position: absolute;
   bottom: 0;
@@ -728,6 +926,7 @@ ul{
   right: 8px;
   line-height: 0;
 }
+<<<<<<< HEAD
 
 .xw-chat-servicer .xw-servicer-avantar-wrap,.xw-customer-avantar-wrap{
   left: 0;
@@ -737,16 +936,31 @@ ul{
   border-radius: 100%;
 }
 
+=======
+.xw-chat-servicer .xw-servicer-avantar-wrap,.xw-customer-avantar-wrap{
+  left: 0;
+}
+.xw-servicer-avantar {
+  border-radius: 100%;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-servicer-avantar-wrap img,.xw-customer-avantar-wrap img {
   height: 34px;
   width: 34px;
 }
+<<<<<<< HEAD
 
 .xw-chat-msg {
   /* font-smoothing: antialiased; */
   hyphens: auto;
   word-wrap: break-word;
   word-break: normal;
+=======
+.xw-chat-msg {
+  /* hyphens: auto; */
+  /* word-wrap: break-word; */
+  /* word-break: normal; */
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
   position: relative;
   clear: both;
   padding: 8px 16px;
@@ -757,17 +971,26 @@ ul{
   line-height: 1.6em;
   max-width: 70%;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-servicer .xw-chat-msg {
   background: #fff;
   border-color: #efefef;
   float: left;
 }
+<<<<<<< HEAD
 
 .xw-chat-msg :last-child {
   margin-bottom: 0;
 }
 
+=======
+.xw-chat-msg :last-child {
+  margin-bottom: 0;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-msg span{
   white-space: pre-line;
 }
@@ -777,11 +1000,17 @@ ul{
   margin-bottom: 16px;
   padding: 0 10px 0 45px;
 }
+<<<<<<< HEAD
 
 .xw-chat-customer {
   text-align: right;
 }
 
+=======
+.xw-chat-customer {
+  text-align: right;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-customer .xw-chat-msg {
   float: right;
   text-align: left;
@@ -796,7 +1025,10 @@ ul{
 .xw-chat-msg :last-child {
   margin-bottom: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-wrap .xw-system-info-time,
 .xw-chat-wrap time {
   line-height: 1;
@@ -807,6 +1039,7 @@ ul{
   color: #999;
   text-shadow: 1px 1px 1px hsla(0, 0%, 100%, .6);
 }
+<<<<<<< HEAD
 
 .xw-system-info{
   margin-bottom: 8px;
@@ -816,11 +1049,22 @@ ul{
   margin-bottom: 16px;
 }
 
+=======
+.xw-system-info{
+  margin-bottom: 8px;
+}
+.xw-chat-wrap>:last-child {
+  margin-bottom: 16px;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-system-info {
   text-align: center;
   font-size: 12px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-system-info span {
   display: inline-block;
   background: rgba(0, 0, 0, .08);
@@ -830,7 +1074,10 @@ ul{
   border-radius: 2px;
   text-shadow: 1px 1px 1px hsla(0, 0%, 100%, .6);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-footer-wrap {
   justify-content:flex-end;
   width: 100%;
@@ -838,7 +1085,10 @@ ul{
   background: #fff;
   z-index: 2;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-footer-content {
   position: relative;
   height: 52px;
@@ -862,14 +1112,20 @@ ul{
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool {
   position: absolute;
   right: 0px;
   bottom: 0;
   z-index: 2;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item {
   height: 52px;
   line-height: 52px;
@@ -877,12 +1133,18 @@ ul{
   float: left;
   background: #fff;
 }
+<<<<<<< HEAD
 
 
 .xw-chat-tool-btn {
   display: block;
 }
 
+=======
+.xw-chat-tool-btn {
+  display: block;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-btn {
   margin-top: 7px;
   height: 38px;
@@ -894,14 +1156,20 @@ ul{
   transform: translateZ(0);
   margin-left: 10px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-btn.xw-face {
    background: url( ../assets/images/smileOn.svg) no-repeat 50%;
 }
 .xw-chat-tool-btn.xw-face-close {
    background: url( ../assets/images/smileClose.svg) no-repeat 50%;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item .xw-window-text {
   position: absolute;
   bottom: 100%;
@@ -915,14 +1183,20 @@ ul{
   background: #fff;
   line-height: 1em;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item .xw-window-text.xw-face-emoji-ul {
   right: -23px;
   left: auto;
    transform: none;
   transform: none;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item .xw-window-text h4 {
   font-size: 12px;
   margin: 0;
@@ -930,14 +1204,20 @@ ul{
   padding: 12px 8px;
   padding-bottom: 0;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-ul-box{
   list-style: none;
   margin: 0;
   padding: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-ul-box {
   position: relative;
   z-index: 1;
@@ -948,14 +1228,20 @@ ul{
   width: 340px;
   margin: 0px auto;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item .xw-window-text .xw-chat-ul-box {
   padding: 8px;
 }
 .swiper-slide{
   float: left;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-ul-box a {
   display: block;
   height: 40px;
@@ -978,13 +1264,19 @@ ul{
 .swiper-pagination-bullet-active{
   background: #007aff;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item {
   height: 52px;
   position: relative;
   float: left;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-hide-operation{
   background: url( ../assets/images/addOn.svg) no-repeat 50%;
   width: 38px;
@@ -992,7 +1284,10 @@ ul{
   margin-right:10px;
   transform:scale(.7);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-hide-operation-close{
   background: url( ../assets/images/addClose.svg) no-repeat 50%;
   width: 38px;
@@ -1000,7 +1295,10 @@ ul{
   margin-right:10px;
   transform:scale(.7);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-tool-item .xw-window-text span {
   display: block;
   padding: 10px 12px;
@@ -1010,8 +1308,11 @@ ul{
   font-size: 17px;
   line-height: 16px;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-servicer:after,
 .xw-chat-customer:after,
 .xw-chat-wrap:after,
@@ -1019,11 +1320,17 @@ ul{
 .xw-chat-ul-box:after{
   clear: both;
 }
+<<<<<<< HEAD
 
 .xw-chat-msg:last-child:before {
   bottom: -1px;
 }
 
+=======
+.xw-chat-msg:last-child:before {
+  bottom: -1px;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-msg:last-child:after,
 .xw-chat-msg:last-child:before {
   content: "";
@@ -1032,7 +1339,10 @@ ul{
   width: 0;
   display: block;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-customer .xw-chat-msg:last-child:before {
   display: inline-block;
   height: 0;
@@ -1042,7 +1352,10 @@ ul{
   right: -10px;
   border-left-width: 9px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-servicer .xw-chat-msg:last-child:before {
   display: inline-block;
   height: 0;
@@ -1052,7 +1365,10 @@ ul{
   left: -10px;
   border-left-width: 9px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-chat-servicer .xw-chat-msg:last-child:after {
   display: inline-block;
   height: 0;
@@ -1063,46 +1379,72 @@ ul{
   border-left-width: 9px;
   bottom: 0px;
 }
+<<<<<<< HEAD
 
 .xw-show-info-box{
   height: 110px;
+=======
+.xw-show-info-box{
+  height: 49px;
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
   margin-top: -50px;
   z-index: 1000;
   background: #ed4858;
   color:#fff;
 }
+<<<<<<< HEAD
 
 .xw-logo{
   text-align: center;
 }
 
+=======
+.xw-logo{
+  text-align: center;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-logo img{
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-top: 20px;
 }
+<<<<<<< HEAD
 
 .xw-header-info p{
   height: 80px;
   padding:0 16px;
   /* line-height: 1.6rem; */
+=======
+.xw-header-info p{
+  height: 80px;
+  padding:0 16px;
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
   word-wrap: break-word;
   text-align: left;
   overflow: auto;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-faceEmoji{
   margin-bottom: 7px;
   width:20%;
   float: left;
 }
+<<<<<<< HEAD
 
 .xw-faceEmoji-main{
   text-align: center;
 }
 
+=======
+.xw-faceEmoji-main{
+  text-align: center;
+}
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 .xw-samll-pop-wrap{
   position: absolute;
   height: 160px;

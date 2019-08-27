@@ -15,13 +15,20 @@ import Myself from "./views/myself/Myself.vue"
 import Roommate from "./views/findroommate/Roommate.vue"
 import Roommatedetail from "./views/findroommate/Roommatedetail.vue"
 import Zhengzu from './components/blt/Zhengzu.vue'
+import Hezu from './components/blt/Hezu.vue'
 import Details from './components/blt/Details.vue'
 import Header from './components/blt/Header.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
 // 客服
 import Service from './views/Service'
+<<<<<<< HEAD
 
+=======
+import Mmap from './components/Mapbus.vue'
+import Search from './components/blt/Search.vue'
+import Dingwei from './components/Dingwei.vue'
+>>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 Vue.use(Router)
 
 export default new Router({
@@ -36,8 +43,9 @@ export default new Router({
     { path: '/Login', component: Login },
     { path: '/Reg', component: Reg },
     { path: '/Myself', component: Myself },
-    { path: "/Zhengzu", component: Zhengzu },
     { path: "/Details", component: Details },
+    { path: "/Zhengzu", component: Zhengzu },
+    { path: "/Hezu", component: Hezu },
     { path: "/Header", component: Header },
     { path: "/Service", component: Service },
 
@@ -45,5 +53,8 @@ export default new Router({
     { path: "/Slider", component: Slider },
     { path: "/Roommate", component: Roommate },
     { path: "/Roommatedetail/:rid", component: Roommatedetail },
+    { path: "/Mmap", component: Mmap },
+    { path: "/Search", component: Search },
+    { path: "/Dingwei", component: Dingwei },
   ]
 })

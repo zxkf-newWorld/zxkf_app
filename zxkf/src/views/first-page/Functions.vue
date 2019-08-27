@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app">
         <!-- 功能栏：首页：整租，合租，品牌公寓，找室友 -->
         <ul class="myUl">
             <li>
@@ -28,6 +28,7 @@
             </li>
         </ul>
         <div style="clear: both;"></div>
+        <img @click="jumpService" class="service-im" src="../../assets/images/xiaomi.png" alt="">
     </div>
 </template>
 <script>
@@ -38,7 +39,10 @@ export default {
         }
     },
     methods: {
-        toFullRent(e){
+        jumpService(){
+            this.$router.push("/Service");
+        },
+        toFullRent(){//可以添加e事件动态获取相关的操作
             // 整租
             let url = "/index/fullrent";
             // city：动态通过城市动态获取
@@ -51,7 +55,7 @@ export default {
                 params:obj
             })
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
                 if (res.data.code == 1) {
                     this.$toast("您已进入整租");
                     this.$router.push('/Zhengzu');//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
@@ -71,11 +75,11 @@ export default {
                 params:obj
             })
             .then((res)=>{
-                console.log(res);//测试接收的数据是否请求成功
+                // console.log(res);//测试接收的数据是否请求成功
                 if (res.data.code == 1) {
                     this.$toast("您已进入合租");
                     // 进入合租页面
-                    // this.$router.push("/hezu");//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
+                    this.$router.push("/Hezu");//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
                 }else{
                     this.$toast("暂无相关信息，我们会尽快处理");
                 }
@@ -93,7 +97,7 @@ export default {
                 params:obj
             })
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
                 if (res.data.code == 1) {
                     this.$toast("您已进入品牌公寓");
                 }else{
@@ -113,7 +117,7 @@ export default {
                 params:obj
             })
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
                 if (res.data.code == 1) {
                     //查询成功跳转到找室友页面
                     this.$router.push("Roommate");
@@ -129,6 +133,16 @@ export default {
 }
 </script>
 <style scoped>
+    #app{
+        position: relative;
+    }
+    .service-im{
+        position: fixed;
+        left:74%;
+        top:80%;
+        z-index: 1;
+        opacity: .7;
+    }
     .myUl{
         display: flex;
         justify-content: space-around;

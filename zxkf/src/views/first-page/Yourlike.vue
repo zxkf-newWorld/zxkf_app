@@ -5,7 +5,7 @@
                 <span>猜你喜欢</span>
             </div>
             <ul class="good-list">
-                <li class="good-item" v-for="(elem,i) of arrs" :key="i">
+                <li class="good-item" v-for="(elem,i) of arrs" :key="i" @click="toDetails">
                     <div class="house-card">
                         <!-- 列表上半部分信息 -->
                         <div class="base-info">
@@ -104,6 +104,9 @@ export default {
             .catch(err=>{
                 console.log("出现异常"+err);
             });
+        },
+        toDetails(){
+            this.$router.push("Details");
         }
     },
     created() {
