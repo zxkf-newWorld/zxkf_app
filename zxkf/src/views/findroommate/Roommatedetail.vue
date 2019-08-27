@@ -35,19 +35,18 @@
                 {{details.content}}
             </div>
             <ul class="describe-img clearfix"> 
-                <li @click="fullPic">
-                    <img  :src="details.img" alt="" >
-                </li>
-                <li @click="fullPic">
+                <li>
                     <img  :src="details.img" alt="">
                 </li>
-                <li @click="fullPic">
+                <li>
+                    <img  :src="details.img" alt="">
+                </li>
+                <li>
                     <img  :src="details.img" alt="">
                 </li>
             </ul>
         </div>
-        <div id="detail_img" class="detail_img" v-show="isif">
-            <span class="icon iconfont icon-guanbi clone" @click="closeFullPic"></span>
+        <div class="detail_img" v-show="isif">
             <img  :src="details.img" alt="">
         </div>
         <div class="foot">
@@ -65,38 +64,25 @@ export default {
         return{
           details:[],
           isif:false,
-          clientHeight:""
         }
     },
     mounted() {
         let rid = this.$route.params.rid;
-        console.log(rid);
+        // console.log(rid);
         var url = "index/findRoomMatesDetails?rid="+rid;
         this.axios.get(url).then(res => {
             //获取服务器返回的结果，登陆成功或者失败
         this.details=res.data.dataArray[0];
-        console.log(this.details)
+        // console.log(this.details)
         }).catch(err=>{
-            console.log(err)
+            // console.log(err)\
+            throw err;
         })
-        // this.clientHeight =   `${document.getElementById("app").clientHeight}`  
-        this.clientHeight =   `${document.body.clientHeight}`  
-        document.getElementById("detail_img").style.height=this.clientHeight+"px";
     },
     methods: {
         back(){
             this.$router.push('/Roommate');
-        },
-        fullPic(){ 
-          this.isif=true
-           var body= document.body
-           body.style.overflow="hidden"
-        },
-        closeFullPic(){ 
-            this.isif=false;
-             var body= document.body
-            body.style.overflow="auto"
-        },
+        }
     },
 }
 </script>
@@ -250,25 +236,11 @@ export default {
     }
     .detail_img{
         position: absolute;
-        top:0.78rem;
+        top:0;
         left: 0;
-        width: 100%;
-        /* height:820px; */
+        width: 99%;
+        height: 100%;
         border:1px solid red;
-        background: rgba(0,0,0,.8);
-        /* line-height:520px; */
-        z-index: 999;
-     }
-     .detail_img img{
-         margin-top: 3rem;
-         width: 100%;
-         height: 270px;
-     }
-     .clone{
-         position: absolute;
-         top:5px;
-         right:6px;
-         color:#fff;
-         font-size: 32px;
+        
      }
 </style>

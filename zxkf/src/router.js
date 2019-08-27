@@ -19,6 +19,9 @@ import Details from './components/blt/Details.vue'
 import Header from './components/blt/Header.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
+// 客服
+import Service from './views/Service'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,7 +39,7 @@ export default new Router({
     { path: "/Zhengzu", component: Zhengzu },
     { path: "/Details", component: Details },
     { path: "/Header", component: Header },
-    
+    { path: "/Service", component: Service },
 
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },

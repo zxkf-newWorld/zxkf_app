@@ -10,8 +10,7 @@
         <!-- 隐藏显示的城市选择列表 -->
         <city :cityShow.sync="cityShow" v-model="cityShow"></city>
         <div class="search-box">
-            <input class="input_msg" type="text" placeholder="输入区域、小区搜索源" v-model="msg" @keydown="updown($event)">
-            <img src="../../../public/zhengzu/fangdajin.png">
+            <img src="../../../public/zhengzu/fangdajin.png">输入区域、小区搜索源
         </div>
         <div class="my" @click="toMyself">
             <img src="../../../public/zhengzu/my.png">
@@ -30,7 +29,7 @@ export default {
     methods: {
         updown(e){
             if(e.keyCode==13){
-                console.log(this.msg)
+                // console.log(this.msg)
             }
             this.msg="";
         },
@@ -70,10 +69,6 @@ export default {
         height:0.8rem;
         padding:0.2rem 0.3rem;
         box-sizing: border-box;
-    }
-    .input_msg{
-        padding: 5px;
-        border: 0;
     }
     .search-header>.home-icon img{/*首页图标样式*/
         width:100%;
