@@ -22,13 +22,9 @@ import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
 // 客服
 import Service from './views/Service'
-<<<<<<< HEAD
-
-=======
 import Mmap from './components/Mapbus.vue'
 import Search from './components/blt/Search.vue'
 import Dingwei from './components/Dingwei.vue'
->>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
 Vue.use(Router)
 
 export default new Router({

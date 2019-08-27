@@ -65,10 +65,7 @@ export default {
         return{
           details:[],
           isif:false,
-<<<<<<< HEAD
-=======
           clientHeight:""
->>>>>>> 7d4fb8855f9c11c67990b124c91712a3a0cb17cb
         }
     },
     mounted() {

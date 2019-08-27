@@ -2,9 +2,6 @@
 <div id="mymap">
   <div class="ap" v-hljs>
     <div class="m-part">
-      <p style="overflow:ellipsis">
-        {{this.dragData.address}}
-      </p>
       <mapDrag @drag="dragMap" class="mapbox"></mapDrag>
     </div>
   </div>
@@ -13,6 +10,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import mapDrag from "./mapDrag.vue";
 export default {
   components: {

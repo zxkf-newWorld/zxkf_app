@@ -6,7 +6,7 @@
         <totop></totop>
         <!-- 页头 -->
         <div class="search-header">
-            <div class="home-icon">
+            <div class="home-icon" @click="toHome">
                 <img src="../../../public/zhengzu/home.png">
             </div>
             <div @click="cities" class="city-select">
@@ -18,7 +18,7 @@
             <div class="search-box" @click="toSearch">
                 <img src="../../../public/zhengzu/fangdajin.png">{{searchMSG}}
             </div>
-            <div class="my">
+            <div class="my" @click="toMyself">
                 <img src="../../../public/zhengzu/my.png">
             </div> 
         </div> 
@@ -439,6 +439,14 @@ export default {
         }
     },
     methods:{
+        toMyself(){
+            // 跳转到我的页面
+            this.$router.push('Myself');
+        },
+        toHome(){
+            // 跳转到首页
+            this.$router.push('/');
+        },
         toDetails(){//跳转到详情页
             this.$router.push('/Details');
         },

@@ -18,18 +18,24 @@
       
     </div>
     <!--用户名-->
-    <mt-field :placeholder="unameholder" v-model="uname" class="myinput"></mt-field>
+    <mt-field label="用户名称：" :placeholder="unameholder" class="myinput" v-model="uname"></mt-field>
     <!--密码-->
-    <mt-field :placeholder="upwdholder" v-model="upwd" class="myinput" type="password"></mt-field>
+    <mt-field label="用户密码：" :placeholder="upwdholder" class="myinput" type="password" v-model="upwd"></mt-field>
     <!-- 手机-->
-    <mt-field :placeholder="phoneholder" v-model="phone" class="myinput" type="text"></mt-field>
+    <mt-field label="手机号码：" :placeholder="phoneholder"  class="myinput" type="tel" v-model="phone"></mt-field>
     <!-- 邮箱 -->
-    <mt-field :placeholder="emailholder" v-model="email" class="myinput" type="text"></mt-field>
+    <mt-field label="电子邮箱：" :placeholder="emailholder"  class="myinput"  type="email" v-model="email"></mt-field>
+    <!-- 生日 -->
+    <mt-field label="出生日期：" :placeholder="birthday"  class="myinput" type="date" v-model="birthday"></mt-field>
     <!--注册按钮-->
-    <mt-button size="large" class="mybutton primary" @click="reg">注册</mt-button>
+    <mt-button type="danger" class="mybutton primary"  @click="reg" size="large">注册</mt-button>
+    <br>
+    <mt-button type="primary" class="mybutton primary"  @click="login" size="large">登录</mt-button>
   </div>
 </template>
 <script>
+/* eslint-disable */
+//上述为处理脚手架警告
 export default {
   data() {
     return {
@@ -37,10 +43,12 @@ export default {
       upwd: "",
       phone: "",
       email: "",
+      birthday:"",
       unameholder: "用户名4-12位",
       upwdholder: "密码8-12",
       phoneholder: "请输入正确的11位手机号",
-      emailholder: "请输入正确的邮箱地址"
+      emailholder: "请输入正确的邮箱地址",
+      birthday:"请输入出生日期"
     };
   },
   // mounted(){
@@ -50,6 +58,9 @@ export default {
     toHome(){
       // 跳转到首页
       this.$router.push("Index");
+    },
+    login(){
+       this.$router.push("Login");
     },
     reg() {
       // console.log(this.qs);
@@ -125,6 +136,10 @@ export default {
 
 </script>
 <style>
+.app-reg{
+  position: relative;
+  background:#fff;
+}
 .reg-head{
   width: 100%;
   height: 1rem;
@@ -149,9 +164,6 @@ export default {
 /* .reg-head div{
   text-align: left;
 } */
-.app-reg{
-  position: relative;
-}
 .app-reg> a>.app-res-reg{
   position:absolute;
   top:6px;

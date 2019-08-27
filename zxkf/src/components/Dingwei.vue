@@ -4,6 +4,7 @@
   </div>
 </template>
 <script >
+/* eslint-disable */
 export default {
   data() {
     return {
@@ -16,9 +17,9 @@ export default {
       AMap.plugin("AMap.Geolocation", function() {
         var geolocation = new AMap.Geolocation({
           // 是否使用高精度定位，默认：true
-          enableHighAccuracy: true,
+          enableHighAccuracy: false,
           // 设置定位超时时间，默认：无穷大
-          timeout: 1000
+          timeout: 4000
         });
         geolocation.getCurrentPosition();
         AMap.event.addListener(geolocation, "complete", onComplete);
@@ -67,11 +68,10 @@ export default {
     }
   },
       // created 中调用
-  mounted(){
-      // 此处为调用精确定位之后，调取ip定位，可根据实际情况改写
-      this.getLocation();
+  created() {
+    // 此处为调用精确定位之后，调取ip定位，可根据实际情况改写
+    this.getLocation();
   }
-
 };
 </script>
 <style scoped>

@@ -24,14 +24,14 @@
       <!-- 右上登录按钮 -->
       <div class="top-left-img" @click="toCityPosition">
         <a href="javascript:;">
-          <img src="../../assets/position1.png" alt="">
+          <img src="../../assets/position-dark.png" alt="">
           <span style="color:#fff">西安</span>
         </a>
       </div>
       <!-- 左上定位按钮 -->
       <div class="top-right-img" @click="toLogin">
         <a href="javascript:;">
-          <img src="../../assets/login-active2.png" alt="">
+          <img src="../../assets/login-dark.png" alt="">
         </a>
       </div>
     </div>
