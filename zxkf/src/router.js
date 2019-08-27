@@ -21,6 +21,8 @@ import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
 // 客服
 import Service from './views/Service'
+import Mmap from './components/Mapbus.vue'
+
 
 Vue.use(Router)
 
@@ -45,5 +47,6 @@ export default new Router({
     { path: "/Slider", component: Slider },
     { path: "/Roommate", component: Roommate },
     { path: "/Roommatedetail/:rid", component: Roommatedetail },
+    { path: "Mmap", component: Mmap },
   ]
 })

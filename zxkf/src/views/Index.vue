@@ -5,7 +5,7 @@
         <functions></functions>
         <research></research>
         <yourlike></yourlike>
-        <div style="width:auto;height:auto;">
+        <div style="width:auto;height:auto;display:none">
             <mapp></mapp>
         </div>
     </div>
@@ -16,7 +16,7 @@ import Searchbox from "./first-page/Searchbox"
 import Functions from "./first-page/Functions.vue" 
 import Research from "./first-page/Research.vue"
 import Yourlike from "./first-page/Yourlike.vue"
-import Mapp from "../components/Mapbus"
+import Mapp from "../components/Mapbus.vue"
 export default {
     data(){
         return{
