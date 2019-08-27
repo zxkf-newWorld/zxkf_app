@@ -42,9 +42,9 @@ export default {
       };
     }
   },
-  mounted:function(data){
-    this.$emit("func",this.dragData.address);
-  }
+  // mounted:function(data){
+  //   this.$emit("func",this.dragData.address);
+  // }
 };
 </script>
 

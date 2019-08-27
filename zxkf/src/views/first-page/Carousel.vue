@@ -24,8 +24,11 @@
       <!-- 右上登录按钮 -->
       <div class="top-left-img" @click="toCityPosition">
         <a href="javascript:;">
-          <img src="../../assets/position-dark.png" alt="">
-          <span style="color:#fff">西安</span>
+          <img src="../../assets/position-dark.png" alt="" @click="relocate">
+          <span style="color:#fff">
+            <!-- 引入定位组件 -->
+            <dingwei></dingwei>
+          </span>
         </a>
       </div>
       <!-- 左上定位按钮 -->
@@ -41,10 +44,12 @@
 require("swiper/dist/css/swiper.css");//引入swiper样式文件
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
+import Dingwei from '../../components/Dingwei.vue'
 export default {
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    Dingwei
   },
   data() {
     return {
@@ -88,6 +93,13 @@ export default {
     }
   },
   methods: {
+     // 刷新定位位置
+    relocate(){
+      // window.locatidzon.reload();
+      let NewPage = "_empty" + "?time=" + new Date().getTime() / 500;
+this.$router.push(NewPage);
+this.$router.go(-1);
+    },
     // 跳转到登录
     toLogin(){
       this.$router.push('/Myself')

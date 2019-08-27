@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>所在城市:{{city}}</p>
+    <p style="width:50px;">{{city}}</p>
   </div>
 </template>
 <script >
@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      city: "西安"
+      city: "西安市"
     };
   },
   methods: {
@@ -19,7 +19,7 @@ export default {
           // 是否使用高精度定位，默认：true
           enableHighAccuracy: false,
           // 设置定位超时时间，默认：无穷大
-          timeout: 4000
+          timeout: 1000
         });
         geolocation.getCurrentPosition();
         AMap.event.addListener(geolocation, "complete", onComplete);
@@ -29,12 +29,13 @@ export default {
           // data是具体的定位信息
           console.log("定位成功信息：", data);
           console.log(data.addressComponent.city);
-          this.city = data.addressComponent.city;
+          self.city = data.addressComponent.city;
         }
 
         function onError(data) {
           // 定位出错
           console.log("定位失败错误：", data);
+          // self.city = data;
           // 调用ip定位
           self.getLngLatLocation();
         }
