@@ -2,6 +2,9 @@
 <div id="mymap">
   <div class="ap" v-hljs>
     <div class="m-part">
+      <p style="overflow:ellipsis">
+        {{this.dragData.address}}
+      </p>
       <mapDrag @drag="dragMap" class="mapbox"></mapDrag>
     </div>
   </div>
@@ -23,7 +26,7 @@ export default {
         address: null, //地址
         nearestJunction: null, //最近路口
         nearestRoad: null, //最近的路
-        nearestPOI: null //最近的POI信息点
+        nearestPOI: null, //最近的POI信息点
       }
     };
   },
@@ -39,6 +42,9 @@ export default {
         nearestPOI: data.nearestPOI
       };
     }
+  },
+  mounted:function(data){
+    this.$emit("func",this.dragData.address);
   }
 };
 </script>

@@ -36,21 +36,22 @@ export default {
       amountW: '' //  滑竿多长距离
     }
   },
-  filters: {
-    // hoursFilter(date) {
-    //   if (date < 10) {
-    //     return date;
-    //   } else {
-    //     return date;
-    //   }
-    // },
-  },
   created() {
     const vm = this;
     vm.$nextTick(() => {
       vm.initSlider();
     })
   },
+  updated() {
+    if(this.startStep!=0||this.endStep!=51){
+      this.$emit('update:sliderConfirm',true)
+    }
+    if(this.startStep==0&&this.endStep==51){
+      this.$emit('update:sliderConfirm',false)
+    }
+    this.$emit('update:rangeText',this.startStep*100+'-'+(this.endStep==51?'不限':this.endStep*100));
+  },
+  props:["sliderConfirm","rangeText"],
   methods: {
     initSlider(){
       const vm = this;
@@ -58,11 +59,7 @@ export default {
       vm.$bar = this.$refs.bar;
       vm.$endbar = this.$refs.endbar;
       vm.amountW = vm.$ruler.clientWidth - vm.$bar.clientWidth; // 滑竿多长距离
-      // console.log(vm.amountW*100)
-      // console.log(vm.intervalEnd)
-      // console.log(vm.intervalStart)
       vm.step = (vm.amountW / (vm.intervalEnd - vm.intervalStart)); // 总共多少步
-      // console.log(vm.step);
     },
     startTouchstart(e) {
       const vm = this;
@@ -80,7 +77,6 @@ export default {
       }
       vm.startStep = ste + vm.intervalStart;
       vm.$bar.style.left = (ste * vm.step) + 'px';
-      console.log(vm.startStep);
     },
     endTouchstart(e) {
       const vm = this;

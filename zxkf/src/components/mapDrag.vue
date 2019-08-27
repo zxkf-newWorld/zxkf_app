@@ -14,6 +14,7 @@
 <template>
   <div class="m-map">
     <div class="search" v-if="placeSearch">
+      <p>所在城市：{{this.ccity}}</p>
       <input type="text" placeholder="请输入关键字" v-model="searchKey">
       <button type="button" @click="handleSearch">搜索</button>
       <div id="js-result" v-show="searchKey" class="result"></div>
@@ -33,7 +34,8 @@ export default {
       placeSearch: null,
       dragStatus: false,
       AMapUI: null,
-      AMap: null
+      AMap: null,
+      ccity:MapCityName
     }
   },
   watch: {
@@ -110,8 +112,13 @@ export default {
       await remoteLoad('http://webapi.amap.com/ui/1.0/main.js')
       this.initMap()
     }
+  },
+  // 向Mapbus传递参数
+  transParams(ct){
+    this.$emit("func",this.ccity);
   }
 }
+
 </script>
 
 <style lang="css">

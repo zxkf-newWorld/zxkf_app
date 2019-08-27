@@ -3,7 +3,7 @@
         <!-------------------------导航--------------------------->
         <div class="tab-out">
             <ul>
-                <li :class="{active:tabIndex==i}" v-for="(item,i) of tabList" :key="i" @click="tabChange(i)">
+                <li :class="{active:tabIndex==i}" v-for="(item,i) of taboutList" :key="i" @click="tabChange(i)">
                     <span>{{item}}</span>
                     <span class="tab-icon"></span>
                 </li>
@@ -46,9 +46,9 @@
                 <div class="rent-price">
                     <span class="price-self">自定义价格</span>
                     <span class="price-unit"> （单位：元）</span>
-                    <span class="price-confirm" :class="{active:true}">确定</span>
+                    <span class="price-confirm" :class="{active:sliderConfirm}" @click="rangeSearch">确定</span>
                 </div>
-                <slider></slider>/******引入滑竿组件******/
+                <slider :sliderConfirm.sync=sliderConfirm :rangeText.sync=rangeText></slider>/******引入滑竿组件******/
                 <ul class="range-ruler">
                     <li>0</li>
                     <li>1000</li>
@@ -93,13 +93,13 @@
                     <div>
                         <div class="btns-new">
                             <div class="btn-new btn-clean" @click="cleanChecked">清空</div>
-                            <div class="btn-new btn-confirm" @click="queryHouse">确认</div>
+                            <div class="btn-new btn-confirm" @click="moreSearch">确认</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="mask"></div>
+        <div :style="maskStyle" @click="clickMask"></div><!-- 遮罩层 -->
     </div>
 </template>
 <script>
@@ -107,8 +107,18 @@ import slider from './Slider.vue';
 export default {
     data(){
         return{
+            phoneHeight:0,
+            maskStyle:{
+                height:"",
+                width:"100%",
+                background:"rgba(0, 0, 0, 0.5)",
+                position:"fixed",
+                left:0,
+                top:0,
+                zIndex:-1
+            },
             positionIndex:0,
-            tabList:["位置","租金","户型","更多"],//保存导航栏的内容,
+            taboutList:["位置","租金","户型","更多"],//保存导航栏的内容,
             tabIndex:0,//控制导航选中样式切换的变量
             countryList:[
                 {country:"全部",zone:[]},
@@ -141,35 +151,92 @@ export default {
             promiseList:["全网底价","阳光收费","平台认证"],
             newChecked:[],
             promiseChecked:[],
+            sliderConfirm:false,
+            rangeText:"",
         }
     },
+    props:["zselectShow","tabList[0]","tabList[1]","tabList[2]","tabList[3]","tabChangedList"]
+    ,
+    created() {
+        var phoneHeight=window.screen.height;
+        this.maskStyle.height=phoneHeight+"px";
+        this.tabIndex=this.tabIndexS;
+    },
     methods: {
+        clickMask(){//点击遮罩层函数
+            this.$emit('update:zselectShow',false) 
+        },
         tabChange(i){//改变导航栏默认样式的函数
             this.tabIndex=i;
         },
-        tabPosition(e){
+        tabPosition(e){//切换位置板块中区域和地铁模块的函数
             this.positionIndex=e.target.dataset.index;
         },
         changeCountry(i){
             this.countryIndex=i;
+            if(i==0){
+                this.$emit('update:tabList[0]',"位置");
+                var arr=this.tabChangedList;
+                var index=arr.indexOf(0);
+                arr.splice(index,1);
+                this.$emit('update:tabChangedList',arr);
+                this.$emit('update:zselectShow',false)
+            }
         },
         changeSubway(i){
             this.subwayIndex=i;
         },
         zoneSelect(i){
             this.zoneIndex=i;
+            if(i==0){
+                this.$emit('update:tabList[0]',this.countryList[this.countryIndex].country)
+            }else{
+                this.$emit('update:tabList[0]',this.countryList[this.countryIndex].zone[i])
+            }
+            var arr=this.tabChangedList.concat(0)
+            this.$emit('update:tabChangedList',arr);
+            this.$emit('update:zselectShow',false)
         },
         stationSelect(i){
             this.stationIndex=i;
         },
         houseChange(i){
             this.houseIndex=i;
+            if(i==0){
+                this.$emit('update:tabList[2]',"户型");
+                var arr=this.tabChangedList;
+                var index=arr.indexOf(2);
+                arr.splice(index,1);
+                this.$emit('update:tabChangedList',arr);
+                this.$emit('update:zselectShow',false)
+            }
         },
         roomCountChange(i){
             this.roomCountIndex=i;
+            if(i==0){
+                this.$emit('update:tabList[2]',this.houseList[this.houseIndex].type)
+            }else{
+                this.$emit('update:tabList[2]',this.houseList[this.houseIndex].roomCount[i])
+            }
+            var arr=this.tabChangedList.concat(2)
+            this.$emit('update:tabChangedList',arr);
+            this.$emit('update:zselectShow',false)
         },
         priceSelect(i){
             this.priceIndex=i;
+            if(i==0){
+                this.$emit('update:tabList[1]',"租金")
+                var arr=this.tabChangedList;
+                var index=arr.indexOf(1);
+                arr.splice(index,1);
+                this.$emit('update:tabChangedList',arr);
+                this.$emit('update:zselectShow',false);
+            }else{
+                this.$emit('update:tabList[1]',this.rentList[i]);
+                var arr=this.tabChangedList.concat(1)
+                this.$emit('update:tabChangedList',arr);
+            }
+            this.$emit('update:zselectShow',false)
         },
         chooseNew(i){
             if(this.newChecked.includes(i)){
@@ -190,22 +257,22 @@ export default {
             this.newChecked=[];
             this.promiseChecked=[];
         },
-        queryHouse(){
-            // 发送ajax请求
-        }
-
+        moreSearch(){
+            this.$emit('update:zselectShow',false)
+        },
+        rangeSearch(){
+            if(this.rangeText){
+                this.$emit('update:tabList[1]',this.rangeText);
+                this.$emit('update:zselectShow',false);
+                var arr=this.tabChangedList.concat(1)
+                this.$emit('update:tabChangedList',arr);
+            }
+        },
     },
     components:{slider}
 }
 </script>
 <style scoped>
-    body{height:100%;}
-    html{height:100%;}
-    .mask{
-        background: rgba(0, 0, 0, 0.5);
-        width:100%;
-        height:1000px;
-    }
     /************************************************导航*********************************************/
     .tab-out{
         width:100%;
@@ -385,6 +452,7 @@ export default {
     .more-box{
         width:100%;
         height:7.5rem;
+        background: #fff;
     }
     .more-options{
         height: unset;
