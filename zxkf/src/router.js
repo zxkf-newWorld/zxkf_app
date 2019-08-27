@@ -15,6 +15,7 @@ import Myself from "./views/myself/Myself.vue"
 import Roommate from "./views/findroommate/Roommate.vue"
 import Roommatedetail from "./views/findroommate/Roommatedetail.vue"
 import Zhengzu from './components/blt/Zhengzu.vue'
+import Hezu from './components/blt/Hezu.vue'
 import Details from './components/blt/Details.vue'
 import Header from './components/blt/Header.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
@@ -38,8 +39,9 @@ export default new Router({
     { path: '/Login', component: Login },
     { path: '/Reg', component: Reg },
     { path: '/Myself', component: Myself },
-    { path: "/Zhengzu", component: Zhengzu },
     { path: "/Details", component: Details },
+    { path: "/Zhengzu", component: Zhengzu },
+    { path: "/Hezu", component: Hezu },
     { path: "/Header", component: Header },
     { path: "/Service", component: Service },
 

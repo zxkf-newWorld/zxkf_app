@@ -79,7 +79,7 @@ export default {
                 if (res.data.code == 1) {
                     this.$toast("您已进入合租");
                     // 进入合租页面
-                    // this.$router.push("/hezu");//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
+                    this.$router.push("/Hezu");//进入整租页面，再在整租页面（加载完成时）查询相关的整租商品列表
                 }else{
                     this.$toast("暂无相关信息，我们会尽快处理");
                 }

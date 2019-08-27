@@ -254,7 +254,6 @@ export default {
         left: 0;
         width: 100%;
         /* height:820px; */
-        border:1px solid red;
         background: rgba(0,0,0,.8);
         /* line-height:520px; */
         z-index: 999;
