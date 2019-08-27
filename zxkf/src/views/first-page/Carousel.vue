@@ -41,6 +41,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 require("swiper/dist/css/swiper.css");//引入swiper样式文件
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
@@ -97,8 +98,8 @@ export default {
     relocate(){
       // window.locatidzon.reload();
       let NewPage = "_empty" + "?time=" + new Date().getTime() / 500;
-this.$router.push(NewPage);
-this.$router.go(-1);
+      this.$router.push(NewPage);
+      this.$router.go(-1);
     },
     // 跳转到登录
     toLogin(){
