@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mt-field type="text" placeholder="请输入您要搜索的房源/单间/合租/整租" class="myInput" data-information="information" @click="searchHouse($event)"></mt-field>
+        <input type="text"   @keydown="searchHouse($event)" placeholder="请输入您要搜索的房源/合租/整租/找室友" class="myInput"  v-model="information">
     </div>
 </template>
 <script>
@@ -13,7 +13,15 @@ export default {
     methods: {
         // 键盘按下事件
         searchHouse(event){
-            console.log(event);
+            if(event.keyCode==13){
+                if(this.information=="整租"){
+                    this.$router.push("Zhengzu")
+                }else if(this.information=="合租"){
+                    this.$router.push("Hezu")
+                }else  if(this.information=="找室友"){
+                    this.$router.push("Roommate")
+                }
+            }
         }
     },
 }
@@ -26,8 +34,10 @@ export default {
         width: 82%;
         position: absolute;
         top: 3.6rem;
+        left: 0;
         height: .82rem;
-        text-align: center;
+        text-align: left;
+        padding:0 10px; 
         z-index: 2;
     }
 </style>
