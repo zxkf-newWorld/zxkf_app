@@ -49,9 +49,10 @@ export default {
     handleSearch () {
       if (this.searchKey) {
         this.placeSearch.search(this.searchKey)
+        this.searchKey = '';
       }
     },
-    // 实例化地图
+    // 实例化地图:src="imgurl"
     initMap () {
       // 加载PositionPicker，loadUI的路径参数为模块名中 'ui/' 之后的部分
       let AMapUI = this.AMapUI = window.AMapUI
