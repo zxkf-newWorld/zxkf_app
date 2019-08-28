@@ -105,6 +105,7 @@
     </div>
 </template>
 <script>
+/* eslint-disable */
 export default {
     data(){
         return{
@@ -123,7 +124,7 @@ export default {
         loginout(){
             sessionStorage.setItem("uname"," ")
             this.islogin=false;
-            this.$router.push('Login');
+            // this.$router.push('Login');
         },
         toLogin(){
             // 跳转到登录页面

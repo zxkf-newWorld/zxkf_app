@@ -51,12 +51,232 @@
             <div class="house-card">
                 <div class="base-info">
                     <div class="main-photo">
-                        <img src="../../../public/zhengzu/house.png">
+                        <img src="../../../public/zhengzu/01.jpg">
                         <div class="photo-info">房东提供 · 6</div>
                     </div>
                     <div class="details">
                         <p class="title">
-                            <span>合租</span>
+                            <span>整租</span>
+                            <span> 玫瑰坊</span>
+                        </p>
+                        <p class="room-info">18M² | 朝北</p>
+                        <p class="labels">
+                            <span class="red">租金月付</span>
+                            <span>近地铁</span>
+                            <span>新上架</span>
+                            <span>电梯房</span>
+                        </p>
+                        <p class="trafic">
+                            <img src="../../../public/zhengzu/position.png">
+                            <span>1号线(康复路站),步行14分钟</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="extra-info">
+                    <div class="agency-info">
+                        <div class="header">
+                            <span>美丽屋公寓（分散式）</span>
+                            <img src="../../../public/zhengzu/pinpai.png">
+                        </div>
+                        <div class="btn">进店</div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price">
+                            <span>￥1350</span>/月
+                        </div>
+                        <div class="use-time">
+                            <span>&nbsp;随时入住</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="house-list" @click="toDetails">
+            <div class="house-card">
+                <div class="base-info">
+                    <div class="main-photo">
+                        <img src="../../../public/zhengzu/02.jpg">
+                        <div class="photo-info">房东提供 · 6</div>
+                    </div>
+                    <div class="details">
+                        <p class="title">
+                            <span>整租</span>
+                            <span> 玫瑰坊</span>
+                        </p>
+                        <p class="room-info">18M² | 朝北</p>
+                        <p class="labels">
+                            <span class="red">租金月付</span>
+                            <span>近地铁</span>
+                            <span>新上架</span>
+                            <span>电梯房</span>
+                        </p>
+                        <p class="trafic">
+                            <img src="../../../public/zhengzu/position.png">
+                            <span>1号线(康复路站),步行14分钟</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="extra-info">
+                    <div class="agency-info">
+                        <div class="header">
+                            <span>美丽屋公寓（分散式）</span>
+                            <img src="../../../public/zhengzu/pinpai.png">
+                        </div>
+                        <div class="btn">进店</div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price">
+                            <span>￥1350</span>/月
+                        </div>
+                        <div class="use-time">
+                            <span>&nbsp;随时入住</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="house-list" @click="toDetails">
+            <div class="house-card">
+                <div class="base-info">
+                    <div class="main-photo">
+                        <img src="../../../public/zhengzu/03.jpg">
+                        <div class="photo-info">房东提供 · 6</div>
+                    </div>
+                    <div class="details">
+                        <p class="title">
+                            <span>整租</span>
+                            <span> 玫瑰坊</span>
+                        </p>
+                        <p class="room-info">18M² | 朝北</p>
+                        <p class="labels">
+                            <span class="red">租金月付</span>
+                            <span>近地铁</span>
+                            <span>新上架</span>
+                            <span>电梯房</span>
+                        </p>
+                        <p class="trafic">
+                            <img src="../../../public/zhengzu/position.png">
+                            <span>1号线(康复路站),步行14分钟</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="extra-info">
+                    <div class="agency-info">
+                        <div class="header">
+                            <span>美丽屋公寓（分散式）</span>
+                            <img src="../../../public/zhengzu/pinpai.png">
+                        </div>
+                        <div class="btn">进店</div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price">
+                            <span>￥1350</span>/月
+                        </div>
+                        <div class="use-time">
+                            <span>&nbsp;随时入住</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="house-list" @click="toDetails">
+            <div class="house-card">
+                <div class="base-info">
+                    <div class="main-photo">
+                        <img src="../../../public/zhengzu/04.jpg">
+                        <div class="photo-info">房东提供 · 6</div>
+                    </div>
+                    <div class="details">
+                        <p class="title">
+                            <span>整租</span>
+                            <span> 玫瑰坊</span>
+                        </p>
+                        <p class="room-info">18M² | 朝北</p>
+                        <p class="labels">
+                            <span class="red">租金月付</span>
+                            <span>近地铁</span>
+                            <span>新上架</span>
+                            <span>电梯房</span>
+                        </p>
+                        <p class="trafic">
+                            <img src="../../../public/zhengzu/position.png">
+                            <span>1号线(康复路站),步行14分钟</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="extra-info">
+                    <div class="agency-info">
+                        <div class="header">
+                            <span>美丽屋公寓（分散式）</span>
+                            <img src="../../../public/zhengzu/pinpai.png">
+                        </div>
+                        <div class="btn">进店</div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price">
+                            <span>￥1350</span>/月
+                        </div>
+                        <div class="use-time">
+                            <span>&nbsp;随时入住</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="house-list" @click="toDetails">
+            <div class="house-card">
+                <div class="base-info">
+                    <div class="main-photo">
+                        <img src="../../../public/zhengzu/05.jpg">
+                        <div class="photo-info">房东提供 · 6</div>
+                    </div>
+                    <div class="details">
+                        <p class="title">
+                            <span>整租</span>
+                            <span> 玫瑰坊</span>
+                        </p>
+                        <p class="room-info">18M² | 朝北</p>
+                        <p class="labels">
+                            <span class="red">租金月付</span>
+                            <span>近地铁</span>
+                            <span>新上架</span>
+                            <span>电梯房</span>
+                        </p>
+                        <p class="trafic">
+                            <img src="../../../public/zhengzu/position.png">
+                            <span>1号线(康复路站),步行14分钟</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="extra-info">
+                    <div class="agency-info">
+                        <div class="header">
+                            <span>美丽屋公寓（分散式）</span>
+                            <img src="../../../public/zhengzu/pinpai.png">
+                        </div>
+                        <div class="btn">进店</div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price">
+                            <span>￥1350</span>/月
+                        </div>
+                        <div class="use-time">
+                            <span>&nbsp;随时入住</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="house-list" @click="toDetails">
+            <div class="house-card">
+                <div class="base-info">
+                    <div class="main-photo">
+                        <img src="../../../public/zhengzu/06.jpg">
+                        <div class="photo-info">房东提供 · 6</div>
+                    </div>
+                    <div class="details">
+                        <p class="title">
+                            <span>整租</span>
                             <span> 玫瑰坊</span>
                         </p>
                         <p class="room-info">18M² | 朝北</p>
@@ -100,7 +320,7 @@
                     </div>
                     <div class="details">
                         <p class="title">
-                            <span>合租</span>
+                            <span>整租</span>
                             <span> 玫瑰坊</span>
                         </p>
                         <p class="room-info">18M² | 朝北</p>
@@ -144,227 +364,7 @@
                     </div>
                     <div class="details">
                         <p class="title">
-                            <span>合租</span>
-                            <span> 玫瑰坊</span>
-                        </p>
-                        <p class="room-info">18M² | 朝北</p>
-                        <p class="labels">
-                            <span class="red">租金月付</span>
-                            <span>近地铁</span>
-                            <span>新上架</span>
-                            <span>电梯房</span>
-                        </p>
-                        <p class="trafic">
-                            <img src="../../../public/zhengzu/position.png">
-                            <span>1号线(康复路站),步行14分钟</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="extra-info">
-                    <div class="agency-info">
-                        <div class="header">
-                            <span>美丽屋公寓（分散式）</span>
-                            <img src="../../../public/zhengzu/pinpai.png">
-                        </div>
-                        <div class="btn">进店</div>
-                    </div>
-                    <div class="price-info">
-                        <div class="price">
-                            <span>￥1350</span>/月
-                        </div>
-                        <div class="use-time">
-                            <span>&nbsp;随时入住</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="house-list" @click="toDetails">
-            <div class="house-card">
-                <div class="base-info">
-                    <div class="main-photo">
-                        <img src="../../../public/zhengzu/house.png">
-                        <div class="photo-info">房东提供 · 6</div>
-                    </div>
-                    <div class="details">
-                        <p class="title">
-                            <span>合租</span>
-                            <span> 玫瑰坊</span>
-                        </p>
-                        <p class="room-info">18M² | 朝北</p>
-                        <p class="labels">
-                            <span class="red">租金月付</span>
-                            <span>近地铁</span>
-                            <span>新上架</span>
-                            <span>电梯房</span>
-                        </p>
-                        <p class="trafic">
-                            <img src="../../../public/zhengzu/position.png">
-                            <span>1号线(康复路站),步行14分钟</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="extra-info">
-                    <div class="agency-info">
-                        <div class="header">
-                            <span>美丽屋公寓（分散式）</span>
-                            <img src="../../../public/zhengzu/pinpai.png">
-                        </div>
-                        <div class="btn">进店</div>
-                    </div>
-                    <div class="price-info">
-                        <div class="price">
-                            <span>￥1350</span>/月
-                        </div>
-                        <div class="use-time">
-                            <span>&nbsp;随时入住</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="house-list" @click="toDetails">
-            <div class="house-card">
-                <div class="base-info">
-                    <div class="main-photo">
-                        <img src="../../../public/zhengzu/house.png">
-                        <div class="photo-info">房东提供 · 6</div>
-                    </div>
-                    <div class="details">
-                        <p class="title">
-                            <span>合租</span>
-                            <span> 玫瑰坊</span>
-                        </p>
-                        <p class="room-info">18M² | 朝北</p>
-                        <p class="labels">
-                            <span class="red">租金月付</span>
-                            <span>近地铁</span>
-                            <span>新上架</span>
-                            <span>电梯房</span>
-                        </p>
-                        <p class="trafic">
-                            <img src="../../../public/zhengzu/position.png">
-                            <span>1号线(康复路站),步行14分钟</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="extra-info">
-                    <div class="agency-info">
-                        <div class="header">
-                            <span>美丽屋公寓（分散式）</span>
-                            <img src="../../../public/zhengzu/pinpai.png">
-                        </div>
-                        <div class="btn">进店</div>
-                    </div>
-                    <div class="price-info">
-                        <div class="price">
-                            <span>￥1350</span>/月
-                        </div>
-                        <div class="use-time">
-                            <span>&nbsp;随时入住</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="house-list" @click="toDetails">
-            <div class="house-card">
-                <div class="base-info">
-                    <div class="main-photo">
-                        <img src="../../../public/zhengzu/house.png">
-                        <div class="photo-info">房东提供 · 6</div>
-                    </div>
-                    <div class="details">
-                        <p class="title">
-                            <span>合租</span>
-                            <span> 玫瑰坊</span>
-                        </p>
-                        <p class="room-info">18M² | 朝北</p>
-                        <p class="labels">
-                            <span class="red">租金月付</span>
-                            <span>近地铁</span>
-                            <span>新上架</span>
-                            <span>电梯房</span>
-                        </p>
-                        <p class="trafic">
-                            <img src="../../../public/zhengzu/position.png">
-                            <span>1号线(康复路站),步行14分钟</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="extra-info">
-                    <div class="agency-info">
-                        <div class="header">
-                            <span>美丽屋公寓（分散式）</span>
-                            <img src="../../../public/zhengzu/pinpai.png">
-                        </div>
-                        <div class="btn">进店</div>
-                    </div>
-                    <div class="price-info">
-                        <div class="price">
-                            <span>￥1350</span>/月
-                        </div>
-                        <div class="use-time">
-                            <span>&nbsp;随时入住</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="house-list" @click="toDetails">
-            <div class="house-card">
-                <div class="base-info">
-                    <div class="main-photo">
-                        <img src="../../../public/zhengzu/house.png">
-                        <div class="photo-info">房东提供 · 6</div>
-                    </div>
-                    <div class="details">
-                        <p class="title">
-                            <span>合租</span>
-                            <span> 玫瑰坊</span>
-                        </p>
-                        <p class="room-info">18M² | 朝北</p>
-                        <p class="labels">
-                            <span class="red">租金月付</span>
-                            <span>近地铁</span>
-                            <span>新上架</span>
-                            <span>电梯房</span>
-                        </p>
-                        <p class="trafic">
-                            <img src="../../../public/zhengzu/position.png">
-                            <span>1号线(康复路站),步行14分钟</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="extra-info">
-                    <div class="agency-info">
-                        <div class="header">
-                            <span>美丽屋公寓（分散式）</span>
-                            <img src="../../../public/zhengzu/pinpai.png">
-                        </div>
-                        <div class="btn">进店</div>
-                    </div>
-                    <div class="price-info">
-                        <div class="price">
-                            <span>￥1350</span>/月
-                        </div>
-                        <div class="use-time">
-                            <span>&nbsp;随时入住</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="house-list" @click="toDetails">
-            <div class="house-card">
-                <div class="base-info">
-                    <div class="main-photo">
-                        <img src="../../../public/zhengzu/house.png">
-                        <div class="photo-info">房东提供 · 6</div>
-                    </div>
-                    <div class="details">
-                        <p class="title">
-                            <span>合租</span>
+                            <span>整租</span>
                             <span> 玫瑰坊</span>
                         </p>
                         <p class="room-info">18M² | 朝北</p>

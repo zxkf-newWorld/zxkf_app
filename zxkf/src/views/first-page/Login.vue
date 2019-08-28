@@ -73,7 +73,7 @@ export default {
         } else {
           this.$toast("登陆成功");
           sessionStorage.setItem("uname",this.uname)
-          this.$router.go(-1);
+          this.$router.push('/');
         }
         //创建xz/Home1vue组件
         // code<0

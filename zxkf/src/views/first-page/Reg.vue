@@ -27,14 +27,21 @@
     <mt-field label="电子邮箱：" :placeholder="emailholder"  class="myinput"  type="email" v-model="email"></mt-field>
     <!-- 生日 -->
     <mt-field label="出生日期：" :placeholder="birthday"  class="myinput" type="date" v-model="birthday"></mt-field>
+    <!-- 上传头像 -->
+     <p class="images">上传头像：
+        <img src="../../assets/login-icon.png" @click="upload" slot="icon">
+    </p>
+    <upload :uploadType="`head`" :imgWidth="`85px`" :imgHeight="`104px`" :imgUrl="imgUrl"
+     @upload="getImgUrl">
+    </upload>
+     <br>
     <!--注册按钮-->
-    <mt-button type="danger" class="mybutton primary"  @click="reg" size="large">注册</mt-button>
+    <mt-button type="danger" class="primary"  @click="reg" size="large">注册</mt-button>
     <br>
-    <mt-button type="primary" class="mybutton primary"  @click="login" size="large">登录</mt-button>
+    <mt-button type="primary" class="primary"  @click="login" size="large">登录</mt-button>
   </div>
 </template>
 <script>
-/* eslint-disable */
 //上述为处理脚手架警告
 export default {
   data() {
@@ -55,6 +62,11 @@ export default {
   //   this.reg();
   // },
   methods: {
+    // 上传头像
+    upload(){
+      console.log(1)
+      this.$router.push("Upload");
+    },
     toHome(){
       // 跳转到首页
       this.$router.go(-1); 
@@ -138,6 +150,14 @@ export default {
 
 </script>
 <style>
+.images{
+  text-align: left;
+  font-size: 16px;
+  margin-left:20px; 
+}
+.images img{
+  width: 70%;
+}
 .app-reg{
   position: relative;
   background:#fff;
