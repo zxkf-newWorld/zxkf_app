@@ -215,7 +215,7 @@ methods: {
     if (staus != undefined) {
       this.bellStatus = !this.bellStatus;
     }
-    this.bellStatus ? this.$refs.hintAudio.play() : this.$refs.hintAudio.pause();
+    // this.bellStatus ? this.$refs.hintAudio.play() : this.$refs.hintAudio.pause();
   },
   showNarrowPopFuc(){
     this.showNarrowPopVal = true;

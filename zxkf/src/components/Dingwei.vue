@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      city: "西安市"
+      city: ""
     };
   },
   methods: {
@@ -19,7 +19,7 @@ export default {
           // 是否使用高精度定位，默认：true
           enableHighAccuracy: false,
           // 设置定位超时时间，默认：无穷大
-          timeout: 1000
+          timeout: 200
         });
         geolocation.getCurrentPosition();
         AMap.event.addListener(geolocation, "complete", onComplete);

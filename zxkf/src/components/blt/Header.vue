@@ -19,6 +19,7 @@
     </div> 
 </template>
 <script>
+/* eslint-disable */
 import City from './City.vue'
 export default {
     data() {
