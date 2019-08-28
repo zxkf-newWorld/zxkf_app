@@ -2,9 +2,6 @@
  <div class="app">
     <!-- 客服头标题 -->
      <div class="xw-header">
-        <!-- <div class="xw-ring-wrap">
-        <a :class="[bellStatus ? '' : 'xw-ring-icon-toggle', 'xw-ring-icon']" @touchstart="hint('checkStaus')"></a>
-        </div> -->
         <div class="xw-header-back">
           <span class="xw-header-title" @click="back">返回&nbsp;&nbsp;&nbsp;</span>
         </div>
@@ -31,7 +28,7 @@
     <div class="xw-content"  @touchstart="toShowMaskInfo=false"  ref="xwBody">    
         <div class="xw-chat-wrap" >
             <ul>
-              <li v-for="(messageList,i) of records" :key="i">
+              <li v-for="(messageList,i) in records" :key="i">
                 <div v-if="messageList.type==1">
                   <div class="xw-chat-time">{{messageList.time}}</div>
                   <div class="xw-chat-servicer">
@@ -84,7 +81,6 @@
                    <input type="file" name="image"  accept="image/*"  multiple style="display:none;" id="uploadImg">图片
                   </span>
                 </label>
-                  <!-- <span @click="videoFuc">视频</span> -->
                   <span @touchstart="showEvaluateFuc">评价</span>
                   <span>结束</span>
                 </div>
@@ -108,28 +104,28 @@
          </transition>
         </div>
    <!-- 提示音 -->
-     <audio style="display:none"  preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio">
+     <!-- <audio style="display:none"  preload="metadata" controls="controls" autoplay="autoplay" ref="hintAudio">
         <source :src="myaudio" type="audio/mpeg"/>
-    </audio>
+    </audio> -->
      <!-- 右上角的通话小窗口 -->
-     <div class="xw-samll-pop-wrap animated bounceInUp" v-if="showNarrowPopVal">
+     <!-- <div class="xw-samll-pop-wrap animated bounceInUp" v-if="showNarrowPopVal">
        <span class="xw-big-pop" @click="showBigPopFuc">显示大窗</span>
-     </div>
+     </div> -->
      <!-- 客服窗口 -->
-     <div class="xw-pop-server animated bounceInRight" v-if="videoVal">
+     <!-- <div class="xw-pop-server animated bounceInRight" v-if="videoVal">
        <h5>客服</h5>
        <span class="xw-narrow-pop" @click="showNarrowPopFuc">显示小窗</span>
-     </div>
+     </div> -->
      <!-- 顾客窗口 -->
-     <div class="xw-pop-customer animated bounceInLeft" v-if="videoVal">
+     <!-- <div class="xw-pop-customer animated bounceInLeft" v-if="videoVal">
        顾客
        <div>
          <a class="xw-hang-up" href="#"><img src="/public/images/hang-up.png" class="xw-hang-up-icon"></a>
        </div>
-     </div>
+     </div> -->
      <!--客服评分-->
    <evaluate :ScoreDB="ScoreDB" :showScore="showScore" @on-star="selectStar"               @confirm-star="confrmStar"> 
-      </evaluate>
+   </evaluate>
       <Toast :showToast="showToast">{{toastText}}</Toast>
  </div>
 </template>
@@ -150,10 +146,7 @@ return {
   toastText:'',
   showMoreOpratin:false,//是否显示更多操作
   toShowMaskInfo: false,//点击头部是否显示相信信息
-  bellStatus: true,//头部区域铃声图标
-  myaudio: '/public/audio/msg.mp3',//铃音
-  videoVal: false,//点击视频文字时候
-  showNarrowPopVal: false,//点击切换成小窗口
+  // showNarrowPopVal: false,//点击切换成小窗口
   testContents: ["你想咨询点什么","这些价格上都是有差异的", '这个问题还没遇到过', '你说什么，我听不明白', '我们尽快为您解决', '请稍后--','当前客服忙', '您还有什么咨询的吗', '正在查询', 'gone with the wind'],
   content: '',
   //聊天记录
@@ -206,24 +199,7 @@ methods: {
   emojiFuc(){
     this.showEmoji = !this.showEmoji;
   },
-  videoFuc(){
-    this.videoVal = true;
-    this.showNarrowPopVal = false;
-  },
-  //提示音
-  hint(staus){
-    if (staus != undefined) {
-      this.bellStatus = !this.bellStatus;
-    }
-    // this.bellStatus ? this.$refs.hintAudio.play() : this.$refs.hintAudio.pause();
-  },
-  showNarrowPopFuc(){
-    this.showNarrowPopVal = true;
-    this.videoVal = false;
-  }, showBigPopFuc(){
-    this.showNarrowPopVal = false;
-    this.videoVal = true;
-  }, showEvaluateFuc(){
+  showEvaluateFuc(){
     this.showScore = !this.showScore;
   },
   sendMsg(){
@@ -235,7 +211,7 @@ methods: {
       });
       this.content = "";
       setTimeout(() => {
-        this.hint();
+        // this.hint();
         this.records.push({
           time: new Date().toLocaleTimeString(),
           content: this.testContents[Math.floor(Math.random() * 9)],
@@ -342,175 +318,6 @@ methods: {
   transform: translateX(20px);
   opacity: 0;
 }
-.animated {
-   animation-duration: 1s;
-  animation-duration: 1s;
-   animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.animated.bounceIn,
-.animated.bounceOut {
-   animation-duration: .75s;
-  animation-duration: .75s;
-}
-
-@keyframes bounceInDown {
-  from, 60%, 75%, 90%, to {
-     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  0% {
-    opacity: 0;
-     transform: translate3d(0, -3000px, 0);
-    transform: translate3d(0, -3000px, 0);
-  }
-
-  60% {
-    opacity: 1;
-     transform: translate3d(0, 25px, 0);
-    transform: translate3d(0, 25px, 0);
-  }
-
-  75% {
-     transform: translate3d(0, -10px, 0);
-    transform: translate3d(0, -10px, 0);
-  }
-
-  90% {
-     transform: translate3d(0, 5px, 0);
-    transform: translate3d(0, 5px, 0);
-  }
-
-  to {
-     transform: none;
-    transform: none;
-  }
-}
-
-.bounceInDown {
-   animation-name: bounceInDown;
-  animation-name: bounceInDown;
-}
-
-@keyframes bounceInLeft {
-  from, 60%, 75%, 90%, to {
-     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  0% {
-    opacity: 0;
-     transform: translate3d(-3000px, 0, 0);
-    transform: translate3d(-3000px, 0, 0);
-  }
-
-  60% {
-    opacity: 1;
-     transform: translate3d(25px, 0, 0);
-    transform: translate3d(25px, 0, 0);
-  }
-
-  75% {
-     transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  90% {
-     transform: translate3d(5px, 0, 0);
-    transform: translate3d(5px, 0, 0);
-  }
-
-  to {
-     transform: none;
-    transform: none;
-  }
-}
-
-.bounceInLeft {
-   animation-name: bounceInLeft;
-  animation-name: bounceInLeft;
-}
-
-@keyframes bounceInRight {
-  from, 60%, 75%, 90%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  from {
-    opacity: 0;
-     transform: translate3d(3000px, 0, 0);
-    transform: translate3d(3000px, 0, 0);
-  }
-
-  60% {
-    opacity: 1;
-     transform: translate3d(-25px, 0, 0);
-    transform: translate3d(-25px, 0, 0);
-  }
-
-  75% {
-     transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-
-  90% {
-     transform: translate3d(-5px, 0, 0);
-    transform: translate3d(-5px, 0, 0);
-  }
-
-  to {
-     transform: none;
-    transform: none;
-  }
-}
-
-.bounceInRight {
-   animation-name: bounceInRight;
-  animation-name: bounceInRight;
-}
-
-@keyframes bounceInUp {
-  from, 60%, 75%, 90%, to {
-     animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  from {
-    opacity: 0;
-     transform: translate3d(0, 3000px, 0);
-    transform: translate3d(0, 3000px, 0);
-  }
-
-  60% {
-    opacity: 1;
-     transform: translate3d(0, -20px, 0);
-    transform: translate3d(0, -20px, 0);
-  }
-
-  75% {
-     transform: translate3d(0, 10px, 0);
-    transform: translate3d(0, 10px, 0);
-  }
-
-  90% {
-     transform: translate3d(0, -5px, 0);
-    transform: translate3d(0, -5px, 0);
-  }
-
-  to {
-     transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.bounceInUp {
-   animation-name: bounceInUp;
-  animation-name: bounceInUp;
-}
-
 html,body,a,button,input,textarea,img,ul,li,p,dl,dd,h1,h2,h3,h4,h5,h6{
   box-sizing: border-box;
   margin: 0;
@@ -1020,70 +827,6 @@ ul{
 }
 .xw-faceEmoji-main{
   text-align: center;
-}
-.xw-samll-pop-wrap{
-  position: absolute;
-  height: 160px;
-  width: 30%;
-  top: 0;
-  right: 0;
- background-size: 100% 100%;
- background: url( ../assets/images/s.jpg) no-repeat;
-  z-index: 1000;
-}
-.xw-pop-server{
- background: url( ../assets/images/s.jpg) no-repeat;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-.xw-pop-customer{
-  position:absolute;
-  bottom: 20px;
-  width: 80%;
-  height: 200px;
-  background: url( ../assets/images/c.jpg) no-repeat;
-  z-index: 101;
-  left:50%;
-  margin-left: -40%;
-  text-align: center;
-}
-.xw-narrow-pop{
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  display: inline-block;
-  background: red;
-  color: #fff;
-  text-align: center;
-}
-.xw-big-pop{
-  display:block;
-  background: red;
-  color: #fff;
-  line-height: 40px;
-  text-align: center;
-}
-.xw-hang-up{
-  /* background: red; */
-  width: 100px;
-  height: 34px;
-  display: inline-block;
-  border-radius: 20%;
-  position: absolute;
-  bottom: 10px;
-  transform:translateX(-50%);
-}
-.xw-hang-up-icon{
-  position: relative;
-  z-index: 1290;
-  width: 40px;
-  height: 34px;
-
 }
 .xw-chat-msg span img{
   vertical-align: middle;

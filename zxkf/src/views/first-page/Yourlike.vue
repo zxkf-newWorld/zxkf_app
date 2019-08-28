@@ -22,10 +22,10 @@
                                 </p>
                                 <p class="room-info">{{arrs[i].housesize}}M² | {{arrs[i].floor}}层 | {{arrs[i].houselayout}}</p>
                                 <p class="lables">
-                                    <span class="lable">{{arrs[i].onlyrestroom==1?'独卫':''}}</span>
-                                    <span class="lable">{{arrs[i].newpublish==1?'新上架':''}}</span>
-                                    <span class="lable">{{arrs[i].elevatorrome==1?'电梯房':''}}</span>
-                                    <span class="lable">{{arrs[i].notfirstfloor==1?'非一楼':''}}</span>
+                                    <span class="lable">{{arrs[i].onlyrestroom}}</span>
+                                    <span class="lable">{{arrs[i].newpublish}}</span>
+                                    <span class="lable">{{arrs[i].elevatorrome}}</span>
+                                    <span class="lable">{{arrs[i].notfirstfloor}}</span>
                                 </p>
                             </div>
                         </div>

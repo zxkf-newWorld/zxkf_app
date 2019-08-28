@@ -49,6 +49,7 @@ export default {
     handleSearch () {
       if (this.searchKey) {
         this.placeSearch.search(this.searchKey)
+        this.searchKey = '';
       }
     },
     // 实例化地图
