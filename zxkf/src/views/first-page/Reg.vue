@@ -57,7 +57,7 @@ export default {
   methods: {
     toHome(){
       // 跳转到首页
-      this.$router.push("Index");
+      this.$router.go(-1); 
     },
     login(){
        this.$router.push("Login");
@@ -69,14 +69,15 @@ export default {
       var p = this.upwd;
       var h = this.phone;
       var e = this.email;
-      var url = "reg";
-      var obj = { uname: u, upwd: p, phone: h, email: e };
+      var b=this.birthday;
+      var obj = { uname: u, upwd: p, phone: h, email: e ,birthday:b};
       //  字母数字下划3~12
       //3:验证用户名 出错提示，并停止执行
       if (!/^[a-zA-Z0-9_-]{4,16}$/.test(u)) {
         this.$toast("用户名格式不正确");
         return;
       } else {
+        var url = "login_reg/login_uname";
         this.axios.get(url + "?uname=" + this.uname).then(res => {
           if (res.data.code == -1) {
             this.$toast("用户名已被注册");
@@ -84,7 +85,6 @@ export default {
           }
         });
       }
-
       //4:验证密码   出错提示，并停止执行
       if (!/^(\w){6,20}$/.test(p)) {
         this.$toast("密码格式不正确");
@@ -95,6 +95,7 @@ export default {
         this.$toast("手机格式不正确");
         return;
       } else {
+         var url = "login_reg/login_phone";
         this.axios.get(url + "?phone=" + this.phone).then(res => {
           if (res.data.code == -1) {
             this.$toast("手机已被注册");
@@ -102,7 +103,10 @@ export default {
           }
         });
       }
-
+      if(!this.birthday){
+         this.$toast("请选择出生日期");
+         return;
+      }
       //4:验证密码   出错提示，并停止执行
       // if (!/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(e)) {
       //   this.$toast("邮箱格式不正确");
@@ -115,21 +119,19 @@ export default {
       //     }
       //   });
       // }
-
       //5:发送ajax请求 axios
-      setTimeout(function() {
-        this.axios.post(url, this.qs.stringify(obj)).then(res => {
-          //获取服务器返回的结果，注册成功或者失败
-          if (res.data.code == -1) {
-            this.$toast("注册失败");
-            // console.log(2222);
-            return;
-          } else {
-            // this.$router.push("/Product");
-            this.$toast("注册成功");
-          }
-        });
-      }, 1000);
+      // setTimeout(function() {  }, 1000);
+      var url1 = "login_reg/reg";
+      this.axios.post(url1, this.qs.stringify(obj)).then(res => {
+        //获取服务器返回的结果，注册成功或者失败
+        if (res.data.code == -1) {
+          this.$toast("注册失败");
+          return;
+        } else {
+          this.$toast("注册成功");
+          this.$router.push("Login");
+        }
+      });
     }
   }
 };
