@@ -168,7 +168,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-   background: #ee3943;
+   background: #FE0036;
 }
 .reg-head div > img{
   width: .4rem;

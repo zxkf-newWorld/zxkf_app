@@ -82,7 +82,7 @@ export default {
         color: #666;
         width: 100%;
         height: 1.08rem;
-        background: #ee3943;
+        background: #FE0036;
         text-align: center;
     }
     .searchTitle img{
@@ -153,7 +153,7 @@ export default {
         line-height: .3rem;
     }
     .keyword {
-        color: #ee3943;
+        color: #FE0036;
     }
     .smartTitle>div:nth-child(2) {
         margin-top: .16rem;

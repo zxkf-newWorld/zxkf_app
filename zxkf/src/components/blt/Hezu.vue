@@ -498,7 +498,7 @@ export default {
 <style scoped>
     .search-header{/*表头样式*/
         width: 100%;
-        background: #ee3943;
+        background: #FE0036;
         position:relative;
         height:0.88rem;
         color:#fff;
@@ -582,7 +582,7 @@ export default {
         color:#5a5c5d;
     }
     .tab-out>ul>li.active{
-        color:#ee3943;
+        color:#FE0036;
     }
     .tab-out>ul img{
         width:.17rem;
@@ -794,7 +794,7 @@ export default {
     }
     .price-info>.price{
         align-items: center;
-        color: #ee3943;
+        color: #FE0036;
         font-size: .24rem;
     }
     .price-info>.price>span{

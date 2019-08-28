@@ -28,16 +28,18 @@ export default {
 </script>
 <style scoped>
     .myInput{
-        background-color: #fff;
+        background-color:rgba(0,0,0,.3);
         margin: 0 9%;
-        border-radius: 2px;
+        border-radius: .4rem;
         width: 82%;
         position: absolute;
-        top: 3.6rem;
-        left: 0;
-        height: .82rem;
-        text-align: left;
+        top: 4.1rem;
+        left: -.22rem;
+        height: .7rem;
+        text-align: center;
         padding:0 10px; 
         z-index: 2;
+        border:0;
+        outline: 0;
     }
 </style>

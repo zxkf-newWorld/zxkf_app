@@ -320,7 +320,7 @@ export default {
     }
     .house-card .extra-info .price-info .price{
         /* display: flex; */
-        color: #ee3943;
+        color: #FE0036;
         font-size: .24rem;
         text-align: right ;
    }

@@ -59,7 +59,7 @@ export default {
 <style>
     .search-header{/*表头样式*/
         width: 100%;
-        background: #ee3943;
+        background: #FE0036;
         position:relative;
         height:0.88rem;
         color:#fff;

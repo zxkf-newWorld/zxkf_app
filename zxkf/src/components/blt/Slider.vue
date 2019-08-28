@@ -116,7 +116,7 @@ export default {
   padding-bottom:.34rem;
 	}
 	#c-slider .slider .date {
-	color: #ee3943;
+	color: #FE0036;
 	font-size: 0.3rem;
 	margin-top: 1rem;
   display: flex;
@@ -131,7 +131,7 @@ export default {
 	float: left;
 	} */
 	#c-slider .slider .ruler {
-	background:#ee3943;
+	background:#FE0036;
 	height: .08rem;
 	position: relative;
 	margin-top: 1rem;
