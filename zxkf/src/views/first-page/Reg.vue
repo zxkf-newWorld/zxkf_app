@@ -29,10 +29,8 @@
     <mt-field label="出生日期：" :placeholder="birthday"  class="myinput" type="date" v-model="birthday"></mt-field>
     <!-- 上传头像 -->
      <p class="images">上传头像：
-        <img src="../../assets/login-icon.png" @click="upload" slot="icon">
+        <input type="file" id="upload-ele" multiple="false"  accept="image/*" @change="uploadFile(url)">
     </p>
-    <upload :uploadType="`head`" :imgWidth="`85px`" :imgHeight="`104px`" :imgUrl="imgUrl"
-     @upload="getImgUrl">
     </upload>
      <br>
     <!--注册按钮-->
@@ -43,6 +41,8 @@
 </template>
 <script>
 //上述为处理脚手架警告
+  import { Indicator } from 'mint-ui';
+  import { Toast } from 'vux';
 export default {
   data() {
     return {
@@ -55,17 +55,48 @@ export default {
       upwdholder: "密码8-12",
       phoneholder: "请输入正确的11位手机号",
       emailholder: "请输入正确的邮箱地址",
-      birthday:"请输入出生日期"
+      birthday:"请输入出生日期",
+      total: {isShow:false,text:""}
     };
   },
-  // mounted(){
-  //   this.reg();
-  // },
+  components: {
+      Indicator,
+      Toast,
+   },
+  props: {
+      'url': String, //小与1M的api
+      'quality': Number, //图片质量
+      'BigUrl': {
+        type: String,
+        default: '',
+      }, //大于1M图片的api
+      'hasApi': {
+        type: Boolean,
+        default: false
+      } //是否对大于1M的图片单独分配接口
+    },
   methods: {
     // 上传头像
-    upload(){
-      console.log(1)
-      this.$router.push("Upload");
+    uploadFile(url){
+      Indicator.open(`上传中`);
+        // files是input设置为file后的一个内置对象。files对象是一个只读属性，不可被修改。
+        var oFile = document.getElementById('upload-ele').files[0];
+//         console.log('File Object',oFile);
+        console.log(oFile.name)
+        // console.log('File Size Unit：KB',(oFile.size / 1024))
+//         form.append('file',oFile);
+//         let xhr = new XMLHttpRequest(); //XMLHttpRequest Object
+//         xhr.open('post',BigUrl,true); // Method: post,url: server receive address,true/false isAsync
+//         xhr.timeout = 30 * 1000;  //Timeout one minute;
+//         xhr.ontimeout = this.uploadTimeout; // Upload Timeout Function
+//         xhr.upload.onprogress = this.progress; //Progress Function
+//         xhr.onload = this.uploadComplete; //Upload Success Function
+//         xhr.onerror = this.uploadFailed; //Upload Failed Funciton
+//         xhr.upload.onloadstart = () => {
+//            let date = new Date().getTime(); // TimeStamp Prevents Caching
+//            let initSize = 0; // Init File Size Zero
+//         } // Upload Start
+//             xhr.send(form);
     },
     toHome(){
       // 跳转到首页
