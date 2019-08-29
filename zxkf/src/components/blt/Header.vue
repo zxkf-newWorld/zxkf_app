@@ -32,8 +32,11 @@ export default {
         updown(e){
             if(e.keyCode==13){
                 console.log(this.msg)
+                // this.$router.push("/Roommate")
+                location.reload() 
+                 this.msg="";
             }
-            this.msg="";
+           
         },
         cities(){
             if(!this.cityShow){

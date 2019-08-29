@@ -13,10 +13,10 @@
                     <img src="../../assets/profile.png" alt="资源不存在">
                 </div>
                 <div class="font-span">
-                    <span @click="toLogin" v-if="!islogin">登录 / </span>
-                    <span v-if="islogin">欢迎：{{uname}}  /  &nbsp;&nbsp;</span>
-                    <span v-show="islogin" @click="loginout">注销</span>
-                    <span @click="toReg" v-if="!islogin"> 注册</span>
+                    <span @click="toLogin" v-if="islogin">登录 / </span>
+                    <span v-if="!islogin">欢迎：{{uname}}  /  &nbsp;&nbsp;</span>
+                    <span v-show="!islogin" @click="loginout">注销</span>
+                    <span @click="toReg" v-if="islogin"> 注册</span>
                 </div>  
             </div>
         </div>
@@ -116,14 +116,14 @@ export default {
     mounted() {
         this.uname=sessionStorage.getItem("uname");
         console.log(this.uname);
-        if(this.uname.length>1){
+        if(this.uname == null){
             this.islogin=true;
         }
     },
     methods: {
         loginout(){
-            sessionStorage.setItem("uname"," ")
-            this.islogin=false;
+            sessionStorage.removeItem("uname")
+            this.islogin=true;
             // this.$router.push('Login');
         },
         toLogin(){

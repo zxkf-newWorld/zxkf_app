@@ -31,9 +31,7 @@
      <p class="images">上传头像：
         <img src="../../assets/login-icon.png" @click="upload" slot="icon">
     </p>
-    <upload :uploadType="`head`" :imgWidth="`85px`" :imgHeight="`104px`" :imgUrl="imgUrl"
-     @upload="getImgUrl">
-    </upload>
+   
      <br>
     <!--注册按钮-->
     <mt-button type="danger" class="primary"  @click="reg" size="large">注册</mt-button>

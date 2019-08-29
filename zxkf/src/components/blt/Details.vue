@@ -223,9 +223,13 @@ export default {
             this.$router.go(-1);
         },
         showMSG(){
-            this.$messagebox.prompt("请填写您的手机号码，我们会尽快联系您").then(({value,action})=>{
+            this.$messagebox.prompt("请填写您的手机号码，我们会尽快联系您")
+            .then(({value,action})=>{
                 this.$toast('已接收您的预约，请耐心等待');
             })
+            .catch(err=>{
+               console.log(err);
+            });
         },
         callOwner(){
             this.$messagebox.alert("是否拨通房东电话？").then(action=>{
