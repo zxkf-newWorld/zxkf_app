@@ -77,7 +77,7 @@ export default {
 }
 .toTop>p{
     position: absolute;
-    bottom: 0;
+    bottom: -.26rem;
     width: 100%;
     height: 50%;
     text-align: center;

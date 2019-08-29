@@ -31,7 +31,11 @@
      <p class="images">上传头像：
         <input type="file" id="upload-ele" multiple="false"  accept="image/*" @change="uploadFile(url)">
     </p>
+<<<<<<< HEAD
     </upload>
+=======
+   
+>>>>>>> ebb6154a191dda6f91ec9a15d4fb6927d282a9f5
      <br>
     <!--注册按钮-->
     <mt-button type="danger" class="primary"  @click="reg" size="large">注册</mt-button>
@@ -199,7 +203,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-   background: #ee3943;
+   background: #FE0036;
 }
 .reg-head div > img{
   width: .4rem;

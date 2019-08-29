@@ -32,8 +32,11 @@ export default {
         updown(e){
             if(e.keyCode==13){
                 console.log(this.msg)
+                // this.$router.push("/Roommate")
+                location.reload() 
+                 this.msg="";
             }
-            this.msg="";
+           
         },
         cities(){
             if(!this.cityShow){
@@ -59,7 +62,7 @@ export default {
 <style>
     .search-header{/*表头样式*/
         width: 100%;
-        background: #ee3943;
+        background: #FE0036;
         position:relative;
         height:0.88rem;
         color:#fff;

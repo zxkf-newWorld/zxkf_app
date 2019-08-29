@@ -223,9 +223,13 @@ export default {
             this.$router.go(-1);
         },
         showMSG(){
-            this.$messagebox.prompt("请填写您的手机号码，我们会尽快联系您").then(({value,action})=>{
+            this.$messagebox.prompt("请填写您的手机号码，我们会尽快联系您")
+            .then(({value,action})=>{
                 this.$toast('已接收您的预约，请耐心等待');
             })
+            .catch(err=>{
+               console.log(err);
+            });
         },
         callOwner(){
             this.$messagebox.alert("是否拨通房东电话？").then(action=>{
@@ -392,16 +396,20 @@ export default {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: left;
+        margin-top:0;
     }
     .house-price{
         padding: 0 4%;
         position: relative;
         overflow: hidden;
-        line-height: .52rem;
-        font-size: .34rem;  
+        line-height: .4rem;
+        margin-top:-.3rem;
+        margin-bottom:-.2rem;
+        text-align: left; 
     }
     .house-price>span{
-        color: #ee3943;
+        color: #FE0036;
         overflow: hidden;
         line-height: .52rem;
         font-size: .32rem;
@@ -460,8 +468,8 @@ export default {
         color: #5a5c5d;
     }
     .mapText>ul>li>div.active{
-        color: #ee3943;
-        border-bottom: .04rem solid #ee3943;
+        color: #FE0036;
+        border-bottom: .04rem solid #FE0036;
     }
     .mapText>ul>li>div img{
         vertical-align: middle;
@@ -538,8 +546,8 @@ export default {
         text-align: center;
     }
     .tabSheshi li span.active{
-        color: #ee3943;
-        border-bottom: 2px solid #ee3943;
+        color: #FE0036;
+        border-bottom: 2px solid #FE0036;
     }
     .tabSheshi li span{
         display: inline-block;
@@ -656,10 +664,10 @@ export default {
     }
     .details-footer .into{
         background-color: #e5e5e8;
-        color: #ee3943;
+        color: #FE0036;
     }
     .details-footer .call{
-        background-color: #ee3943;
+        background-color: #FE0036;
         color: #fff;
         position: relative;
     }

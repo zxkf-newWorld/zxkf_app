@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="width:50px;">{{city}}</p>
+    <p style="width:50px;margin-left:-5px;margin-top:0px;">{{city}}</p>
   </div>
 </template>
 <script >
@@ -48,6 +48,7 @@ export default {
           if (status === "complete" && result.info === "OK") {
             // 查询成功，result即为当前所在城市信息
             console.log("通过ip获取当前城市：", result);
+            self.city = result.city;
             //逆向地理编码
             AMap.plugin("AMap.Geocoder", function() {
               var geocoder = new AMap.Geocoder({

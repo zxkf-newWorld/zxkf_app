@@ -108,7 +108,7 @@ export default {
     .top-head{
         text-align: center;
         width: 100%;
-        background: #ee3943;
+        background: #FE0036;
         color: #fff;
         height:0.78rem;
         line-height: 0.78rem;
@@ -179,7 +179,7 @@ export default {
         width: 1.3rem;
         height: .5rem;
         font-size: .26rem;
-        color: #ee3943;
+        color: #FE0036;
         text-align: center;
         line-height: .5rem;
         margin-top: .25rem;
@@ -245,10 +245,10 @@ export default {
         margin: auto;
         width: 5.8rem;
         height: .8rem;
-        border: 1px solid #ee3943;
+        border: 1px solid #FE0036;
         border-radius: .05rem;
         line-height: .8rem;
-        color: #ee3943;
+        color: #FE0036;
         text-align: center;
         font-size: .28rem;
     }
