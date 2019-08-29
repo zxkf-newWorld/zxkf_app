@@ -38,6 +38,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 require("swiper/dist/css/swiper.css");//引入swiper样式文件
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
