@@ -17,7 +17,7 @@
         <div class="list">
             <div class="house-title clearfix">
                 <div class="house-title-left"> 房源位置</div>
-                <div class="house-title-right">找室友</div>
+                <div class="house-title-right" @click="roommate">找室友</div>
             </div>
             <div class="house-content clearfix">
                 <ul>
@@ -70,20 +70,24 @@ export default {
     },
     mounted() {
         let rid = this.$route.params.rid;
-        console.log(rid);
+        // console.log(rid);
         var url = "index/findRoomMatesDetails?rid="+rid;
         this.axios.get(url).then(res => {
             //获取服务器返回的结果，登陆成功或者失败
         this.details=res.data.dataArray[0];
-        console.log(this.details)
+        // console.log(this.details)
         }).catch(err=>{
-            console.log(err)
+            // console.log(err);
+            throw err;
         })
         // this.clientHeight =   `${document.getElementById("app").clientHeight}`  
-        this.clientHeight =   `${document.body.clientHeight}`  
+        this.clientHeight =   document.documentElement.clientHeight 
         document.getElementById("detail_img").style.height=this.clientHeight+"px";
     },
     methods: {
+        roommate(){
+            this.$router.push('/Roommate');
+        },
         back(){
             this.$router.push('/Roommate');
         },
@@ -104,7 +108,7 @@ export default {
     .top-head{
         text-align: center;
         width: 100%;
-        background: #ee3943;
+        background: #FE0036;
         color: #fff;
         height:0.78rem;
         line-height: 0.78rem;
@@ -175,7 +179,7 @@ export default {
         width: 1.3rem;
         height: .5rem;
         font-size: .26rem;
-        color: #ee3943;
+        color: #FE0036;
         text-align: center;
         line-height: .5rem;
         margin-top: .25rem;
@@ -241,21 +245,21 @@ export default {
         margin: auto;
         width: 5.8rem;
         height: .8rem;
-        border: 1px solid #ee3943;
+        border: 1px solid #FE0036;
         border-radius: .05rem;
         line-height: .8rem;
-        color: #ee3943;
+        color: #FE0036;
         text-align: center;
         font-size: .28rem;
     }
     .detail_img{
         position: absolute;
-        top:0.78rem;
+        top:0;
         left: 0;
-        width: 100%;
-        /* height:820px; */
+        width:100%;
+        /* height: 100%; */ 
+        /* top:0.78rem; */
         background: rgba(0,0,0,.8);
-        /* line-height:520px; */
         z-index: 999;
      }
      .detail_img img{

@@ -10,10 +10,10 @@
             <totop></totop>
             <!--轮播图-->
             <div class="swipe-box">
-                <mt-swipe id="swipe">
+                <mt-swipe id="swipe" @change="handleChange">
                     <mt-swipe-item v-for="(img,i) of details.imgs" :key="i"><img :src="img"></mt-swipe-item>
                 </mt-swipe>
-                <div class="swiper-count-text">{{1}}/{{details.imgs.length}}</div>
+                <div class="swiper-count-text">{{index+1}}/{{details.imgs.length}}</div>
             </div>
             
             <!--认证-->
@@ -64,7 +64,10 @@
                 </div>
                 <!-- 详情地图 -->
                 <div class="mapImg">
-                    <img src="../../../public/details/map.png">
+                    <img src="../../../public/details/map.png" v-if="show" @click="showMap">
+                    <div v-if="isShow">
+                        <mymap></mymap>
+                    </div>
                     <div class="map-text-wrapper">
                         <p  class="map-text"><span class="dingwei"></span>
                             {{details.address}}
@@ -128,10 +131,15 @@
     </div>
 </template>
 <script>
+/* eslint-disable */
 import ToTop from './ToTop.vue'
+import Mymap from '../Mapbus.vue'
 export default {
     data(){
         return {
+            index:0,//轮播图索引
+            show:true,//地图图片显示
+            isShow:false,//地图默认不显示，只有点击图片之后才显示
             popupVisible:true,
             mapTextIndex:0,//控制mapText三个板块切换的中间量
             mapTextList:[
@@ -183,6 +191,13 @@ export default {
         }
     },
     methods:{
+        showMap(){
+            this.show = false;//图片不显示
+            this.isShow = true;//地图显示
+        },
+        handleChange(index){
+            this.index = index;
+        },
         changeMapText(i){//切换mapText三个板块的切换函数
             this.mapTextIndex=i;
         },
@@ -220,6 +235,7 @@ export default {
     },
     components:{
         "totop":ToTop,
+        "mymap":Mymap
     },
 }
 </script>
@@ -376,16 +392,20 @@ export default {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: left;
+        margin-top:0;
     }
     .house-price{
         padding: 0 4%;
         position: relative;
         overflow: hidden;
-        line-height: .52rem;
-        font-size: .34rem;  
+        line-height: .4rem;
+        margin-top:-.3rem;
+        margin-bottom:-.2rem;
+        text-align: left; 
     }
     .house-price>span{
-        color: #ee3943;
+        color: #FE0036;
         overflow: hidden;
         line-height: .52rem;
         font-size: .32rem;
@@ -444,8 +464,8 @@ export default {
         color: #5a5c5d;
     }
     .mapText>ul>li>div.active{
-        color: #ee3943;
-        border-bottom: .04rem solid #ee3943;
+        color: #FE0036;
+        border-bottom: .04rem solid #FE0036;
     }
     .mapText>ul>li>div img{
         vertical-align: middle;
@@ -469,7 +489,7 @@ export default {
     /*****************************************************地图************************************/
     .mapImg{
         width: 100%;
-        height: 4rem;
+        height: 6rem;
         position: relative;
         padding-bottom: .4rem;
         background-color: #fff;
@@ -522,8 +542,8 @@ export default {
         text-align: center;
     }
     .tabSheshi li span.active{
-        color: #ee3943;
-        border-bottom: 2px solid #ee3943;
+        color: #FE0036;
+        border-bottom: 2px solid #FE0036;
     }
     .tabSheshi li span{
         display: inline-block;
@@ -640,10 +660,10 @@ export default {
     }
     .details-footer .into{
         background-color: #e5e5e8;
-        color: #ee3943;
+        color: #FE0036;
     }
     .details-footer .call{
-        background-color: #ee3943;
+        background-color: #FE0036;
         color: #fff;
         position: relative;
     }

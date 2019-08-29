@@ -53,7 +53,7 @@ export default {
     .select-city-title{
         height: .88rem;
         line-height: .88rem;
-        background-color: #ee3943;
+        background-color: #FE0036;
         text-align: center;
         font-size: .32rem;
         padding: 0 .8rem;

@@ -14,8 +14,7 @@
 <template>
   <div class="m-map">
     <div class="search" v-if="placeSearch">
-      <p>所在城市：{{this.ccity}}</p>
-      <input type="text" placeholder="请输入关键字" v-model="searchKey">
+      <input type="text" placeholder="请输入关键字" v-model="searchKey" >
       <button type="button" @click="handleSearch">搜索</button>
       <div id="js-result" v-show="searchKey" class="result"></div>
     </div>
@@ -30,7 +29,7 @@ export default {
   props: ['lat', 'lng'],
   data () {
     return {
-      searchKey: '',
+      searchKey: '长乐坊18号',
       placeSearch: null,
       dragStatus: false,
       AMapUI: null,
@@ -50,9 +49,10 @@ export default {
     handleSearch () {
       if (this.searchKey) {
         this.placeSearch.search(this.searchKey)
+        this.searchKey = '';
       }
     },
-    // 实例化地图
+    // 实例化地图:src="imgurl"
     initMap () {
       // 加载PositionPicker，loadUI的路径参数为模块名中 'ui/' 之后的部分
       let AMapUI = this.AMapUI = window.AMapUI
@@ -114,9 +114,9 @@ export default {
     }
   },
   // 向Mapbus传递参数
-  transParams(ct){
-    this.$emit("func",this.ccity);
-  }
+  // transParams(ct){
+  //   this.$emit("func",this.ccity);
+  // }
 }
 
 </script>
@@ -128,7 +128,7 @@ export default {
 }
 .amap-touch-toolbar .amap-zoomcontrol{
   left: 0%  !important;
-  bottom: -100px;
+  bottom: 0;
   }
 .m-map{ min-width: 500px; min-height: 300px; position: relative; }
 .m-map .map{ width: 100%; height: 100%; }
