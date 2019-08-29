@@ -34,7 +34,7 @@ export default {
 
         function onError(data) {
           // 定位出错
-          console.log("定位失败错误：", data);
+          // console.log("定位失败错误：", data);
           // self.city = data;
           // 调用ip定位
           self.getLngLatLocation();
@@ -42,6 +42,7 @@ export default {
       });
     },
     getLngLatLocation() {
+      const self = this;
       AMap.plugin("AMap.CitySearch", function() {
         var citySearch = new AMap.CitySearch();
         citySearch.getLocalCity(function(status, result) {
