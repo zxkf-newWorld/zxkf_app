@@ -86,6 +86,7 @@ export default {
         })
         // 创建地图拖拽
         let positionPicker = new PositionPicker({
+          // mode：地图模式：
           mode: 'dragMap', // 设定为拖拽地图模式，可选'dragMap'、'dragMarker'，默认为'dragMap'
           map: map // 依赖地图对象
         })
