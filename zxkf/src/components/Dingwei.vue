@@ -12,6 +12,7 @@ export default {
     };
   },
   methods: {
+    // 精确定位
     getLocation() {
       const self = this;
       AMap.plugin("AMap.Geolocation", function() {
@@ -41,6 +42,7 @@ export default {
         }
       });
     },
+    // ip定位
     getLngLatLocation() {
       const self = this;
       AMap.plugin("AMap.CitySearch", function() {

@@ -59,10 +59,10 @@ export default {
       let AMap = this.AMap = window.AMap
       AMapUI.loadUI(['misc/PositionPicker'], PositionPicker => {
         let mapConfig = {
-          zoom: 16,
-          cityName: MapCityName
+          zoom: 16,//缩放级别
+          cityName: MapCityName//搜索城市名
         }
-        if (this.lat && this.lng) {
+        if (this.lat && this.lng) {//设置经纬度
           mapConfig.center = [this.lng, this.lat]
         }
         let map = new AMap.Map('js-container', mapConfig)
@@ -77,7 +77,8 @@ export default {
             panel: 'js-result'
           })
         })
-        // 启用工具条
+        // 启用工具条：plugin([],function(){ 异步加载插件});
+        // ToolBar控制地图的缩放+平移等
         AMap.plugin(['AMap.ToolBar','AMap.MapType'], function () {
           map.addControl(new AMap.ToolBar({
             position: 'RB'
