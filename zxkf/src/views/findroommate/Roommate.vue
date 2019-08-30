@@ -30,6 +30,7 @@
     </div>
 </template>
 <script>
+/* eslint-disable */
 import Header from '../../components/blt/Header.vue'
 export default {
     data(){

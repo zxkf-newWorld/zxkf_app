@@ -30,7 +30,7 @@
     <!-- 上传头像 -->
      <div class="images">
        <p>上传头像：</p> 
-        <input style="float:left" type="file" id="upload-ele" multiple="false"  accept="image/*" @change="uploadFile(url)">
+        <input style="float:left" type="file" id="upload-ele" multiple="false" accept="image/*" @change="uploadFile(url)">
     </div>
    
      <br>
@@ -44,6 +44,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 //上述为处理脚手架警告
   import { Indicator } from 'mint-ui';
 //   import { Toast } from 'vux';
