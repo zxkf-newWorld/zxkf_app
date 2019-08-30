@@ -67,6 +67,7 @@
     </div>
 </template>
 <script>
+/* elsint-disable */
 export default {
     data(){
         return{

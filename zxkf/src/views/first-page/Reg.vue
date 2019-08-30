@@ -28,11 +28,15 @@
     <!-- 生日 -->
     <mt-field label="出生日期：" :placeholder="birthday"  class="myinput" type="date" v-model="birthday"></mt-field>
     <!-- 上传头像 -->
-     <p class="images">上传头像：
-        <img src="../../assets/login-icon.png" @click="upload" slot="icon">
-    </p>
+     <div class="images">
+       <p>上传头像：</p> 
+        <input style="float:left" type="file" id="upload-ele" multiple="false" accept="image/*" @change="uploadFile(url)">
+    </div>
    
      <br>
+     <br> 
+     <br>
+     <br> 
     <!--注册按钮-->
     <mt-button type="danger" class="primary"  @click="reg" size="large">注册</mt-button>
     <br>
@@ -40,7 +44,10 @@
   </div>
 </template>
 <script>
+/* eslint-disable */
 //上述为处理脚手架警告
+  import { Indicator } from 'mint-ui';
+//   import { Toast } from 'vux';
 export default {
   data() {
     return {
@@ -53,17 +60,32 @@ export default {
       upwdholder: "密码8-12",
       phoneholder: "请输入正确的11位手机号",
       emailholder: "请输入正确的邮箱地址",
-      birthday:"请输入出生日期"
+      birthday:"请输入出生日期",
+      file:"",
+      total: {isShow:false,text:""}
     };
   },
-  // mounted(){
-  //   this.reg();
-  // },
+  components: {
+      Indicator,
+//       Toast,
+   },
+  props: {
+      'url': String, //小与1M的api
+    },
   methods: {
     // 上传头像
-    upload(){
-      console.log(1)
-      this.$router.push("Upload");
+    uploadFile(url){
+        // Indicator.open(`上传中`);
+          // Indicator.close();
+        // files是input设置为file后的一个内置对象。files对象是一个只读属性，不可被修改。
+        var oFile = document.getElementById('upload-ele').files[0];
+//         console.log('File Object',oFile);
+        console.log(oFile.name)
+        if(oFile.name){
+          console.log(11);
+          // Indicator.open(`上传中`);
+        }
+        this.file=oFile.name;
     },
     toHome(){
       // 跳转到首页
@@ -80,7 +102,8 @@ export default {
       var h = this.phone;
       var e = this.email;
       var b=this.birthday;
-      var obj = { uname: u, upwd: p, phone: h, email: e ,birthday:b};
+      var f="./img/"+this.file;
+      var obj = { uname: u, upwd: p, phone: h, email: e ,birthday:b,avatar:f};
       //  字母数字下划3~12
       //3:验证用户名 出错提示，并停止执行
       if (!/^[a-zA-Z0-9_-]{4,16}$/.test(u)) {
