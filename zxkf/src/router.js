@@ -20,7 +20,8 @@ import Details from './components/blt/Details.vue'
 import Header from './components/blt/Header.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
-// 客服
+import Living from './views/Living.vue'
+import Wishs from './views/Wishs.vue'
 import Service from './views/Service'
 import Mmap from './components/Mapbus.vue'
 import Search from './components/blt/Search.vue'
@@ -45,6 +46,8 @@ export default new Router({
     { path: "/Hezu", component: Hezu },
     { path: "/Header", component: Header },
     { path: "/Service", component: Service },
+    { path: "/Living", component: Living },
+    { path: "/Wishs", component: Wishs },
 
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },

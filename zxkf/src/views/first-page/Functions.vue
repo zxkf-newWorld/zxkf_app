@@ -28,7 +28,7 @@
             </li>
         </ul>
         <div style="clear: both;"></div>
-        <img @click="jumpService" class="service-im" src="../../assets/images/xiaomi.png" alt="">
+        <!-- <img @click="jumpService" class="service-im" src="../../assets/images/xiaomi.png" alt=""> -->
     </div>
 </template>
 <script>
@@ -39,9 +39,9 @@ export default {
         }
     },
     methods: {
-        jumpService(){
-            this.$router.push("/Service");
-        },
+        // jumpService(){
+        //     this.$router.push("/Service");
+        // },
         toFullRent(){//可以添加e事件动态获取相关的操作
             // 整租
             let url = "/index/fullrent";

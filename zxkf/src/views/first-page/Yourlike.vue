@@ -135,9 +135,11 @@ export default {
         font-weight: 700;
         text-align: left;
     }
+    .house-card {
+        border-bottom: 1px solid #ececec;
+    }
     .house-card,.extra-info{
         margin: 0 .3rem;
-        border-bottom: 1px solid #ececec;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }   

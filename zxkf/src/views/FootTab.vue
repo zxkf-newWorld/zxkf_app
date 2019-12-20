@@ -54,15 +54,16 @@ export default {
                 break;
             case '心愿':
                 this.$store.commit('FOOTTAB_CHANGE', '心愿');
-                this.$router.push('/Index');
+                this.$router.push('/Wishs');
                 break;
             case '交流':
                 this.$store.commit('FOOTTAB_CHANGE', '交流');
-                this.$router.push('/Index');
+                this.$router.push("/Service");
+                
                 break;
             case '生活':
                 this.$store.commit('FOOTTAB_CHANGE', '生活');
-                this.$router.push('/Index');
+                this.$router.push('/Living');
                 break;
             case '我的':
                 this.$store.commit('FOOTTAB_CHANGE', '我的');
@@ -80,5 +81,10 @@ export default {
 <style scoped>
 #footBar {
   position: fixed !important;
+  z-index: 5;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-top: 1px solid #fff;
+  /* box-shadow: -1px 1px #cccc; */
 }
 </style>
