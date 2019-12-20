@@ -100,14 +100,19 @@
                 </div>
             </div>
         </div>
+        <footTab></footTab>
     </div>
 </template>
 <script>
+import FootTab from "../FootTab.vue";
 export default {
     data(){
         return{
 
         }
+    },
+    components: {
+        FootTab,
     },
     methods: {
         toLogin(){

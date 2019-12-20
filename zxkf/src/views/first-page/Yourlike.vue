@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="goodhouse">
+            <!-- <h2>接受发送的参数：{{receive}}</h2> -->
             <div class="good-title">
                 <span>猜你喜欢</span>
             </div>
@@ -67,13 +68,15 @@
     </div>
 </template>
 <script>
+import Bus from './bus.js'
 export default {
     data(){
         return{
             imageUrl:[],//图片路径
             arrs:[],//商品列表
             title:0,//租住类型：0:整租、1：合租
-            citybelong:"西安"//所在城市：默认：西安
+            citybelong:"西安",//所在城市：默认：西安
+            receive: ''
         }
     },
     methods: {
@@ -110,6 +113,9 @@ export default {
         }
     },
     created() {
+        Bus.$on('sendor', rece => {
+            this.receive = rece;
+        })
         this.onLoad();
     },
 }

@@ -8,6 +8,9 @@
         <div style="width:auto;height:auto;display:none">
             <mapp></mapp>
         </div>
+        <footTab></footTab>
+        
+        
     </div>
 </template>
 <script>
@@ -17,6 +20,7 @@ import Functions from "./first-page/Functions.vue"
 import Research from "./first-page/Research.vue"
 import Yourlike from "./first-page/Yourlike.vue"
 import Mapp from "../components/Mapbus.vue"
+import FootTab from './FootTab.vue'
 export default {
     data(){
         return{
@@ -29,7 +33,8 @@ export default {
         Functions,
         Research,
         Yourlike,
-        Mapp
+        Mapp,
+        FootTab
     }
 }
 

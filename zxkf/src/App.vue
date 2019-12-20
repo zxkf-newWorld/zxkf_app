@@ -1,20 +1,19 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
 export default {
-  data(){
-    return{
-
-    }
-  },
-}
+  data() {
+    return {
+    };
+  }
+};
 </script>
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -32,4 +31,9 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+/* /deep/ .mint-tabbar {
+  position: fixed !important;
+} */
+
 </style>
