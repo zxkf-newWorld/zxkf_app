@@ -7,16 +7,16 @@
       </div>
       <img src="../../assets/newlogo2.png" class="imgs1">
     </div>
-    <mt-button class="mhbutton" @click="login">快速登陆</mt-button>
-    <mt-button class="mhbutton" @click="login">账号登陆</mt-button>
+    <mt-button class="mhbutton"  style="color: #e8323f;">账号登陆</mt-button>
+    <mt-button class="mhbutton" @click="reg">快速注册</mt-button>
     <!--用户名-->
     <mt-field label="用户名称：" :placeholder="unameholder" class="myinput1" v-model="uname"></mt-field>
     <!--密码-->
     <mt-field label="用户密码：" :placeholder="upwdholder" class="myinput" type="password" v-model="upwd"></mt-field>
     <!-- <img src="../img/pwd.png" class="call"> -->
     <!--登录按钮-->
-    <mt-checklist  v-model="check" :options="['登录即视为同意《服务协议》']"></mt-checklist>
-    <mt-button size="large" class="mbutton1" @click="login">登录</mt-button>
+    <mt-checklist style="margin-left:-25px"  v-model="check" :options="['登录即视为同意《服务协议》']"></mt-checklist>
+    <mt-button size="large" class="mbutton1" @click="login">登录 </mt-button>
   </div>
 </template>
 <script>
@@ -36,6 +36,9 @@ export default {
       // 跳转到首页
       this.$router.push("Index");
     },
+    reg(){
+      this.$router.push("Reg");
+    },
     login() {
       //完成登录 47
       var u = this.uname;
@@ -53,17 +56,24 @@ export default {
         this.$toast("密码不能为空");
         return;
       }
+      if(this.check.length<1){
+        this.$toast("请先同意");
+        return;
+      }
       //5:发送ajax请求 axios
-      var url = "login";
+      var url = "login_reg/login";
       var obj = { uname: u, upwd: p };
       //params 库指定的参数
       this.axios.post(url, this.qs.stringify(obj)).then(res => {
         //获取服务器返回的结果，登陆成功或者失败
+        // if(err) throw err;
+        console.log(res);
         if (res.data.code == -1) {
           this.$toast("用户名或密码有误");
         } else {
-          // this.$router.push("");
           this.$toast("登陆成功");
+          sessionStorage.setItem("uname",this.uname)
+          this.$router.push('/');
         }
         //创建xz/Home1vue组件
         // code<0
@@ -102,14 +112,10 @@ export default {
   width: 100%;
   padding-left: 35px;
   position: relative;
-  /* background-image: url("../img/call.png"); */
   background-repeat: no-repeat;
   background-size: 6%;
   background-position: 50px 15px;
-  /* border:2px solid #F2F2F2; */
-  /* border-radius: 30%; */
 }
-
 .app-login > .mhbutton:hover {
   border-bottom: 2px solid red;
 }

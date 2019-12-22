@@ -13,8 +13,10 @@
                     <img src="../../assets/profile.png" alt="资源不存在">
                 </div>
                 <div class="font-span">
-                    <span @click="toLogin">登录 / </span>
-                    <span @click="toReg"> 注册</span>
+                    <span @click="toLogin" v-if="islogin">登录 / </span>
+                    <span v-if="!islogin">欢迎：{{uname}}  /  &nbsp;&nbsp;</span>
+                    <span v-show="!islogin" @click="loginout">注销</span>
+                    <span @click="toReg" v-if="islogin"> 注册</span>
                 </div>  
             </div>
         </div>
@@ -108,13 +110,26 @@ import FootTab from "../FootTab.vue";
 export default {
     data(){
         return{
-
+              islogin:false,
+              uname:""
+        }
+    },
+    mounted() {
+        this.uname=sessionStorage.getItem("uname");
+        console.log(this.uname);
+        if(this.uname == null){
+            this.islogin=true;
         }
     },
     components: {
         FootTab,
     },
     methods: {
+        loginout(){
+            sessionStorage.removeItem("uname")
+            this.islogin=true;
+            // this.$router.push('Login');
+        },
         toLogin(){
             // 跳转到登录页面
             this.$router.push('Login');
@@ -146,9 +161,6 @@ export default {
         background: #e8323f;
         /*下外边距 */
         margin-bottom: 0.2rem;
-    }
-    .redhead .redhead-header{
-
     }
     .redhead .redhead-header > div{
         position: absolute;

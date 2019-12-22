@@ -27,15 +27,27 @@
     <mt-field label="电子邮箱：" :placeholder="emailholder"  class="myinput"  type="email" v-model="email"></mt-field>
     <!-- 生日 -->
     <mt-field label="出生日期：" :placeholder="birthday"  class="myinput" type="date" v-model="birthday"></mt-field>
+    <!-- 上传头像 -->
+     <div class="images">
+       <p>上传头像：</p> 
+        <input style="float:left" type="file" id="upload-ele" multiple="false" accept="image/*" @change="uploadFile(url)">
+    </div>
+   
+     <br>
+     <br> 
+     <br>
+     <br> 
     <!--注册按钮-->
-    <mt-button type="danger" class="mybutton primary"  @click="reg" size="large">注册</mt-button>
+    <mt-button type="danger" class="primary"  @click="reg" size="large">注册</mt-button>
     <br>
-    <mt-button type="primary" class="mybutton primary"  @click="login" size="large">登录</mt-button>
+    <mt-button type="primary" class="primary"  @click="login" size="large">登录</mt-button>
   </div>
 </template>
 <script>
 /* eslint-disable */
 //上述为处理脚手架警告
+  import { Indicator } from 'mint-ui';
+//   import { Toast } from 'vux';
 export default {
   data() {
     return {
@@ -48,16 +60,36 @@ export default {
       upwdholder: "密码8-12",
       phoneholder: "请输入正确的11位手机号",
       emailholder: "请输入正确的邮箱地址",
-      birthday:"请输入出生日期"
+      birthday:"请输入出生日期",
+      file:"",
+      total: {isShow:false,text:""}
     };
   },
-  // mounted(){
-  //   this.reg();
-  // },
+  components: {
+      Indicator,
+//       Toast,
+   },
+  props: {
+      'url': String, //小与1M的api
+    },
   methods: {
+    // 上传头像
+    uploadFile(url){
+        // Indicator.open(`上传中`);
+          // Indicator.close();
+        // files是input设置为file后的一个内置对象。files对象是一个只读属性，不可被修改。
+        var oFile = document.getElementById('upload-ele').files[0];
+//         console.log('File Object',oFile);
+        console.log(oFile.name)
+        if(oFile.name){
+          console.log(11);
+          // Indicator.open(`上传中`);
+        }
+        this.file=oFile.name;
+    },
     toHome(){
       // 跳转到首页
-      this.$router.push("Index");
+      this.$router.go(-1); 
     },
     login(){
        this.$router.push("Login");
@@ -69,14 +101,16 @@ export default {
       var p = this.upwd;
       var h = this.phone;
       var e = this.email;
-      var url = "reg";
-      var obj = { uname: u, upwd: p, phone: h, email: e };
+      var b=this.birthday;
+      var f="./img/"+this.file;
+      var obj = { uname: u, upwd: p, phone: h, email: e ,birthday:b,avatar:f};
       //  字母数字下划3~12
       //3:验证用户名 出错提示，并停止执行
       if (!/^[a-zA-Z0-9_-]{4,16}$/.test(u)) {
         this.$toast("用户名格式不正确");
         return;
       } else {
+        var url = "login_reg/login_uname";
         this.axios.get(url + "?uname=" + this.uname).then(res => {
           if (res.data.code == -1) {
             this.$toast("用户名已被注册");
@@ -84,7 +118,6 @@ export default {
           }
         });
       }
-
       //4:验证密码   出错提示，并停止执行
       if (!/^(\w){6,20}$/.test(p)) {
         this.$toast("密码格式不正确");
@@ -95,6 +128,7 @@ export default {
         this.$toast("手机格式不正确");
         return;
       } else {
+         var url = "login_reg/login_phone";
         this.axios.get(url + "?phone=" + this.phone).then(res => {
           if (res.data.code == -1) {
             this.$toast("手机已被注册");
@@ -102,7 +136,10 @@ export default {
           }
         });
       }
-
+      if(!this.birthday){
+         this.$toast("请选择出生日期");
+         return;
+      }
       //4:验证密码   出错提示，并停止执行
       // if (!/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(e)) {
       //   this.$toast("邮箱格式不正确");
@@ -115,27 +152,33 @@ export default {
       //     }
       //   });
       // }
-
       //5:发送ajax请求 axios
-      setTimeout(function() {
-        this.axios.post(url, this.qs.stringify(obj)).then(res => {
-          //获取服务器返回的结果，注册成功或者失败
-          if (res.data.code == -1) {
-            this.$toast("注册失败");
-            // console.log(2222);
-            return;
-          } else {
-            // this.$router.push("/Product");
-            this.$toast("注册成功");
-          }
-        });
-      }, 1000);
+      // setTimeout(function() {  }, 1000);
+      var url1 = "login_reg/reg";
+      this.axios.post(url1, this.qs.stringify(obj)).then(res => {
+        //获取服务器返回的结果，注册成功或者失败
+        if (res.data.code == -1) {
+          this.$toast("注册失败");
+          return;
+        } else {
+          this.$toast("注册成功");
+          this.$router.push("Login");
+        }
+      });
     }
   }
 };
 
 </script>
 <style>
+.images{
+  text-align: left;
+  font-size: 16px;
+  margin-left:20px; 
+}
+.images img{
+  width: 70%;
+}
 .app-reg{
   position: relative;
   background:#fff;
@@ -146,7 +189,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-   background: #ee3943;
+   background: #FE0036;
 }
 .reg-head div > img{
   width: .4rem;

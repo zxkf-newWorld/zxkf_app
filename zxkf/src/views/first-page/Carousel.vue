@@ -34,7 +34,7 @@
       <!-- 左上定位按钮 -->
       <div class="top-right-img" @click="toLogin">
         <a href="javascript:;">
-          <img src="../../assets/login-dark.png" alt="">
+          <img src="../../assets/mine.png" alt="">
         </a>
       </div>
     </div>
@@ -127,8 +127,6 @@ export default {
   .login-city .top-left-img,.login-city .top-right-img{
     width: 40px;
     height: 40px;
-    background:rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
   }
   .login-city .top-left-img{
     position: absolute;

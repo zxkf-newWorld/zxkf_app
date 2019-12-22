@@ -3,7 +3,7 @@
     <div class="xw-evaluate-wrap" v-if="showScore">
         <div class="xw-evaluate-content">
             <ul class="xw-score-list">
-            <li v-for="(items,i) of ScoreDB.scoreDatas" :key="i">
+            <li v-for="(items,index) in ScoreDB.scoreDatas" :key="index">
                 <span>{{items.scoreTitle}}</span>
                 <nav>     
                     <a href="javascript:;"  v-for="(item ,index) in items.scoreArr"
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-
+/* eslint-disable */
 export default {
  name: 'evaluate',
  props:{

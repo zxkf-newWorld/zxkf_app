@@ -289,7 +289,7 @@ export default {
         color:#5a5c5d;
     }
     .tab-out>ul>li.active{
-        color:#ee3943;
+        color:#FE0036;
     }
     .tab-out>ul>li.active>.tab-icon{
         background: url(../../../public/query/arrow-up.png) no-repeat 50%;
@@ -333,8 +333,8 @@ export default {
         font-size: .28rem;
     }
     .position-tab>div.positionTabSelected>span{
-        border-bottom: 4px solid #ee3943;
-        color: #ee3943;
+        border-bottom: 4px solid #FE0036;
+        color: #FE0036;
     }
     /*********************************************************************/
     .position-options{
@@ -365,7 +365,7 @@ export default {
     }
     .position-options ul>li.active{
         background-color: #fff;
-        color: #ee3943;
+        color: #FE0036;
     }
     .position-options ul:first-child{
         background-color:#f0f0f0;
@@ -512,6 +512,6 @@ export default {
     }
     .btns-new>.btn-confirm{
         color: #fff;
-        background-color: #ee3943;
+        background-color: #FE0036;
     }
 </style>

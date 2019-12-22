@@ -10,6 +10,7 @@ import Functions from './views/first-page/Functions.vue'
 // 为Login&Reg.vue组件指定路径
 import Login from "./views/first-page/Login.vue"
 import Reg from "./views/first-page/Reg.vue"
+// import Upload from "./views/first-page/Upload.vue"
 // 我得页面相关组件
 import Myself from "./views/myself/Myself.vue"
 import Roommate from "./views/findroommate/Roommate.vue"
@@ -40,6 +41,7 @@ export default new Router({
     { path:'/Functions',component:Functions},
     { path: '/Login', component: Login },
     { path: '/Reg', component: Reg },
+    // { path: '/Upload', component: Upload },
     { path: '/Myself', component: Myself },
     { path: "/Details", component: Details },
     { path: "/Zhengzu", component: Zhengzu },

@@ -49,19 +49,20 @@ export default {
     handleSearch () {
       if (this.searchKey) {
         this.placeSearch.search(this.searchKey)
+        this.searchKey = '';
       }
     },
-    // 实例化地图
+    // 实例化地图:src="imgurl"
     initMap () {
       // 加载PositionPicker，loadUI的路径参数为模块名中 'ui/' 之后的部分
       let AMapUI = this.AMapUI = window.AMapUI
       let AMap = this.AMap = window.AMap
       AMapUI.loadUI(['misc/PositionPicker'], PositionPicker => {
         let mapConfig = {
-          zoom: 16,
-          cityName: MapCityName
+          zoom: 16,//缩放级别
+          cityName: MapCityName//搜索城市名
         }
-        if (this.lat && this.lng) {
+        if (this.lat && this.lng) {//设置经纬度
           mapConfig.center = [this.lng, this.lat]
         }
         let map = new AMap.Map('js-container', mapConfig)
@@ -76,7 +77,8 @@ export default {
             panel: 'js-result'
           })
         })
-        // 启用工具条
+        // 启用工具条：plugin([],function(){ 异步加载插件});
+        // ToolBar控制地图的缩放+平移等
         AMap.plugin(['AMap.ToolBar','AMap.MapType'], function () {
           map.addControl(new AMap.ToolBar({
             position: 'RB'
@@ -84,6 +86,7 @@ export default {
         })
         // 创建地图拖拽
         let positionPicker = new PositionPicker({
+          // mode：地图模式：
           mode: 'dragMap', // 设定为拖拽地图模式，可选'dragMap'、'dragMarker'，默认为'dragMap'
           map: map // 依赖地图对象
         })

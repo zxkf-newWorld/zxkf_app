@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="width:50px;">{{city}}</p>
+    <p style="width:50px;margin-left:-5px;margin-top:0px;">{{city}}</p>
   </div>
 </template>
 <script >
@@ -8,10 +8,11 @@
 export default {
   data() {
     return {
-      city: "西安市"
+      city: ""
     };
   },
   methods: {
+    // 精确定位
     getLocation() {
       const self = this;
       AMap.plugin("AMap.Geolocation", function() {
@@ -19,7 +20,7 @@ export default {
           // 是否使用高精度定位，默认：true
           enableHighAccuracy: false,
           // 设置定位超时时间，默认：无穷大
-          timeout: 1000
+          timeout: 200
         });
         geolocation.getCurrentPosition();
         AMap.event.addListener(geolocation, "complete", onComplete);
@@ -27,27 +28,30 @@ export default {
 
         function onComplete(data) {
           // data是具体的定位信息
-          console.log("定位成功信息：", data);
-          console.log(data.addressComponent.city);
+          // console.log("定位成功信息：", data);
+          // console.log(data.addressComponent.city);
           self.city = data.addressComponent.city;
         }
 
         function onError(data) {
           // 定位出错
-          console.log("定位失败错误：", data);
+          // console.log("定位失败错误：", data);
           // self.city = data;
           // 调用ip定位
           self.getLngLatLocation();
         }
       });
     },
+    // ip定位
     getLngLatLocation() {
+      const self = this;
       AMap.plugin("AMap.CitySearch", function() {
         var citySearch = new AMap.CitySearch();
         citySearch.getLocalCity(function(status, result) {
           if (status === "complete" && result.info === "OK") {
             // 查询成功，result即为当前所在城市信息
             console.log("通过ip获取当前城市：", result);
+            self.city = result.city;
             //逆向地理编码
             AMap.plugin("AMap.Geocoder", function() {
               var geocoder = new AMap.Geocoder({
