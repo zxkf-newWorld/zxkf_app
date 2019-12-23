@@ -93,10 +93,11 @@ export default {
                 params:obj
             })//已经发送过去了数据
             .then(res=>{
-                console.log(res);
+                console.log(res); 
                 if(res.data.code == 1){
                     // 动态获取数据+并将图片信息放入
                     this.arrs = res.data.dataArray;
+                    console.log(this.arrs,'<<<<< this.arrs获取的数据 ');
                     for (let i = 0; i < this.arrs.length; i++) {
                         console.log("首页--猜你喜欢商品列表-"+i+"-加载成功");
                     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="text"   @keydown="searchHouse($event)" placeholder="请输入您要搜索的房源/合租/整租/找室友" class="myInput"  v-model="information">
+        <input type="text"   @keydown="searchHouse($event)" placeholder="请输入您要搜索的房源/合租/整租/找室友" class="myInput"  v-model="information" @focus="searchHouse($event)">
     </div>
 </template>
 <script>
@@ -13,6 +13,7 @@ export default {
     methods: {
         // 键盘按下事件
         searchHouse(event){
+            this.$router.push('/Search');
             if(event.keyCode==13){
                 if(this.information=="整租"){
                     this.$router.push("Zhengzu")
@@ -28,9 +29,10 @@ export default {
 </script>
 <style scoped>
     .myInput{
-        background-color:rgba(0,0,0,.3);
+        /* background-color:rgba(0,0,0,.3); */
         margin: 0 9%;
         border-radius: .4rem;
+        color: #fff;
         width: 82%;
         position: absolute;
         top: 4.1rem;
