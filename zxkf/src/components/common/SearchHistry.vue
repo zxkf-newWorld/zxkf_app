@@ -18,7 +18,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div>  
         <div class="hotSearch"></div>
     </div>
 </template>
