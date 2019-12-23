@@ -2,14 +2,15 @@
     <div class="search-history">
         <div class="searchHistory">
             <!-- 标题 -->
-            <div>
+            <div class="searchHis">
                 <div>历史搜索</div>
                 <div>
                     <!-- 删除标志 -->
+                    <span class="iconfont icon-shanchu"></span>
                 </div>
             </div>
             <!-- 搜索历史 -->
-            <ul>
+            <ul class="searchList">
                 <li>
                     <div>搜索图标</div>
                     <div>
@@ -19,6 +20,7 @@
                 </li>
             </ul>
         </div>  
+        <!-- 热搜 -->
         <div class="hotSearch"></div>
     </div>
 </template>
@@ -43,6 +45,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-
+<style scoped >
+    .search-history {
+        font-size: .28rem;
+    }
 </style>

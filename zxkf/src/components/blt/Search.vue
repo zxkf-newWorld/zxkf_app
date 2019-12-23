@@ -8,6 +8,8 @@
                 <span @click="search" v-show="isInput">搜索</span>
             </form>
         </div>
+        <!-- SearchHistory -->
+        <search-history></search-history>
         <div class="empty" v-show="!isInput">
             <div class="hotSearch">
                 <div class="hotSearchTitle">
@@ -35,6 +37,7 @@
     </div>
 </template>
 <script>
+import SearchHistory from '../common/SearchHistry'
 export default {
     data(){
         return{
@@ -47,6 +50,9 @@ export default {
             ],//保存搜索到的结果
             hotSearchList:["雁塔","长安","小寨"],
         }
+    },
+    components: {
+        SearchHistory,
     },
     methods: {
         clear(){
