@@ -5,6 +5,7 @@ import store from '../src/store'
 import qs from 'qs'
 // 引入axios
 import axios from "axios"
+import Bus from './bus.js'
 // 引入mint-ui
 import MintUI from 'mint-ui'
 import Vant from 'vant'
@@ -23,6 +24,7 @@ axios.defaults.withCredentials = true;
 Vue.prototype.axios = axios;
 // 将qs添加到Vue原型上
 Vue.prototype.qs = qs;
+Vue.prototype.$Bus = bus;
 
 // 地图的配置+引入
 import hljs from 'highlight.js'
@@ -39,6 +41,7 @@ Vue.directive('hljs', el => {
 import "../public/js/jquery-3.2.1.js"
 // 引入swiper
 import "../public/css/swiper.css"
+import bus from './bus.js'
 Vue.config.productionTip = false
 
 new Vue({

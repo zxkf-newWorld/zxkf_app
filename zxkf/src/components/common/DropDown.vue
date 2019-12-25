@@ -1,82 +1,87 @@
 <template>
     <div class="dropDown">
         <van-dropdown-menu active-color="#ee0a24">
-            <van-dropdown-item title="地铁" v-model="value1" :options="option1"/>
+            <van-dropdown-item title="地铁">
+                <van-tree-select
+                    :items = 'subwayItems'
+                    :active-id.sync = 'activeId'
+                    :main-active-index.sync = 'activeIndex'
+                >
+                </van-tree-select>
+                <clear></clear>
+            </van-dropdown-item>
             <van-dropdown-item title="区域">
                 <van-tree-select
                     :items = 'items'
                     :active-id.sync = 'activeId'
                     :main-active-index.sync = 'activeIndex'    
                 >
-
                 </van-tree-select>
+                <clear></clear>
             </van-dropdown-item>
             <van-dropdown-item title="租金" v-model="value3" :options="option3"/>
             <van-dropdown-item title="筛选" >
                 <template>
-                    <div class="type">
-                        <div class="title">类型</div>
-                        <div class="content">
-                            <div :class="titleColors" :selected="selected" @click="changeType(index,i)" v-for="(index,i) in typeContents" :key="index">{{index}}</div>
+                    <div class="choice">
+                        <div class="type">
+                            <div class="title">类型</div>
+                            <div class="content">
+                                <div :class="titleColors" :selected="selected" @click="changeType(index,i)" v-for="(index,i) in typeContents" :key="index">{{index}}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="house-type">
-                        <div class="title">户型</div>
-                        <div class="content">
-                            <div>1室</div>
-                            <div>2室</div>
-                            <div>3室</div>
-                            <div>4室</div>
+                        <div class="house-type">
+                            <div class="title">户型</div>
+                            <div class="content">
+                                <div>1室</div>
+                                <div>2室</div>
+                                <div>3室</div>
+                                <div>4室</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="service">
-                        <div class="title">服务保障</div>
-                        <div class="content">
-                            <div>免费带看</div>
-                            <div>费用透明</div>
-                            <div>全网低价</div>
-                            <div>平台认证</div>
-                            <div>品牌优选</div>
-                            <div>精品房型</div>
+                        <div class="service">
+                            <div class="title">服务保障</div>
+                            <div class="content">
+                                <div>免费带看</div>
+                                <div>费用透明</div>
+                                <div>全网低价</div>
+                                <div>平台认证</div>
+                                <div>品牌优选</div>
+                                <div>精品房型</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="activity">
-                        <div class="title">活动</div>
-                        <div class="content">
-                            <div>限时优惠</div>
+                        <div class="activity">
+                            <div class="title">活动</div>
+                            <div class="content">
+                                <div>限时优惠</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="feature">
-                        <div class="title">特色</div>
-                        <div class="content">
-                            <div>有视频</div>
-                            <div>租金月付</div>
-                            <div>近地铁</div>
-                            <div>独卫</div>
-                            <div>带阳台</div>
-                            <div>保洁服务</div>
-                            <div>维修服务</div>
-                            <div>可养宠物</div>
-                            <div>新上架</div>
-                            <div>电梯房</div>
-                            <div>独立厨房</div>
-                            <div>智能电表</div>
-                            <div>精装修</div>
-                            <div>复式</div>
-                            <div>别墅改造</div>
-                            <div>非一楼</div>
-                            <div>主卧</div>
-                            <div>朝南</div>
-                            <div>转租</div>
-                            <div>家电齐全</div>
+                        <div class="feature">
+                            <div class="title">特色</div>
+                            <div class="content">
+                                <div>有视频</div>
+                                <div>租金月付</div>
+                                <div>近地铁</div>
+                                <div>独卫</div>
+                                <div>带阳台</div>
+                                <div>保洁服务</div>
+                                <div>维修服务</div>
+                                <div>可养宠物</div>
+                                <div>新上架</div>
+                                <div>电梯房</div>
+                                <div>独立厨房</div>
+                                <div>智能电表</div>
+                                <div>精装修</div>
+                                <div>复式</div>
+                                <div>别墅改造</div>
+                                <div>非一楼</div>
+                                <div>主卧</div>
+                                <div>朝南</div>
+                                <div>转租</div>
+                                <div>家电齐全</div>
+                            </div>
                         </div>
-                    </div>
-                </template>
-                <template>
-                    <div class="clear">
-                        <div>清空</div>
-                        <div>
-                            <van-button type="danger">确定</van-button>
+                        <div class="clear">
+                            <clear></clear>
                         </div>
                     </div>
                 </template>
@@ -88,6 +93,7 @@
 </template>
 
 <script>
+import Clear from './Clear.vue'
 export default {
     name: 'dropDown',
     data() {
@@ -167,6 +173,87 @@ export default {
                 },
                 
             ],
+            subwayItems: [
+                { text: '1号线' , 
+                  children: [
+                      { text: '不限' , id: 1, disable: false},
+                      { text: '后卫寨' , id: 2, disable: false},
+                      { text: '三桥' , id: 3, disable: false},
+                      { text: '皂河' , id: 4, disable: false},
+                      { text: '枣园' , id: 5, disable: false},
+                      { text: '汉城路' , id: 6, disable: false},
+                      { text: '汉城路' , id: 7, disable: false},
+                      { text: '开远门' , id: 8, disable: false},
+                      { text: '劳动路' , id: 9, disable: false},
+                      { text: '玉祥门' , id: 10, disable: false},
+                      { text: '洒金桥' , id: 11, disable: false},
+                      { text: '北大街' , id: 12, disable: false},
+                      { text: '五路口' , id: 13, disable: false},
+                      { text: '朝阳门' , id: 14, disable: false},
+                      { text: '康复路' , id: 15, disable: false},
+                      { text: '通化门' , id: 16, disable: false},
+                      { text: '万寿路' , id: 17, disable: false},
+                      { text: '长乐坡' , id: 18, disable: false},
+                      { text: '浐河' , id: 19, disable: false},
+                      { text: '半坡' , id: 20, disable: false},
+                      { text: '纺织城' , id: 21, disable: false},
+                  ]
+                },
+                { text: '2号线' , 
+                  children: [
+                      { text: '不限' , id: 1, disable: false},
+                      { text: '韦曲南' , id: 2, disable: false},
+                      { text: '航天城' , id: 3, disable: false},
+                      { text: '凤栖原' , id: 4, disable: false},
+                      { text: '三爻' , id: 5, disable: false},
+                      { text: '会展中心' , id: 6, disable: false},
+                      { text: '纬一街' , id: 7, disable: false},
+                      { text: '小寨' , id: 8, disable: false},
+                      { text: '体育场' , id: 9, disable: false},
+                      { text: '南稍门' , id: 10, disable: false},
+                      { text: '永宁门' , id: 11, disable: false},
+                      { text: '钟楼' , id: 12, disable: false},
+                      { text: '北大街' , id: 13, disable: false},
+                      { text: '安远门' , id: 14, disable: false},
+                      { text: '龙首原' , id: 15, disable: false},
+                      { text: '大明宫西' , id: 16, disable: false},
+                      { text: '市图书馆' , id: 17, disable: false},
+                      { text: '凤城五路' , id: 18, disable: false},
+                      { text: '行政中心' , id: 19, disable: false},
+                      { text: '运动公园' , id: 20, disable: false},
+                      { text: '北苑' , id: 21, disable: false},
+                  ]
+                },
+                { text: '3号线' , 
+                  children: [
+                      { text: '不限' , id: 1, disable: false},
+                      { text: '保税区' , id: 2, disable: false},
+                      { text: '新筑' , id: 3, disable: false},
+                      { text: '双寨' , id: 4, disable: false},
+                      { text: '国际港务区' , id: 5, disable: false},
+                      { text: '香湖湾' , id: 6, disable: false},
+                      { text: '浐灞中心' , id: 7, disable: false},
+                      { text: '桃花源' , id: 8, disable: false},
+                      { text: '广泰门' , id: 9, disable: false},
+                      { text: '辛家庙' , id: 10, disable: false},
+                      { text: '石家桥' , id: 11, disable: false},
+                      { text: '胡家庙' , id: 12, disable: false},
+                      { text: '通化门' , id: 13, disable: false},
+                      { text: '长乐公园' , id: 14, disable: false},
+                      { text: '咸宁路' , id: 15, disable: false},
+                      { text: '延兴门' , id: 16, disable: false},
+                      { text: '青龙寺' , id: 17, disable: false},
+                      { text: '北池头' , id: 18, disable: false},
+                      { text: '大雁塔' , id: 19, disable: false},
+                      { text: '小寨' , id: 20, disable: false},
+                      { text: '吉祥村' , id: 21, disable: false},
+                      { text: '科技路' , id: 22, disable: false},
+                      { text: '延平门' , id: 23, disable: false},
+                      { text: '丈八北路' , id: 24, disable: false},
+                      { text: '鱼化寨' , id: 25, disable: false},
+                  ]
+                },
+            ],
             activeId: 1,
             activeIndex: 0,
 
@@ -192,20 +279,21 @@ export default {
                 { text: '4000-5000元', value:5},
                 { text: '5000元以上', value:6},
             ],
-            // option4: [
-            //     { text: '地铁', value:0},
-            //     { text: '地铁1号线', value:1},
-            //     { text: '地铁2号线', value:2},
-            //     { text: '地铁3号线', value:3},
-            // ],
             option4: [
                 { text: '综合排序', value:0},
                 { text: '价格从高到低', value:1},
                 { text: '价格从低到高', value:2},
                 { text: '距离当前位置最近', value:3},
                 { text: '距离公司最近', value:4},
-            ]
+            ],
+            /* 筛选内容选中，标题颜色 */
+            selectColor: {
+                'color-red': true,
+            }
         };
+    },
+    components: {
+        Clear,
     },
     created() {
 
@@ -227,12 +315,6 @@ export default {
                 this.typeSelected = !this.selected;
             }
             this.titleColors.titleColor = this.typeSelected;
-            // let divs = document.querySelectorAll('div.type > .content > div');
-            // console.log(divs[i]);
-            // console.log(divs[i].attributes);
-            // if (this.selected) {
-            //     this.titleColors.titleColor = this.;
-            // }
         },
     }
 }
@@ -274,27 +356,24 @@ export default {
         border: 1px solid #f0f0f0;
         border-radius: .1rem;
     }
+    .choice {
+        position: relative;
+        margin-bottom: 60px;
+    }
     .clear {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-content: center;
-        border-top: 1px solid #f0f0f0;
-        padding: .2rem .4rem;
-        line-height: 100%;
-    }
-    .clear > div:first-child {
-        color: #000;
-        font-weight: 700;
-        line-height: 32px;
-    }
-    .clear >>> .van-button {
-        height: 32px;
-        line-height: 32px;
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+        bottom: 118px;
+        left: 0;
+        background: #fff;
     }
     .titleColor {
         border-color: #f00!important;
         color: #f00;
     }
-
+    .color-red {
+        color: red;
+    }
+    
 </style>

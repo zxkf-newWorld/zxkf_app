@@ -60,10 +60,6 @@ export default {
         }
     },
     created() {
-        // document.getElementsByClassName('search')[0].style.height = this.pageHeight + 'px';
-        // document.getElementsByClassName('search')[0].style.background = '#fff';
-        // console.log(document.getElementsByClassName('search')[0].style.height,'<<<<<height');
-        // console.log(document.getElementsByClassName('search')[0].style.background,'<<<<<background');
     },
     mounted() {
     },

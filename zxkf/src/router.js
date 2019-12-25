@@ -28,6 +28,7 @@ import Mmap from './components/Mapbus.vue'
 import Search from './components/blt/Search.vue'
 import Dingwei from './components/Dingwei.vue'
 import SearchDetail from '../src/components/blt/SearchDetail.vue'
+import HouseSearDetails from '../src/components/common/HouseSearDetails.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +53,7 @@ export default new Router({
     { path: "/Living", component: Living },
     { path: "/Wishs", component: Wishs },
     { path: "/SearchDetail", component: SearchDetail },
+    { path: "/HouseSearDetails", component: HouseSearDetails },
 
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },
