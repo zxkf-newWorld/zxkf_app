@@ -1,9 +1,10 @@
 body{
     width: 100%;
+    height: 100%;
     font-family: Hiragino Sans GB,Helvetica,sans-serif;
     box-sizing: border-box;
     font-size: 14px;
-    background: #f0f0f0;
+    background: #fff;
 }
 /* 清除浮动 */
 .clearfix{

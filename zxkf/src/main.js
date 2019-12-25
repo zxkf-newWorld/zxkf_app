@@ -7,9 +7,12 @@ import qs from 'qs'
 import axios from "axios"
 // 引入mint-ui
 import MintUI from 'mint-ui'
+import Vant from 'vant'
+import 'vant/lib/index.css'
 //2.单独引入mini-ui组件库中样式文件
 import "mint-ui/lib/style.css"
 // 将MintUI 注册到Vue实例中
+Vue.use(Vant);
 Vue.use(MintUI);                         
 //配置axios基础
 axios.defaults.baseURL = "http://127.0.0.1:3000"

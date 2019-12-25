@@ -1,16 +1,19 @@
 <template>
-    <div>
-        <div class="searchTitle">
+    <div class="search">
+        <search-head></search-head>
+        <!-- <div class="searchTitle">
             <form action="">
                 <img @click="clear" v-show="isInput" src="../../../public/search/empty.png">
-                <input type="text" autocomplete="off" placeholder="请输入商圈、地铁、小区" v-model="kw" >
+                <input type="text" autocomplete="off" autofocus placeholder="你想住哪儿？" v-model="kw" >
                 <span @click="closeSearch" v-show="!isInput">取消</span>
                 <span @click="search" v-show="isInput">搜索</span>
             </form>
-        </div>
+        </div> -->
+        <!-- SearchTab -->
+        <search-tab></search-tab>
         <!-- SearchHistory -->
         <search-history></search-history>
-        <div class="empty" v-show="!isInput">
+        <!-- <div class="empty" v-show="!isInput">
             <div class="hotSearch">
                 <div class="hotSearchTitle">
                     热门搜索
@@ -21,7 +24,7 @@
                     </ul>    
                 </div>     
             </div>
-        </div>
+        </div> -->
         <div class="notEmpty" v-show="isInput">
             <ul>
                 <li v-for="(item,i) of result" :key="i">
@@ -37,8 +40,13 @@
     </div>
 </template>
 <script>
+import SearchHead from '../common/SearchHead'
 import SearchHistory from '../common/SearchHistry'
+import SearchTab from '../common/SearchTab'
+import mixin from '../common/mixin.js'
 export default {
+    name: 'search',
+    mixins: [ mixin ],
     data(){
         return{
             kw:"",//输入框的内容
@@ -51,8 +59,18 @@ export default {
             hotSearchList:["雁塔","长安","小寨"],
         }
     },
+    created() {
+        // document.getElementsByClassName('search')[0].style.height = this.pageHeight + 'px';
+        // document.getElementsByClassName('search')[0].style.background = '#fff';
+        // console.log(document.getElementsByClassName('search')[0].style.height,'<<<<<height');
+        // console.log(document.getElementsByClassName('search')[0].style.background,'<<<<<background');
+    },
+    mounted() {
+    },
     components: {
+        SearchHead,
         SearchHistory,
+        SearchTab,
     },
     methods: {
         clear(){
@@ -82,6 +100,9 @@ export default {
 }
 </script>
 <style scoped>
+    .search {
+        background-color: #fff!important;
+    }
     /***************************搜索头******************************/
     .searchTitle{
         font-size: .26rem;
@@ -103,7 +124,7 @@ export default {
         width: 5.4rem;
         height: .68rem;
         border: none;
-        border-radius: .05rem;
+        border-radius: .5rem;
         padding-left: .7rem;
         background-image: url(../../../public/search/search.png);
         background-position: .3rem;

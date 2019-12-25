@@ -27,6 +27,7 @@ import Service from './views/Service'
 import Mmap from './components/Mapbus.vue'
 import Search from './components/blt/Search.vue'
 import Dingwei from './components/Dingwei.vue'
+import SearchDetail from '../src/components/blt/SearchDetail.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +51,7 @@ export default new Router({
     { path: "/Service", component: Service },
     { path: "/Living", component: Living },
     { path: "/Wishs", component: Wishs },
+    { path: "/SearchDetail", component: SearchDetail },
 
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },

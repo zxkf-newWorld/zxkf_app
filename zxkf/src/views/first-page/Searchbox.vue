@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="text"   @keydown="searchHouse($event)" placeholder="请输入您要搜索的房源/合租/整租/找室友" class="myInput"  v-model="information" @focus="searchHouse($event)">
+        <input type="text"   @keydown="searchHouse($event)" placeholder="你想住哪儿？" class="myInput"  v-model="information" @focus="searchHouse($event)">
     </div>
 </template>
 <script>
