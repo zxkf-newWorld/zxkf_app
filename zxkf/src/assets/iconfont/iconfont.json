@@ -83,6 +83,13 @@
       "unicode_decimal": 59170
     },
     {
+      "icon_id": "7525614",
+      "name": "认证",
+      "font_class": "renzheng",
+      "unicode": "e79f",
+      "unicode_decimal": 59295
+    },
+    {
       "icon_id": "7549348",
       "name": "搜索",
       "font_class": "RectangleCopy",
@@ -102,6 +109,13 @@
       "font_class": "shanchu",
       "unicode": "e630",
       "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "8589777",
+      "name": "惠1",
+      "font_class": "hui",
+      "unicode": "e6cd",
+      "unicode_decimal": 59085
     },
     {
       "icon_id": "10809893",

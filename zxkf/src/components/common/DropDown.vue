@@ -26,58 +26,31 @@
                         <div class="type">
                             <div class="title">类型</div>
                             <div class="content">
-                                <div :class="titleColors" :selected="selected" @click="changeType(index,i)" v-for="(index,i) in typeContents" :key="index">{{index}}</div>
+                                <div :class="{'color-red': typeSelected.includes(i)}"  @click="singleSelect($event,typeSelected, typeContents ,ele,i)" v-for="(ele,i) in typeContents" :key="i">{{ele}}</div> 
                             </div>
                         </div>
                         <div class="house-type">
                             <div class="title">户型</div>
                             <div class="content">
-                                <div>1室</div>
-                                <div>2室</div>
-                                <div>3室</div>
-                                <div>4室</div>
+                                <div :class="{'color-red': houseTypeSelected.includes(i)}" @click="singleSelect($event,houseTypeSelected, houseTypeContents ,ele,i)" v-for="(ele,i) in houseTypeContents" :key="i">{{ele}}</div>
                             </div>
                         </div>
                         <div class="service">
                             <div class="title">服务保障</div>
                             <div class="content">
-                                <div>免费带看</div>
-                                <div>费用透明</div>
-                                <div>全网低价</div>
-                                <div>平台认证</div>
-                                <div>品牌优选</div>
-                                <div>精品房型</div>
+                                <div :class="{'color-red': serviceSelected.includes(i)}" v-for="(ele,i) in serviceContents" :key="i" @click="multipleSelect($event,serviceSelected,serviceContents,ele,i)">{{ele}}</div>
                             </div>
                         </div>
                         <div class="activity">
                             <div class="title">活动</div>
                             <div class="content">
-                                <div>限时优惠</div>
+                                <div :class="{'color-red': activitySelected.includes(i)}" v-for="(ele,i) in activityContents" :key="i" @click="singleSelect($event,activitySelected,activityContents,ele,i)">{{ele}}</div>
                             </div>
                         </div>
                         <div class="feature">
                             <div class="title">特色</div>
                             <div class="content">
-                                <div>有视频</div>
-                                <div>租金月付</div>
-                                <div>近地铁</div>
-                                <div>独卫</div>
-                                <div>带阳台</div>
-                                <div>保洁服务</div>
-                                <div>维修服务</div>
-                                <div>可养宠物</div>
-                                <div>新上架</div>
-                                <div>电梯房</div>
-                                <div>独立厨房</div>
-                                <div>智能电表</div>
-                                <div>精装修</div>
-                                <div>复式</div>
-                                <div>别墅改造</div>
-                                <div>非一楼</div>
-                                <div>主卧</div>
-                                <div>朝南</div>
-                                <div>转租</div>
-                                <div>家电齐全</div>
+                                <div :class="{'color-red': featuresSelected.includes(i)}" v-for="(ele,i) in featuresContents" :key="i" @click="multipleSelect($event,featuresSelected,featuresContents,ele,i)">{{ele}}</div>
                             </div>
                         </div>
                         <div class="clear">
@@ -93,19 +66,33 @@
 </template>
 
 <script>
+import mixin from './mixin.js'
 import Clear from './Clear.vue'
 export default {
     name: 'dropDown',
+    mixins: [ mixin ],
     data() {
         return {
             typeSelected: [],/* 类型（单选） */
             houseTypeSelected: [],/* 户型（单选） */
-            activitySelected: [],/* 户型（单选） */
-            serviceSelected: [],/* 户型（多选） */
-            featruesSelected: [],/* 户型（多选选） */
+            activitySelected: [],/* 特惠活动（单选） */
+            serviceSelected: [],/* 服务保障（多选） */
+            featuresSelected: [],/* 特色（多选） */
             selected: false,
             typeContents: [
                 '全部','单间','整套','公寓'
+            ],
+            houseTypeContents: [
+                '1室','2室','3室','3室+'
+            ],
+            serviceContents: [
+                '免费带看','费用透明','全网低价','平台认证','品牌优选','精品房型'
+            ],
+            activityContents: [ '限时优惠' ],
+            featuresContents: [
+                '有视频','租金月付','有视频','近地铁','带阳台','保洁服务','维修服务',
+                '可养宠物','新上架','电梯房','独立厨房','智能电表','精装修','复式',
+                '别墅改造','非一楼','主卧','朝南','转租','家电齐全'
             ],
 
             items: [
@@ -302,20 +289,55 @@ export default {
 
     },
     watch: {
-        selected () {
-
-        }
     },
     methods: {
-        /* 更改类型选中样式 */
-        changeType (index,i) {
-            this.selected = !this.selected;
-            console.log(index,i, '<<<<< index,i');
-            if (i === 0) {
-                this.typeSelected = !this.selected;
+        /* 
+         * 更改类型选中样式: 单选
+         * 提交选中状态
+         */
+       /*  changeType (event, ele, i) {
+            if (!this.typeSelected.includes(i)) {
+                if (this.typeSelected.length === 1) {
+                    let cancel = this.typeContents[this.typeSelected[0]];
+                    console.log(`取消了${cancel}`);
+                    this.typeSelected.length = 0;
+                } 
+                this.typeSelected.push(i);
+                console.log(`选中了${ele}`);
+                // 提交选中项目
+            } else {
+                for (const key in this.typeSelected) {
+                    if (this.typeSelected.hasOwnProperty(key)) {
+                        if ( this.typeSelected[key] === i)
+                        this.typeSelected.splice(key,1);
+                        console.log(`取消了${ele}`);
+                    }
+                }
             }
-            this.titleColors.titleColor = this.typeSelected;
-        },
+        }, */
+        /* 
+         * 更改户型选中样式: 单选
+         * 提交选中状态
+         */
+        /* changeHouseType (event, ele, i) {
+            if (!this.houseTypeSelected.includes(i)) {
+                if (this.houseTypeSelected.length === 1) {
+                    let cancel = this.houseTypeContents[this.houseTypeSelected[0]];
+                    console.log(`取消了${cancel}`);
+                    this.houseTypeSelected.length = 0;
+                }
+                this.houseTypeSelected.push(i);
+                console.log(`选中了${ele}`);
+            } else {
+                for (const key in this.houseTypeSelected) {
+                    if (this.houseTypeSelected.hasOwnProperty(key)) {
+                        this.houseTypeSelected.splice(key, 1);
+                        console.log(`取消了${ele}`);
+                    }
+                }
+
+            }
+        } */
     }
 }
 </script>
@@ -368,11 +390,8 @@ export default {
         left: 0;
         background: #fff;
     }
-    .titleColor {
-        border-color: #f00!important;
-        color: #f00;
-    }
     .color-red {
+        border-color: #f00!important;
         color: red;
     }
     
