@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="clear">
-                            <clear></clear>
+                            <clear :selected="allSelected"></clear>
                         </div>
                     </div>
                 </template>
@@ -288,7 +288,32 @@ export default {
     mounted() {
 
     },
-    watch: {
+    computed: {
+        allSelected () {
+            let result = [];
+            result.concat(this.typeContents[this.typeSelected[0]]);
+            return result;
+            // let result = [];
+            // return  result.concat(this.typeContents[this.typeSelected[0]])
+            //     .concat(this.houseTypeContents[this.houseTypeSelected[0]])
+            //     .concat(this.activityContents[this.activitySelected[0]])
+            //     .concat(this.serviceContents.filter((ele) => {
+            //         return this.serviceContents.includes(this.serviceSelected.forEach( (element) => {
+            //             return this.serviceContents[element]
+            //         } ));
+            //         // let res = this.serviceSelected.forEach(element => {
+            //         //     return this.serviceContents.includes(this.serviceContents[element])
+            //         // });
+            //         // Object.keys(this.serviceSelected).forEach(element => {
+            //         //     return this.serviceSelected.includes(elements);
+            //         // });
+            //     })
+            //     .concat(this.featuresContents.filter( () => {
+            //        return this.featuresContents.includes(this.featuresSelected.forEach( (element) => {
+            //             return this.featuresContents[element]
+            //         } ));
+            //     })
+        }
     },
     methods: {
         /* 
@@ -363,6 +388,8 @@ export default {
         margin-top: .2rem;
         text-align: left;
         margin-left: .4rem;
+        font-weight: 600;
+        color: #7c7777;
     }
     .content {
         margin: .1rem .4rem;

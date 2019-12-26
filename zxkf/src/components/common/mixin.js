@@ -30,6 +30,7 @@ export default  {
          *单选操作
          */
         singleSelect ($event, selected, contents, ele, i) {
+            console.log($event);
             if (!selected.includes(i)) {
                 if (selected.length === 1) {
                     let cancel = contents[selected[0]];

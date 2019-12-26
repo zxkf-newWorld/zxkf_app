@@ -3,7 +3,7 @@
         <div class="searchTitle">
             <form action="">
                 <img @click="clear" v-show="isInput" src="../../../public/search/empty.png">
-                <input type="text" autocomplete="off" autofocus placeholder="你想住哪儿？" v-model="kw" >
+                <input type="text" autocomplete="off" autofocus placeholder="请输入商圈、地铁、小区" v-model="kw" >
                 <span @click="closeSearch" v-show="!isInput">取消</span>
                 <span @click="search" v-show="isInput">搜索</span>
             </form>
@@ -74,7 +74,8 @@ export default {
     }
     .searchTitle span{
         font-size: .28rem;
+        word-spacing: .1rem;
         color: #fff;
-        margin-left: .1rem;
+        margin-left: .4rem;
     }
 </style>
