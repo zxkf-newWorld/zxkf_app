@@ -6,7 +6,7 @@
       @click="searchContent($event, i)"
       :class="{ selected: selected.includes(i) }"
     >
-      <svg class="icon" aria-hidden="true" v-if="i === 5">
+      <svg class="icon" aria-hidden="true" v-if="i === 1">
         <use xlink:href="#icon-renzheng"></use>
       </svg>
       <svg class="icon" aria-hidden="true" v-if="i === 0">
@@ -25,7 +25,7 @@ export default {
       clicked: false,
       // 选中样式
       selected: [],
-      items: ["限时优惠", "全网低价", "租金月付", "近地铁", "独卫", "平台认证"]
+      items: ["限时优惠", "平台认证", "全网低价", "租金月付", "近地铁", "独卫"]
     };
   },
   created() {},
@@ -84,7 +84,7 @@ export default {
   color: #000;
   flex: 0 0 23%;
   color: #9b9b9b;
-  background: #e8e8e8;
+  background: #f6f6f6;
   /* background: linear-gradient(to right bottom,#ffe6eb,#ff0000); */
   border-radius: 0.5rem;
 }
