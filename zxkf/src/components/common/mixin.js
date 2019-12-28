@@ -30,20 +30,19 @@ export default  {
          *单选操作
          */
         singleSelect ($event, selected, contents, ele, i) {
-            console.log($event);
             if (!selected.includes(i)) {
                 if (selected.length === 1) {
                     let cancel = contents[selected[0]];
-                    console.log(`取消了${cancel}`);
+                    // console.log(`取消了${cancel}`);
                     selected.length = 0;
                 }
                 selected.push(i);
-                console.log(`选中了${ele}`);
+                // console.log(`选中了${ele}`);
             } else {
                 for (const key in selected) {
                     if (selected.hasOwnProperty(key)) {
                         selected.splice(key, 1);
-                        console.log(`取消了${ele}`);
+                        // console.log(`取消了${ele}`);
                     }
                 }
 
@@ -55,7 +54,7 @@ export default  {
         multipleSelect ($event, selected, contents, ele, i) {
             if (!selected.includes(i)) {
                 selected.push(i);
-                console.log(`选中了${ele}`);
+                // console.log(`选中了${ele}`);
             } else {
                 for (const key in selected) {
                     if (selected.hasOwnProperty(key)) {
@@ -66,7 +65,14 @@ export default  {
                     }
                 }
             }
-        }
+        },
+        
+        /*
+         * handleSelect:处理地铁/区域的选中项目 
+         */
+        // handleSelect () {
+
+        // } 
     },
 
 }

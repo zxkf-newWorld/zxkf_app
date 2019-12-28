@@ -1,6 +1,6 @@
 <template>
     <div class="cleared">
-        <div>清空</div>
+        <div @click="clear">清空</div>
         <div>
             <van-button type="danger" @click="submitDetails(selected)">确定</van-button>
         </div>
@@ -10,7 +10,7 @@
 <script>
 export default {
     props: [
-        'selected',
+        'selected'
     ],
     data() {
         return {
@@ -32,15 +32,40 @@ export default {
              * 获取返回信息，将信息传递给信息显示页面
              * 跳转（信息显示页面）
              */
-            // console.log(this.typeSelected);
-            console.log(this.selected);
-            console.log(`selected,选中的所有信息：${this.selected}`);
+            console.log(selected);
+            let [select, toggle, type] = [...selected];
+            switch (type) {
+                case 'select':
+                    console.log('select,我是筛选组件');
+                    console.log(select,'<<<<< 选中的状态');
+                    toggle(type);
+                    break;
+                case 'subway':
+                    console.log('subway,我是地铁筛选组件');
+                    console.log(select,'<<<<< 选中的状态');
+                    toggle(type);
+                    break;
+                case 'area':
+                    console.log('area,我是区域筛选组件');
+                    console.log(select,'<<<<< 选中的状态');
+                    toggle(type);
+                    break;
+            
+                default:
+                    break;
+            }
             this.$toast('信息查询中...',2, success => {
                 console.log('查询成功');
             }),
             fail => {
                 console.log('查询失败');
             }
+           
+        },
+        // 清空所选状态
+        clear () {
+            // 触发清空事件
+            this.$Bus.$emit('clearStatus', this.selected[this.selected.length-1]);
         }
     }
 };
