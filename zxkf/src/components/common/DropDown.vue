@@ -1,7 +1,7 @@
 <template>
   <div class="dropDown">
     <van-dropdown-menu active-color="#ee0a24">
-      <van-dropdown-item title="地铁" ref="subway">
+      <van-dropdown-item title="地铁" ref="subway" @close="handleClose('subway')">
         <!-- active-id:右侧高亮选项id -->
         <!-- main-active-index:左侧高亮选项索引 -->
         <van-tree-select
@@ -18,7 +18,7 @@
         </van-tree-select>
         <clear :selected="[subwaySelec, toggle, 'subway']"></clear>
       </van-dropdown-item>
-      <van-dropdown-item title="区域" ref="area">
+      <van-dropdown-item title="区域" ref="area" @close="handleClose('area')">
         <van-tree-select
           :items="items"
           :active-id.sync="areaActiveId"
@@ -32,7 +32,7 @@
         <clear :selected="[areaSelec, toggle, 'area']"></clear>
       </van-dropdown-item>
       <van-dropdown-item title="租金" v-model="value3" :options="option3" @close="handleClose('rentPrice')" />
-      <van-dropdown-item title="筛选" ref="select">
+      <van-dropdown-item title="筛选" ref="select" @close="handleClose('select')">
         <template>
           <div class="choice">
             <div class="type">
