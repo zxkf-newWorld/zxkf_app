@@ -82,7 +82,7 @@ export default {
   margin: 0 0.1rem;
   line-height: 0.5rem;
   color: #000;
-  flex: 0 0 23%;
+  flex: 0 0 25%;
   color: #9b9b9b;
   background: #f6f6f6;
   /* background: linear-gradient(to right bottom,#ffe6eb,#ff0000); */

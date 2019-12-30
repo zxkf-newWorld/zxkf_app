@@ -1,7 +1,7 @@
 <template>
   <div class="dropDown">
     <van-dropdown-menu active-color="#ee0a24">
-      <van-dropdown-item title="地铁" ref="subway" @close="handleClose('subway')">
+      <van-dropdown-item title="地铁" ref="subway" @closed="handleClosed('subway')">
         <!-- active-id:右侧高亮选项id -->
         <!-- main-active-index:左侧高亮选项索引 -->
         <van-tree-select
@@ -18,7 +18,7 @@
         </van-tree-select>
         <clear :selected="[subwaySelec, toggle, 'subway']"></clear>
       </van-dropdown-item>
-      <van-dropdown-item title="区域" ref="area" @close="handleClose('area')">
+      <van-dropdown-item title="区域" ref="area"  @closed="handleClosed('area')">
         <van-tree-select
           :items="items"
           :active-id.sync="areaActiveId"
@@ -31,8 +31,8 @@
         </van-tree-select>
         <clear :selected="[areaSelec, toggle, 'area']"></clear>
       </van-dropdown-item>
-      <van-dropdown-item title="租金" v-model="value3" :options="option3" @close="handleClose('rentPrice')" />
-      <van-dropdown-item title="筛选" ref="select" @close="handleClose('select')">
+      <van-dropdown-item title="租金" v-model="value3" :options="option3" @close="handleClose('rentPrice')" @closed="handleClosed('rentPrice')"/>
+      <van-dropdown-item title="筛选" ref="select" @close="handleClose('select')" @closed="handleClosed('select')">
         <template>
           <div class="choice">
             <div class="type">
@@ -140,7 +140,7 @@
           </div>
         </template>
       </van-dropdown-item>
-      <van-dropdown-item title="排序" v-model="value4" :options="option4" @close="handleClose('sort')" />
+      <van-dropdown-item title="排序" v-model="value4" :options="option4" @close="handleClose('sort')" @closed="handleClosed('sort')"/>
       <!-- <van-dropdown-item v-model="value5" :options="option5"/> -->
     </van-dropdown-menu>
   </div>
@@ -337,9 +337,6 @@ export default {
       areaActiveId: 0,
       subwayActiveIndex: -1,
       areaActiveIndex: 0,
-      titleColors: {
-        titleColor: false
-      },
       value1: 0,
       value2: 0,
       value3: 0,
@@ -408,11 +405,7 @@ export default {
     subwaySelec() {
       let result = [];
       if (this.subwayActiveIndex === -1) {
-        let index = this.subwayActiveIndex + 1;
-        result.push(
-          this.subwayItems[index].text,
-          this.subwayItems[index].children[this.subwayActiveId].text
-        );
+        // 即未作出任何选择，不做任何操作
       } else {
         result.push(
           this.subwayItems[this.subwayActiveIndex].text,
@@ -499,7 +492,60 @@ export default {
 					default:
 						break;
 				}
-		}
+    },
+    // 处理下拉菜单关闭的样式
+    handleClosed (type) {
+      let res = false;
+      switch (type) {
+        case 'subway':/* 地铁 */
+          console.log(type + '已选择');
+          let element1 = document.querySelector('.dropDown > div > div:nth-child(1) > span > div');
+          if (this.subwaySelec.length >= 1) {
+            element1.style.color = '#f00';
+          } else {
+            element1.style.color = '#000';
+          }
+          break;
+        case 'area':/* 区域 */
+          console.log(type + '已选择');
+          console.log('默认选中区域的状态', this.areaSelec);
+          let element2 = document.querySelector('.dropDown > div > div:nth-child(2) > span > div');
+          element2.style.color = "#f00";
+          
+          break;
+        case 'rentPrice':/* 租金 */
+          console.log(type + '已选择');
+          /* 只要关闭选项框，样式变添加：红色字体 */
+          let element3 = document.querySelector('.dropDown > div > div:nth-child(3) > span > div');
+          element3.style.color = '#f00';
+          
+          break;
+        case 'select':/* 筛选 */
+          console.log(type + '已选择');
+          if (this.allSelected) {
+            this.allSelected.forEach(element => {
+              if ( !(element === 'undefined' || element === '') ) {
+                res = true;
+              }
+            });
+          } else {
+            res = false;
+          }
+          let element4 = document.querySelector('.dropDown > div > div:nth-child(4) > span > div');
+          res ? element4.style.color = '#f00' : element4.style.color = "#000";
+          // res ? console.log('未作出任何选择') : console.log('已经作出了选择');
+          break;
+        case 'sort':/* 排序 */
+          console.log(type + '已选择');
+          /* 只要关闭选项框，样式变添加：红色字体 */
+          let element5 = document.querySelector('.dropDown > div > div:nth-child(5) > span > div');
+          element5.style.color = '#f00';
+          break;
+      
+        default:
+          break;
+      }
+    },
     /*
      * 更改类型选中样式: 单选
      * 提交选中状态
@@ -558,9 +604,6 @@ export default {
 .dropDown >>> .van-dropdown-item__content {
   position: relative;
 }
-.dropDown >>> .van-dropdown-menu__title {
-  /* color: #f00!important; */
-}
 .dropDown >>> .van-sidebar-item {
   border: none !important;
 }
@@ -605,4 +648,5 @@ export default {
   border-color: #f00 !important;
   color: red;
 }
+
 </style>
