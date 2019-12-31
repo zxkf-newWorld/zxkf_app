@@ -593,7 +593,7 @@ export default {
 
             }
         } */
-  }
+  },
 };
 </script>
 

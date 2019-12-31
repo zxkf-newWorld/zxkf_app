@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <router-view />
+    <!-- 使用keep-alive进行组件的缓存 -->
+    <keep-alive include="keepAlive">
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 <script>
@@ -8,6 +11,11 @@ export default {
   data() {
     return {
     };
+  },
+  computed: {
+    keepAlive () {
+      return this.$store.getters.catch_components;
+    }
   }
 };
 </script>

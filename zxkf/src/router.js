@@ -29,6 +29,8 @@ import Search from './components/blt/Search.vue'
 import Dingwei from './components/Dingwei.vue'
 import SearchDetail from '../src/components/blt/SearchDetail.vue'
 import HouseSearDetails from '../src/components/common/HouseSearDetails.vue'
+
+import DropDown from '../src/components/common/DropDown.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +54,7 @@ export default new Router({
     { path: "/Service", component: Service },
     { path: "/Living", component: Living },
     { path: "/Wishs", component: Wishs },
+    { path: '/DropDown' ,component: DropDown },
     { path: "/SearchDetail", component: SearchDetail },
     { path: "/HouseSearDetails", component: HouseSearDetails },
 
@@ -62,5 +65,15 @@ export default new Router({
     { path: "/Mmap", component: Mmap },
     { path: "/Search", component: Search },
     { path: "/Dingwei", component: Dingwei },
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+  }
 })
