@@ -2,21 +2,21 @@
     <div class="search-history">
         <div class="searchHistory">
             <!-- 标题 -->
-            <div class="searchHis dis-flex">
+            <div class="searchHis dis-flex" v-if="show">
                 <div class="searchHis-title">历史搜索</div>
                 <div class="ml-4">
                     <!-- 删除标志 -->
-                    <span class="iconfont icon-shanchu"></span>
+                    <span class="iconfont icon-shanchu" @click="show = false"></span>
                 </div>
             </div>
             <!-- 搜索历史 -->
-            <ul class="searchList">
-                <li class=" dis-flex " v-for=" i in 7" @click="goDetails">
+            <ul class="searchList" v-if="show">
+                <li class=" dis-flex " v-for=" (ele,i) in searchList" :key="i" @click="goDetails">
                     <div>
                         <span class="iconfont icon-clock"></span>
                     </div>
                     <div class="searchRes">
-                        <p>长安</p>
+                        <p>{{ele}}</p>
                         <p>品牌公寓-全部户型</p>
                     </div>
                 </li>
@@ -26,7 +26,7 @@
         <div class="hotSearch">
             <div class="hot-title">热门搜索</div>
             <div class="hot-content">
-                <div v-for="i in 12">雁塔{{i}}</div>
+                <div @click="searchFor($event)" v-for="i in 12" :key="i"> 雁塔{{i}}</div>
             </div>
         </div>
     </div>
@@ -37,7 +37,8 @@ export default {
     name: 'searchHistory',
     data() {
         return {
-
+            show: true,
+            searchList: [],
         };
     },
     created() {
@@ -46,9 +47,25 @@ export default {
     mounted() {
 
     },
+    watch: {
+        show () {
+            return this.searchList !== [] ? true : false
+        }
+    },
     methods: {
         goDetails () {
             this.$router.push('/SearchDetail');
+        },
+        searchFor (event) {
+            // 跳转详情页面
+            
+            if (this.searchList.length !== 7) {
+                this.searchList.push(event.target.innerText);
+            } else {
+                this.searchList.pop();
+                this.searchList.unshift(event.target.innerText);
+            }
+            console.log(this.searchList, '<<<<< this.searchList');
         }
     }
 };

@@ -41,14 +41,6 @@ export default {
     methods: {
 
     },
-    beforeRouteLeave (to, from, next) {
-    if (to.path === '/Detail') {/* 去往详情页，需要缓存组件 */
-      this.$store.get_component.commit('GET_CATCH_COMPONENT', ['Detail']);
-    } else {
-      this.$store.get_component.commit('GET_CATCH_COMPONENT', []);
-    }
-    next();
-  }
 };
 </script>
 
