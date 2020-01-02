@@ -13,6 +13,13 @@
       "unicode_decimal": 58950
     },
     {
+      "icon_id": "637790",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
       "icon_id": "691179",
       "name": "地理位置",
       "font_class": "diliweizhi",
@@ -32,6 +39,13 @@
       "font_class": "dianhua",
       "unicode": "e63b",
       "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "1272139",
+      "name": "电话",
+      "font_class": "dianhua1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
     },
     {
       "icon_id": "1301364",
