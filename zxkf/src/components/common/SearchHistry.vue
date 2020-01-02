@@ -6,7 +6,7 @@
                 <div class="searchHis-title">历史搜索</div>
                 <div class="ml-4">
                     <!-- 删除标志 -->
-                    <span class="iconfont icon-shanchu" @click="show = false"></span>
+                    <span class="iconfont icon-shanchu" @click="closeHistory"></span>
                 </div>
             </div>
             <!-- 搜索历史 -->
@@ -34,10 +34,10 @@
 
 <script>
 export default {
-    name: 'searchHistory',
+    name: 'SearchHistry',
     data() {
         return {
-            show: true,
+            show: false,
             searchList: [],
         };
     },
@@ -45,11 +45,21 @@ export default {
 
     },
     mounted() {
-
+        this.$Bus.$on('search-list', ref => {
+            console.log(ref, '<<<<< searchHead send');
+            /* 可以加入判断条件，判断是否符合搜索条件 */
+            if (this.searchList.length < 7) {
+                this.searchList.push(ref);
+            } else {
+                this.searchList.pop();
+                this.searchList.unshift(ref);
+            }
+        });
     },
     watch: {
-        show () {
-            return this.searchList !== [] ? true : false
+        searchList () {
+            this.searchList.length === 0 ? this.show = false : this.show = true;
+            // this.$emit('search-list', this.searchList);
         }
     },
     methods: {
@@ -58,14 +68,28 @@ export default {
         },
         searchFor (event) {
             // 跳转详情页面
-            
-            if (this.searchList.length !== 7) {
+            if (this.searchList.length < 7) {
                 this.searchList.push(event.target.innerText);
             } else {
                 this.searchList.pop();
                 this.searchList.unshift(event.target.innerText);
             }
             console.log(this.searchList, '<<<<< this.searchList');
+            // this.$router.push('/SearchDetail');
+            
+        },
+        /* 关闭历史搜索记录 */
+        closeHistory () {
+            this.$dialog.confirm({
+                title: '删除搜索历史',
+                message: '确认删除搜索历史'
+            }).then( () => {
+                this.show = false;
+                this.searchList = [];
+                console.log('删除搜索历史记录');
+            }).catch( () => {
+                console.log('未删除搜索历史记录');
+            });
         }
     }
 };
