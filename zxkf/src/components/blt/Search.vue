@@ -1,31 +1,11 @@
 <template>
     <div class="search">
         <search-head></search-head>
-        <!-- <div class="searchTitle">
-            <form action="">
-                <img @click="clear" v-show="isInput" src="../../../public/search/empty.png">
-                <input type="text" autocomplete="off" autofocus placeholder="你想住哪儿？" v-model="kw" >
-                <span @click="closeSearch" v-show="!isInput">取消</span>
-                <span @click="search" v-show="isInput">搜索</span>
-            </form>
-        </div> -->
         <!-- SearchTab -->
         <search-tab></search-tab>
         <!-- SearchHistory -->
         <search-history></search-history>
-        <!-- <div class="empty" v-show="!isInput">
-            <div class="hotSearch">
-                <div class="hotSearchTitle">
-                    热门搜索
-                </div>
-                <div class="hotSearchList">
-                    <ul>
-                        <li @click="searchItem" v-for="(item,i) of hotSearchList" :key="i">{{item}}</li>
-                    </ul>    
-                </div>     
-            </div>
-        </div> -->
-        <div class="notEmpty" v-show="isInput">
+        <!-- <div class="notEmpty" v-show="isInput">
             <ul>
                 <li v-for="(item,i) of result" :key="i">
                     <div class="smartTitle">
@@ -36,7 +16,7 @@
                 </li>
                 
             </ul>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -51,12 +31,12 @@ export default {
         return{
             kw:"",//输入框的内容
             isInput:false,//是否输入内容的变量
-            result:[
-                {kw:"小寨",details:"雁塔-商圈",houseCount:4},
-                {kw:"小寨",details:"2号线-地铁站",houseCount:12},
-                {kw:"小寨",details:"小寨 东路11号",houseCount:23},
-            ],//保存搜索到的结果
-            hotSearchList:["雁塔","长安","小寨"],
+            // result:[
+            //     {kw:"小寨",details:"雁塔-商圈",houseCount:4},
+            //     {kw:"小寨",details:"2号线-地铁站",houseCount:12},
+            //     {kw:"小寨",details:"小寨 东路11号",houseCount:23},
+            // ],//保存搜索到的结果
+            // hotSearchList:["雁塔","长安","小寨"],
         }
     },
     created() {

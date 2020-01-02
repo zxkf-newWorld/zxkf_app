@@ -29,6 +29,7 @@ import Search from './components/blt/Search.vue'
 import Dingwei from './components/Dingwei.vue'
 import SearchDetail from '../src/components/blt/SearchDetail.vue'
 import HouseSearDetails from '../src/components/common/HouseSearDetails.vue'
+import SearchHistry from '../src/components/common/SearchHistry.vue'
 
 import DropDown from '../src/components/common/DropDown.vue'
 Vue.use(Router)
@@ -55,15 +56,16 @@ export default new Router({
     { path: "/Living", component: Living },
     { path: "/Wishs", component: Wishs },
     { path: '/DropDown' ,component: DropDown },
-    { path: "/SearchDetail", component: SearchDetail },
+    { path: "/SearchDetail",  name: 'SearchDetail', component: SearchDetail },
     { path: "/HouseSearDetails", component: HouseSearDetails },
+    { path: '/SearchHistry', name: 'SearchHistry', component: SearchHistry, meta: { keepAlive: true}},
 
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },
     { path: "/Roommate", component: Roommate },
     { path: "/Roommatedetail/:rid", component: Roommatedetail },
     { path: "/Mmap", component: Mmap },
-    { path: "/Search", component: Search },
+    { path: "/Search", name: 'Search', component: Search },
     { path: "/Dingwei", component: Dingwei },
   ],
   scrollBehavior (to, from, savedPosition) {

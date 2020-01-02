@@ -85,6 +85,7 @@ export default {
   flex: 0 0 25%;
   color: #9b9b9b;
   background: #f6f6f6;
+  font-size: .3rem;
   /* background: linear-gradient(to right bottom,#ffe6eb,#ff0000); */
   border-radius: 0.5rem;
 }

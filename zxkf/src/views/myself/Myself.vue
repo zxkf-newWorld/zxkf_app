@@ -13,10 +13,10 @@
                     <img src="../../assets/profile.png" alt="资源不存在">
                 </div>
                 <div class="font-span">
-                    <span @click="toLogin" v-if="islogin">登录 / </span>
+                    <span @click="toLogin" v-if="islogin">登录 /</span>
                     <span v-if="!islogin">欢迎：{{uname}}  /  &nbsp;&nbsp;</span>
                     <span v-show="!islogin" @click="loginout">注销</span>
-                    <span @click="toReg" v-if="islogin"> 注册</span>
+                    <span @click="toReg" v-if="islogin"> &nbsp;注册</span>
                 </div>  
             </div>
         </div>
@@ -208,17 +208,18 @@ export default {
         box-shadow: 1px 1px 1px #ccc;
     }
     .onlinepay .icon{
+        width: 30%;
         display: flex;
         justify-content: space-around;
         align-items: center;
     }
     .onlinepay .icon >img{
-        width: .3rem;
+        width: .25rem;
         padding-left: 0.2rem;
     }
     .onlinepay .icon >div{
-        font-size: .35rem;
-        padding-left: .4rem;
+        font-size: .30rem;
+        padding-left: .2rem;
     }
     .onlinepay .right >img{
         margin-right: 0.2rem;
