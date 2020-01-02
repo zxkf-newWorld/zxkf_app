@@ -23,10 +23,10 @@
                                 </p>
                                 <p class="room-info">{{arrs[i].housesize}}M² | {{arrs[i].floor}}层 | {{arrs[i].houselayout}}</p>
                                 <p class="lables">
-                                    <span class="lable">{{arrs[i].onlyrestroom}}</span>
-                                    <span class="lable">{{arrs[i].newpublish}}</span>
-                                    <span class="lable">{{arrs[i].elevatorrome}}</span>
-                                    <span class="lable">{{arrs[i].notfirstfloor}}</span>
+                                    <span class="lable">{{arrs[i].onlyrestroom === 1 ? '独卫' : ''}}</span>
+                                    <span class="lable">{{arrs[i].newpublish === 1 ? '最新发布' : ''}}</span>
+                                    <span class="lable">{{arrs[i].elevatorrome === 1 ? '电梯' : ''}}</span>
+                                    <span class="lable">{{arrs[i].notfirstfloor === 1 ? '非一楼' : ''}}</span>
                                 </p>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <!-- 右侧： 价钱+优惠广告 -->
                             <div class="price-info">
                                 <div class="price">
-                                    <span class="number">￥{{arrs[i].price}}</span>/月
+                                    <span class="number">￥{{arrs[i].price }}</span>/月
                                 </div>
                                 <div class="shuidianmeiwang-text">
                                     <span>{{arrs[i].annoucement}}</span>
