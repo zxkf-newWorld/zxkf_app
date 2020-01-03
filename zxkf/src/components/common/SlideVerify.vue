@@ -1,6 +1,6 @@
 <template>
     <div>
-        <verify  @success="alert('success')" @error="alert('error')" :type="4"></verify>
+        <verify  @success="alert($event, 'success')" @error="alert($event, 'error')" :type="5" :showButton="false"></verify>
     </div>
 </template>
 
@@ -22,11 +22,19 @@ export default {
         Verify,
     },
     destoryed () {
-        this.$Bus.$off('slide');
+        // this.$Bus.$off('slide');
     },
     methods: {
-        alert (txt) {
-            console.log(txt,'<<<<< 验证滑动结果');
+        alert (event, txt) {
+            console.log(txt, '<<<<< 验证滑动结果');
+            if (txt === 'success') {
+                /* 刷新验证码 */
+                setTimeout(() => {
+                    event.refresh(); 
+                }, 1000); 
+            } else if (txt === 'error') {
+                return; /* 不再向后继续操作 */
+            }
             this.$Bus.$emit('slide', txt);
         }
     }

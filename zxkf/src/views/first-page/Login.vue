@@ -11,10 +11,10 @@
       <van-tabs v-model="activeName">
             <van-tab title="快速登录" name="a">
               <div class="inputStyle" v-if="activeName.split().includes('a')">
-                <!--用户名-->
-                <mt-field label="用户名" :placeholder="unameholder" class="myinput1" v-model="uname">
-                  <span class="verify" @click="getVerifyCode($event)">获取验证码</span>
-                  <van-popup v-model="slideShow">
+                <!--手机号-->
+                <mt-field label="手机号" :placeholder="unameholder" class="myinput1" v-model="uname">
+                  <span class="verify" @click="getVerifyCode($event, state)">获取验证码</span>
+                  <van-popup @click-overlay="popupClosed" v-model="slideShow">
                     <verify></verify>
                   </van-popup>
                 </mt-field>
@@ -27,8 +27,8 @@
             </van-tab>
             <van-tab title="账号登录" name="b">
               <div class="inputStyle" v-if="activeName.split().includes('b')">
-                <!--用户名-->
-                <mt-field label="用户名" :placeholder="unameholder" class="myinput1" v-model="uname"></mt-field>
+                <!--手机号-->
+                <mt-field label="手机号" :placeholder="unameholder" class="myinput1" v-model="uname"></mt-field>
                 <!--密码-->
                 <mt-field label="密码" :placeholder="upwdholder" class="myinput" type="password" v-model="upwd"></mt-field>
                 <div class="tips">
@@ -56,10 +56,11 @@ export default {
   data() {
     return {
       slideShow: false,
-      count: 59,
+      count: 60,
+      state: false, /* 点击状态：在一定时间范围内只允许点击一次  */
       verifyState: '',/* 验证码验证状态 */
       activeName: 'a',
-      unameholder: "请输入用户名",
+      unameholder: "请输入手机号",
       upwdholder: "请输入密码",
       uname: "",
       upwd: "",
@@ -67,27 +68,39 @@ export default {
     };
   },
   methods: {
+    /*点击遮罩层触发关闭 */
+    popupClosed () {
+      this.$Bus.$off('slide');
+    },
     /* 获取验证码 */
-    getVerifyCode (event) {
-      /* 滑块验证 */
-      this.slideShow = !this.slideShow;
-      this.$Bus.$on('slide', (ref) => {
-        console.log(ref,'<<<<< ref');
-        if (ref === 'success') {
-          this.slideShow = false;/* 关闭滑块验证 */
-        /* 发送请求 */
-          let timer = setInterval(() => {
-            if (this.count < 0) {
-              clearInterval(timer); 
-              event.target.innerText = `获取验证码`;
-            } else {
-              event.target.innerText = `重新发送${this.count}s`;
-              this.count = this.count-1;
-              this.slideShow = false;
-            }
-          }, 1000);
-        }
-      });
+    getVerifyCode (event, state) {
+      if (state === false ) {/* 允许点击获取验证码 */
+        /* 滑块验证 */
+        this.slideShow = true;/* 打开滑块验证 */
+        // 生成事件slide
+        this.$Bus.$on('slide', (ref) => {
+          console.log(ref, '<<<<< ref');
+          if (ref === 'success') {
+            this.slideShow = false;/* 关闭滑块验证 */
+            this.state = true; /* 禁止点击获取验证码 */
+            /* 发送请求 */
+            let timer = setInterval(() => {
+              if (this.count <= 0) {/* 时间超时 */
+                clearInterval(timer);
+                event.target.innerText = `获取验证码`;
+                this.state = false;/* 允许打开滑块验证 */
+                this.count = 60;
+              } else {
+                this.$Bus.$off('slide');/* 防止多次出发监听事件 */
+                event.target.innerText = `${this.count}s后重新发送`;
+                this.count = this.count-1;
+              }
+            }, 1000);
+          }
+        });
+      } else {
+
+      }
     },
     toHome(){
       // 跳转到首页
@@ -114,7 +127,11 @@ export default {
         return;
       }
       if(this.check.length<1){
-        this.$toast("请先同意");
+        this.$notify({
+          message: '请先同意协议',
+          color: '#fff',
+          background: '#f00'
+        });
         return;
       }
       //5:发送ajax请求 axios
@@ -250,8 +267,15 @@ export default {
   margin: auto;
 }
 .verify {
+  display: inline-block;
+  height: .5rem;
+  line-height: .5rem;
+  padding: 0 .1rem;
+  width: auto;
   font-size: .25rem;
   color: #e8323f;
+  background: rgba(0, 0, 0, .3);
+  border-radius: .5rem;
 }
 /* 输入框的背景色 */
 .inputStyle >>> .mint-field-core {
