@@ -3,7 +3,7 @@
     <!--xz/Login.vue-->
     <div class="tabLogin">
       <div @click="toHome">
-        <span class="iconfont icon-ico_leftarrow imgs"></span>
+        <img src="../../assets/newlogo2.png" class="imgs">
       </div>
       <img src="../../assets/newlogo2.png" class="imgs1">
     </div>
@@ -40,19 +40,13 @@
         </van-tabs>
     </div>
     <!--登录按钮-->
-    <div class="commitProtocol">
-      <mt-checklist style="margin-left:-25px"  v-model="check" :options="['登录即视为同意《服务协议》']"></mt-checklist>
-    </div>
+    <mt-checklist style="margin-left:-25px"  v-model="check" :options="['登录即视为同意《服务协议》']"></mt-checklist>
     <mt-button size="large" class="mbutton1" @click="login">登录 </mt-button>
   </div>
 </template>
 <script>
 /* eslint-disable */
-import Verify from '../../components/common/SlideVerify.vue'
 export default {
-  components: {
-      Verify,
-  },
   data() {
     return {
       slideShow: false,
@@ -104,7 +98,7 @@ export default {
     },
     toHome(){
       // 跳转到首页
-      this.$router.go(-1);
+      this.$router.push("Index");
     },
     reg(){
       this.$router.push("Reg");
@@ -205,13 +199,12 @@ export default {
   top: 20px;
   left: 10px;
   width: .8rem;
-  color: #fff;
 }
 .tabLogin > .imgs1 {
   position: absolute;
-  top: .2rem;
-  left: 2.5rem;
-  /* width: 150px; */
+  top: 17px;
+  left: 105px;
+  width: 150px;
 }
 .tabLogin > button {
   padding: 15px;
@@ -223,18 +216,11 @@ export default {
   text-align: center;
   height: 200px;
   margin-top: -50px;
-  background: linear-gradient(to right bottom, #e6a1a6, #e8323f);
-  /* background-color: #e8323f; */
+  background-color: red;
 }
 .mbutton1 {
-  width: 30%;
-  margin: auto;
-  margin-top: .5rem;
-  font-size: .35rem;
-  background: linear-gradient(to right bottom, #e6a1a6, #e8323f);
-  /* background-color: #e8323f; */
+  background-color: #e8323f;
   color: #fff;
-  border-radius: 1rem;
 }
 .call {
   position: absolute;

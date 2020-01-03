@@ -56,9 +56,6 @@ export default {
             }
         });
     },
-    destroyed () {
-        this.$Bus.$off('search-list');
-    },
     watch: {
         searchList () {
             this.searchList.length === 0 ? this.show = false : this.show = true;

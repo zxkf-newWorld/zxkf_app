@@ -14,7 +14,7 @@
                     </div>
                     <div>{{item.houseCount}}套</div>
                 </li>
-                
+
             </ul>
         </div> -->
     </div>
@@ -58,7 +58,7 @@ export default {
         },
         search(){
             //发送jaax请求
-            
+
         } ,
         searchItem(){
             this.$emit('update:');
@@ -163,5 +163,5 @@ export default {
         color: #a0a0a0;
         font-size: .26rem;
     }
-    
+
 </style>
