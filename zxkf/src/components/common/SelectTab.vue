@@ -85,7 +85,7 @@ export default {
   flex: 0 0 25%;
   color: #9b9b9b;
   background: #f6f6f6;
-  font-size: .3rem;
+  font-size: .3rem !important;
   /* background: linear-gradient(to right bottom,#ffe6eb,#ff0000); */
   border-radius: 0.5rem;
 }
@@ -93,5 +93,12 @@ export default {
   font-weight: 500;
   color: #fff !important;
   background: linear-gradient(to right bottom, #ece0e0, #f74949) !important;
+}
+.icon {
+  width: .3rem;
+  height: .3rem;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 </style>
