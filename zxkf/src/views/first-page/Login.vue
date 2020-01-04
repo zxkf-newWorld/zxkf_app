@@ -46,6 +46,7 @@
 </template>
 <script>
 /* eslint-disable */
+import Verify from '../../components/common/SlideVerify.vue'
 export default {
   data() {
     return {
@@ -60,6 +61,9 @@ export default {
       upwd: "",
       check:[]
     };
+  },
+  components: {
+    Verify,
   },
   methods: {
     /*点击遮罩层触发关闭 */
@@ -239,11 +243,14 @@ export default {
   margin-top: .4rem;
 }
 .inputStyle >>> .mint-cell-wrapper {
-  width: 80%;
+  width: 82%;
   border-radius: .5rem;
   margin: auto;
   margin-bottom: .2rem;
   background: #f8f8f8;
+}
+.inputStyle >>> .mint-cell-title {
+  width: 1.3rem;
 }
 .inputStyle .tips {
   display: flex;
