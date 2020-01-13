@@ -36,10 +36,10 @@ export default {
         width: 82%;
         position: absolute;
         top: 4.1rem;
-        left: -.22rem;
+        left: 1%;
         height: .7rem;
         text-align: center;
-        padding:0 10px; 
+        padding:0 10px;
         z-index: 2;
         border:0;
         outline: 0;

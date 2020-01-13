@@ -1,7 +1,9 @@
 <template>
     <div id="indexPage">
-        <carousel></carousel>
-        <searchbox></searchbox>
+        <div class="sticky-top">
+          <carousel></carousel>
+          <searchbox></searchbox>
+        </div>
         <functions></functions>
         <research></research>
         <yourlike class="mb-71"></yourlike>
@@ -9,14 +11,14 @@
             <mapp></mapp>
         </div>
         <footTab></footTab>
-        
-        
+
+
     </div>
 </template>
 <script>
 import Carousel from "./first-page/Carousel.vue"
 import Searchbox from "./first-page/Searchbox"
-import Functions from "./first-page/Functions.vue" 
+import Functions from "./first-page/Functions.vue"
 import Research from "./first-page/Research.vue"
 import Yourlike from "./first-page/Yourlike.vue"
 import Mapp from "../components/Mapbus.vue"
@@ -48,11 +50,11 @@ export default {
     .mb-71 {
         margin-bottom: 55px;
     }
-    .indexPage {
-        overflow-y: hidden;
+    .sticky-top {
+      position: -webkit-sticky;
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      overflow: hidden;
     }
-    .indexPage::-webkit-scrollbar {
-        display: none;
-    }
-    
 </style>

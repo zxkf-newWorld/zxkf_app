@@ -59,10 +59,10 @@
                                     <span>&nbsp;{{arrs[i].liverandom}}</span>
                                 </div>
                             </div>
-                        </div>   
+                        </div>
                     </div>
                 </li>
-              
+
             </ul>
         </div>
     </div>
@@ -93,7 +93,7 @@ export default {
                 params:obj
             })//已经发送过去了数据
             .then(res=>{
-                console.log(res); 
+                console.log(res);
                 if(res.data.code == 1){
                     // 动态获取数据+并将图片信息放入
                     this.arrs = res.data.dataArray;
@@ -129,9 +129,11 @@ export default {
     .good-title{
         height: 1.18rem;
         line-height: 1.18rem;
+        margin-top: -.2rem;
+        margin-bottom: -.5rem;
         padding: 0.3rem;
-        padding-top: 0;
-        padding-bottom: 0;
+        /* padding-top: 0; */
+        padding-bottom: -0.3rem;
         font-size: .38rem;
         color: #3a3b3c;
         font-weight: 700;
@@ -144,7 +146,7 @@ export default {
         margin: 0 .3rem;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-    }   
+    }
     .house-card .base-info{
         width: 100%;
         display: flex;
@@ -335,7 +337,7 @@ export default {
         text-align: right ;
    }
     .house-card .extra-info .price-info .price span{
-        
+
     }
     .house-card .extra-info .price-info .price .number{
         font-size: .32rem;
@@ -351,7 +353,7 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    
+
 
 
 
@@ -359,5 +361,5 @@ export default {
         list-style: none;
     }
     .good-item{}
-    
-</style> 
+
+</style>

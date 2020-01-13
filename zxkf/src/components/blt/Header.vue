@@ -4,7 +4,7 @@
             <img src="../../../public/zhengzu/home.png">
         </div>
         <div @click="cities" class="city-select">
-            <span>西安</span>    
+            <span>西安</span>
             <img src="../../../public/zhengzu/sanjiao.png">
         </div>
         <!-- 隐藏显示的城市选择列表 -->
@@ -15,8 +15,8 @@
         </div>
         <div class="my" @click="toMyself">
             <img src="../../../public/zhengzu/my.png">
-        </div> 
-    </div> 
+        </div>
+    </div>
 </template>
 <script>
 /* eslint-disable */
@@ -33,17 +33,17 @@ export default {
             if(e.keyCode==13){
                 console.log(this.msg)
                 // this.$router.push("/Roommate")
-                location.reload() 
+                location.reload()
                  this.msg="";
             }
-           
+
         },
         cities(){
             if(!this.cityShow){
                 this.cityShow=true;
             }else{
                 this.cityShow=false;
-            } 
+            }
         },
         toHome(){
             // 跳到首页
@@ -76,7 +76,7 @@ export default {
         box-sizing: border-box;
     }
     .input_msg{
-        padding: 5px;
+        /* padding: 5px; */
         border: 0;
     }
     .search-header>.home-icon img{/*首页图标样式*/
@@ -118,7 +118,7 @@ export default {
     .search-box>img{/*搜索框搜索图标样式*/
         width:0.3rem;
         height:0.3rem;
-        padding: 0 .2rem 0 .3rem;
+        /* padding: 0 .2rem 0 .3rem; */
         vertical-align: middle;
     }
     .search-header>.my{/*个人图标盒子样式*/

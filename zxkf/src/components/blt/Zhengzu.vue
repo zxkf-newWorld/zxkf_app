@@ -4,48 +4,50 @@
         <zselect v-show="zselectShow" :style="zselectStyle" ref="zselect" :zselectShow.sync=zselectShow :tabList[0].sync=tabList[0] :tabList[1].sync=tabList[1] :tabList[2].sync=tabList[2] :tabList[3].sync=tabList[3] :tabChangedList.sync=tabChangedList></zselect>
         <!-- 返回顶部ToTop组件 -->
         <totop></totop>
-        <!-- 页头 -->
-        <div class="search-header">
-            <div class="home-icon" @click="toHome">
-                <img src="../../../public/zhengzu/home.png">
-            </div>
-            <div @click="cities" class="city-select">
-                <span>{{cityChecked}}</span>    
-                <img src="../../../public/zhengzu/sanjiao.png">
-            </div>
-            <!-- 隐藏显示的城市选择列表 -->
-            <city :cityShow.sync=cityShow :cityChecked.sync=cityChecked v-model="cityShow"></city>
-            <div class="search-box" @click="toSearch">
-                <img src="../../../public/zhengzu/fangdajin.png">{{searchMSG}}
-            </div>
-            <div class="my" @click="toMyself">
-                <img src="../../../public/zhengzu/my.png">
-            </div> 
-        </div> 
-        <!-- 主体-条件设置 -->
-        <div class="tab-out">
-            <ul class="tab">
-                <li v-for="(item,i) in tabList" :key="i" :class="{active:tabChangedList.includes(i)}" data-tab=0 @click="toTab(i)"><span>{{item}}</span><span class="tab-icon"></span></li>
-            </ul>
-        </div>
-          <!-- 主体-条件搜索 -->
-        <div class="short-cut">
-            <ul>
-                <li @click="addShortcut(i)" :class="{active:shortcutChecked.includes(i)}" v-for="(item,i) of shortcutList" :key="i"><img v-if="item=='平台认证'" src="../../../public/zhengzu/trust.png"><span>{{item}}</span></li>
-            </ul>
+        <div class="search-choice">
+          <!-- 页头 -->
+          <div class="search-header">
+              <div class="home-icon" @click="toHome">
+                  <img src="../../../public/zhengzu/home.png">
+              </div>
+              <div @click="cities" class="city-select">
+                  <span>{{cityChecked}}</span>
+                  <img src="../../../public/zhengzu/sanjiao.png">
+              </div>
+              <!-- 隐藏显示的城市选择列表 -->
+              <city :cityShow.sync=cityShow :cityChecked.sync=cityChecked v-model="cityShow"></city>
+              <div class="search-box" @click="toSearch">
+                  <img src="../../../public/zhengzu/fangdajin.png">{{searchMSG}}
+              </div>
+              <div class="my" @click="toMyself">
+                  <img src="../../../public/zhengzu/my.png">
+              </div>
+          </div>
+          <!-- 主体-条件设置 -->
+          <div class="tab-out">
+              <ul class="tab">
+                  <li v-for="(item,i) in tabList" :key="i" :class="{active:tabChangedList.includes(i)}" data-tab=0 @click="toTab(i)"><span>{{item}}</span><span class="tab-icon"></span></li>
+              </ul>
+          </div>
+            <!-- 主体-条件搜索 -->
+          <div class="short-cut">
+              <ul>
+                  <li @click="addShortcut(i)" :class="{active:shortcutChecked.includes(i)}" v-for="(item,i) of shortcutList" :key="i"><img v-if="item=='平台认证'" src="../../../public/zhengzu/trust.png"><span>{{item}}</span></li>
+              </ul>
+          </div>
         </div>
         <!-- 排序按钮 -->
         <div class="sort" @click="show">
             <p>排序</p>
         </div>
         <!-- 显示的排序列表 -->
-        
+
         <mt-popup class="sort-container" v-model="sortShow" position="bottom">
             <ul class="sortBox">
                 <li @click="chooseSort(i)" :class="{active:i==sortIndex}" v-for="(item,i) of sortList" :key="i">{{item}}</li>
             </ul>
         </mt-popup>
-        
+
         <!-- 主体-房源信息 -->
         <div class="house-list" @click="toDetails">
             <div class="house-card">
@@ -399,7 +401,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </template>
 <script>
@@ -470,12 +472,12 @@ export default {
                 this.cityShow=true;
             }else{
                 this.cityShow=false;
-            } 
+            }
         },
         toTab(i){//跳转到条件选择页面
             this.$refs.zselect.tabIndex=i;
             this.zselectShow=true;
-            
+
         },
         chooseSort(i){
             this.sortIndex=i;
@@ -484,15 +486,15 @@ export default {
         toSearch(){
             this.$router.push('/Search');
         }
-       
+
     },
     components:{
         "city":City,
         "totop":ToTop,
         "zselect":ZhengzuSelect
     },
-    
-    
+
+
 }
 </script>
 <style scoped>
@@ -515,6 +517,13 @@ export default {
         width:100%;
         height:100%;
         display: block;
+    }
+    .search-choice {
+      position: sticky;
+      z-index: 5;
+      position: -webkit-sticky;/* safari 浏览器 */
+      top: 0;
+      overflow: hidden;
     }
     .city-select{/*城市选择框样式*/
         float:left;
@@ -613,7 +622,7 @@ export default {
         color:#a0a0a0;
         display: flex;
         justify-content: space-around;
-        align-items: center; 
+        align-items: center;
     }
     .short-cut>ul>li{
         padding:0 .28rem;
@@ -756,7 +765,7 @@ export default {
     }
     .agency-info{
         width:2.1rem;
-        height:0.92rem; 
+        height:0.92rem;
     }
     .agency-info>.header{
         display: flex;
@@ -858,5 +867,5 @@ export default {
         color: red;
     }
     /************************************城市列表***********************************/
-    
+
 </style>

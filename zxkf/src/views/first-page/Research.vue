@@ -78,7 +78,7 @@ export default {
 .study {
   width: 100%;
   background: #fff !important;
-  margin-top: 0.3rem;
+  margin-top: 1.5rem;
 }
 ul {
   padding: 0.3rem;

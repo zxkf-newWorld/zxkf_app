@@ -1,20 +1,22 @@
 <template>
     <div class="roommate">
-      <my-head></my-head>
+      <div class="sticky-top">
+        <my-head></my-head>
+      </div>
       <ul class="list_room">
         <li v-for="(item,index) in list" :key="index" @click="jumpDetail(item.rid)">
           <div class="room_left">
             <img :src="item.img" alt="图片加载中...">
           </div>
           <div class="room_right">
-            <h4>{{item.address }} 
+            <h4>{{item.address }}
               <div class="font_red">￥{{item.price}}</div>
             </h4>
             <div class="font_red d1">
               <div><span class="icon iconfont icon-fangjian"></span> {{item.type}}</div>
-              <div> 
-                  <span class="icon iconfont icon-nan" v-show="item.getset=='限男'?sexShow:''"></span> 
-                  <span class="icon iconfont icon-nv" v-show="item.getset=='限女'?sexShow:''"></span> 
+              <div>
+                  <span class="icon iconfont icon-nan" v-show="item.getset=='限男'?sexShow:''"></span>
+                  <span class="icon iconfont icon-nv" v-show="item.getset=='限女'?sexShow:''"></span>
                   {{item.getset}}
               </div>
               <div>{{item.date}}入住</div>
@@ -46,7 +48,7 @@ export default {
             // {id:"1",img:"./img/roomate/02.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月05日入住",ditie:"2号线金京路",newDate:"2019.09.12"},
             // {id:"2",img:"./img/roomate/01.jpg",title:"宝山区共富三村",price:"2200 ",type:"单间",set:"限女",date:"09月01日入住",ditie:"1号线共富新村",newDate:"2019.09.12"},
           ] ,
-          sexShow:true,      
+          sexShow:true,
         }
     },
     components:{
@@ -112,5 +114,12 @@ export default {
     }
     .font_blue{
      color: #87bcda;
+    }
+    .sticky-top {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      overflow: hidden;
     }
     </style>

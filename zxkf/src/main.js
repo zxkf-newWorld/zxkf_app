@@ -14,7 +14,7 @@ import 'vant/lib/index.css'
 import "mint-ui/lib/style.css"
 // 将MintUI 注册到Vue实例中
 Vue.use(Vant);
-Vue.use(MintUI);                         
+Vue.use(MintUI);
 //配置axios基础
 axios.defaults.baseURL = "http://127.0.0.1:3000"
 //配置axios，保存session信息，也可以表示在跨域请求是否使用session对象的凭证）
@@ -28,7 +28,7 @@ Vue.prototype.$Bus = bus;
 
 // 地图的配置+引入
 import hljs from 'highlight.js'
-import 'highlight.js/styles/railscasts.css' 
+import 'highlight.js/styles/railscasts.css'
 
 Vue.directive('hljs', el => {
   let blocks = el.querySelectorAll('pre')
