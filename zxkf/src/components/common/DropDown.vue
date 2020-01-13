@@ -16,7 +16,9 @@
           "
         >
         </van-tree-select>
-        <clear :selected="[subwaySelec, toggle, 'subway']"></clear>
+        <div class="sticky-bottom">
+          <clear :selected="[subwaySelec, toggle, 'subway']"></clear>
+        </div>
       </van-dropdown-item>
       <van-dropdown-item title="区域" ref="area"  @closed="handleClosed('area')">
         <van-tree-select
@@ -29,7 +31,9 @@
           "
         >
         </van-tree-select>
-        <clear :selected="[areaSelec, toggle, 'area']"></clear>
+        <div class="sticky-bottom">
+          <clear :selected="[areaSelec, toggle, 'area']"></clear>
+        </div>
       </van-dropdown-item>
       <van-dropdown-item title="租金" v-model="value3" :options="option3" @close="handleClose('rentPrice')" @closed="handleClosed('rentPrice')"/>
       <van-dropdown-item title="筛选" ref="select" @close="handleClose('select')" @closed="handleClosed('select')">
@@ -134,7 +138,7 @@
                 </div>
               </div>
             </div>
-            <div class="clear">
+            <div class="sticky-bottom">
               <clear :selected="[allSelected, toggle, 'select']"></clear>
             </div>
           </div>
@@ -488,7 +492,7 @@ export default {
 						console.log(this.value4, this.option4[this.value4].text);
 						// 发送请求查询房屋信息
 						break;
-				
+
 					default:
 						break;
 				}
@@ -511,14 +515,14 @@ export default {
           console.log('默认选中区域的状态', this.areaSelec);
           let element2 = document.querySelector('.dropDown > div > div:nth-child(2) > span > div');
           element2.style.color = "#f00";
-          
+
           break;
         case 'rentPrice':/* 租金 */
           console.log(type + '已选择');
           /* 只要关闭选项框，样式变添加：红色字体 */
           let element3 = document.querySelector('.dropDown > div > div:nth-child(3) > span > div');
           element3.style.color = '#f00';
-          
+
           break;
         case 'select':/* 筛选 */
           console.log(type + '已选择');
@@ -541,7 +545,7 @@ export default {
           let element5 = document.querySelector('.dropDown > div > div:nth-child(5) > span > div');
           element5.style.color = '#f00';
           break;
-      
+
         default:
           break;
       }
@@ -556,7 +560,7 @@ export default {
                     let cancel = this.typeContents[this.typeSelected[0]];
                     console.log(`取消了${cancel}`);
                     this.typeSelected.length = 0;
-                } 
+                }
                 this.typeSelected.push(i);
                 console.log(`选中了${ele}`);
                 // 提交选中项目
@@ -627,14 +631,14 @@ export default {
 .content div {
   text-align: center;
   flex: 0 0 20%;
-  padding: 0.1rem 0;
-  margin: 0.1rem 0.15rem;
+  padding: 2px 1px;
+  margin: 0.1rem 5px;
   border: 1px solid #f0f0f0;
   border-radius: 0.1rem;
 }
 .choice {
   position: relative;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 .clear {
   position: fixed;
@@ -648,5 +652,12 @@ export default {
   border-color: #f00 !important;
   color: red;
 }
-
+.sticky-bottom {
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 2;
+  bottom: 0;
+  overflow: hidden;
+  background: #fff;
+}
 </style>

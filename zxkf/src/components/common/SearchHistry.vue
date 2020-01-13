@@ -21,7 +21,7 @@
                     </div>
                 </li>
             </ul>
-        </div>  
+        </div>
         <!-- 热搜 -->
         <div class="hotSearch">
             <div class="hot-title">热门搜索</div>
@@ -76,7 +76,7 @@ export default {
             }
             console.log(this.searchList, '<<<<< this.searchList');
             // this.$router.push('/SearchDetail');
-            
+
         },
         /* 关闭历史搜索记录 */
         closeHistory () {
@@ -99,7 +99,7 @@ export default {
     .search-history {
         margin-top: .3rem;
         font-size: .28rem;
-        
+
     }
     .dis-flex {
         display: flex;
@@ -169,7 +169,7 @@ export default {
         box-sizing: border-box;
         margin-top: .2rem;
         flex: 0 0 22%;
-        margin: .2rem .1rem 0  .1rem;
+        margin: .2rem 2px 0  .1rem;
         height: .6rem;
         line-height: .6rem;
         border-radius: .1rem;
@@ -177,6 +177,6 @@ export default {
         font-size: .1rem;
     }
 
-    
-    
+
+
 </style>
