@@ -78,19 +78,37 @@
     <div class="xw-footer-wrap" @touchstart="toShowMaskInfo = false">
       <div class="xw-footer-content">
         <div class="xw-vmodel-wrap">
-          <textarea
+          <!-- <div
+            class="xw-content-textarea"
+            v-html="content"
+          >
+          {{content}}
+          </div> -->
+          <div
+           id="inputContent"
+           contenteditable="true"
+           class="input-style"
+           v-html="content"
+           @input="handleContent($event.target.innerHTML)"
+          >
+            {{content}}
+          </div>
+          <!-- <textarea
+            autofocus
+            rows="6"
+            cols="20"
+            v-html="content"
+            v-model="content"
             class="xw-content-textarea"
             placeholder="请输入您的问题"
-            v-model="content"
             @focus="onFocusText"
-          ></textarea>
+          >图片</textarea> -->
         </div>
         <div class="xw-chat-tool">
           <div class="xw-chat-tool-item">
               <a
                 href="javascript:void(0)"
                 class="xw-send-btn-text"
-                v-if="content.trim().length"
                 @click="sendMsg"
                 >发送</a
               >
@@ -150,7 +168,7 @@
                   <img
                     :src="item.file"
                     :data="item.code"
-                    v-on:click="content += item.code"
+                    v-on:click="getContent(`<img src='${item.file}'/>`)"
                   />
                 </li>
               </mt-swipe-item>
@@ -221,7 +239,7 @@ export default {
         "正在查询",
         "gone with the wind"
       ],
-      content: "",
+      content: '',
       /* 聊天记录 */
       records: [
         {
@@ -262,8 +280,14 @@ export default {
   },
   created() {
     this._loadEmojiData();/* 预加载表情数据 */
+
   },
   methods: {
+    handleContent (text) {
+      console.log(text,'<<<<< text');
+      // console.log(this.content);
+      // this.content = this.content + text;
+    },
     showInfo() {
       this.toShowMaskInfo = true;
     },
@@ -277,8 +301,12 @@ export default {
     showEvaluateFuc() {
       this.showScore = !this.showScore;
     },
+    getContent(motion) {
+      this.content = document.getElementById('inputContent').innerHTML + motion;
+    },
     sendMsg() {
-      var content = this.content.trim();
+      // var content = this.content.trim();
+      var content = inputContent.innerHTML;
       this.records.push({
         time: new Date().toLocaleTimeString(),
         content: content,

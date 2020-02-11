@@ -5,7 +5,7 @@ import store from '../src/store'
 import qs from 'qs'
 // 引入axios
 import axios from "axios"
-import Bus from './bus.js'
+// import Bus from './bus.js'
 // 引入mint-ui
 import MintUI from 'mint-ui'
 import Vant from 'vant'
@@ -16,6 +16,8 @@ import "mint-ui/lib/style.css"
 Vue.use(Vant);
 Vue.use(MintUI);
 //配置axios基础
+
+// 打包替换地址 http://youthhouse.applinzi.com
 axios.defaults.baseURL = "http://127.0.0.1:3000"
 //配置axios，保存session信息，也可以表示在跨域请求是否使用session对象的凭证）
 axios.defaults.withCredentials = true;

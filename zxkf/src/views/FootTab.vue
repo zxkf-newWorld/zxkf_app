@@ -43,10 +43,10 @@ export default {
   },
   watch: {
     //   选项卡选中，跳转到对应的路由（页面）
-    selected(old, newValue) {
+    selected(newValue, old) {
         console.log(old,'<<<<< old');
         console.log(newValue,'<<<<< newValue');
-        this.selected = old;
+        this.selected = newValue;
         switch (this.selected) {
             case '首页':
                 this.$store.commit('FOOTTAB_CHANGE', '首页');
@@ -59,7 +59,7 @@ export default {
             case '交流':
                 this.$store.commit('FOOTTAB_CHANGE', '交流');
                 this.$router.push("/Service");
-                
+
                 break;
             case '生活':
                 this.$store.commit('FOOTTAB_CHANGE', '生活');
@@ -69,11 +69,11 @@ export default {
                 this.$store.commit('FOOTTAB_CHANGE', '我的');
                 this.$router.push('/Myself');
                 break;
-        
+
             default:
                 break;
         }
-    } 
+    }
   }
 };
 </script>

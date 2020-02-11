@@ -3,7 +3,7 @@
     <p style="width:50px;margin-left:-5px;margin-top:0px;">{{city}}</p>
   </div>
 </template>
-<script >
+<script>
 /* eslint-disable */
 export default {
   data() {

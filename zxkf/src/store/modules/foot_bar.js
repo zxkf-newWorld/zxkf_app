@@ -8,7 +8,6 @@ const getters = {};
 const mutations = {
     [FOOTTAB_CHANGE](state, msg) {
         state.myselect = msg
-        
     },
 };
 const actions = {};
