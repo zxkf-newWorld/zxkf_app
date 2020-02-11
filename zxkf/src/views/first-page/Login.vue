@@ -195,7 +195,7 @@ export default {
           };
           this.loginStatus(userState); /* 提交登录成功状态 */
           console.log(this.$store.state.user_info, "user_info information");
-          this.$toast("登陆成功");
+          this.$toast(`欢迎用户：${this.uname}`);
           sessionStorage.setItem("uname", this.uname);
           this.$router.push("/");
         }
