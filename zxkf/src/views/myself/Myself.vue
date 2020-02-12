@@ -3,24 +3,27 @@
     <!-- 红色头顶部 -->
     <div class="redhead">
       <div class="redhead-header">
-        <div @click="goBack">
+        <div class="iconfont back" @click="goBack">&#xe670;</div>
+        <!-- <div @click="goBack" class="back">
           <img src="../../assets/left.png" alt="" />
-        </div>
+        </div> -->
         <p
           style="text-align:center;font-size:0.4rem;color:#fff; font-weight:bold"
         >
           我的
         </p>
+        <!-- 个人设置 -->
+        <div class="iconfont setting" @click="toSetting">&#xe722;</div>
       </div>
       <div class="redhead-button">
         <div class="profile">
           <img src="../../assets/profile.png" alt="资源不存在" />
         </div>
         <div class="font-span">
-          <span @click="toLogin" v-if="islogin">登录 /</span>
-          <span v-if="!islogin">欢迎：{{ uname }} / &nbsp;&nbsp;</span>
-          <span v-show="!islogin" @click="loginout">注销</span>
-          <span @click="toReg" v-if="islogin"> &nbsp;注册</span>
+          <!-- <span @click="toLogin" v-if="islogin">登录 /</span> -->
+          <span v-if="!islogin">欢迎：{{ uname }}</span>
+          <!-- <span v-show="!islogin" @click="loginout">注销</span>
+          <span @click="toReg" v-if="islogin"> &nbsp;注册</span> -->
         </div>
       </div>
     </div>
@@ -151,17 +154,23 @@ export default {
     ...mapMutations({
       logoutStatus: 'USER_LOGIN_LOGINOUT',
     }),
-    loginout() {
-      sessionStorage.removeItem("uname");
-      let userStatus = {
-        status: 'off',
-        user: '',
-        password: ''
-      };
-      this.logoutStatus(userStatus);
-      this.islogin = true;
-      console.log('用户账户注销', userStatus);
-    },
+    // loginout() {
+    //   sessionStorage.removeItem("uname");
+    //   let userStatus = {
+    //     status: 'off',
+    //     user: '',
+    //     password: ''
+    //   };
+    //   this.logoutStatus(userStatus);
+    //   this.islogin = true;
+    //   this.$toast({
+    //     message: '您已退出登录',
+    //     position: 'center',
+    //     duration: 2000
+    //   });
+    //   this.$router.push('/Login');
+    //   console.log('用户账户注销', userStatus);
+    // },
     toLogin() {
       // 跳转到登录页面
       this.$router.push("Login");
@@ -169,6 +178,9 @@ export default {
     toReg() {
       // 跳转都爱注册页面
       this.$router.push("Reg");
+    },
+    toSetting () {
+      this.$router.push('/AccountSetting');
     },
     goBack() {
       //调到前一页
@@ -198,16 +210,37 @@ div {
   /*下外边距 */
   margin-bottom: 0.2rem;
 }
-.redhead .redhead-header > div {
+.redhead .redhead-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+/* .redhead .redhead-header > div {
   position: absolute;
   left: 0.2rem;
   top: 0.3rem;
-}
-.redhead .redhead-header > div > img {
+} */
+/* .redhead .redhead-header > div > img {
   width: 60%;
+} */
+/* .redhead .redhead-header > p {
+  padding: 0.2rem;
+} */
+.redhead .redhead-header > div.back {
+  margin-top: 0.3rem;
+  flex: 1;
+  font-size: .4rem;
+  color: #fff;
 }
 .redhead .redhead-header > p {
-  padding: 0.2rem;
+  margin-top: 0.3rem;
+  flex: 5;
+}
+.redhead .redhead-header > div.setting {
+  margin-top: 0.3rem;
+  flex: 1;
+  color: #fff;
+  font-size: 0.44rem;
 }
 /* 头像+按钮跳转登录+注册 */
 .redhead .redhead-button {

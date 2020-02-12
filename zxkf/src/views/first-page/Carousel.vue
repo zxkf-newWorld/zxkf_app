@@ -1,6 +1,10 @@
 <template>
   <div>
-    <swiper :options="swiperOption" class="swiper-container swiper-pagination2" ref="mySwiper">
+    <swiper
+      :options="swiperOption"
+      class="swiper-container swiper-pagination2"
+      ref="mySwiper"
+    >
       <!-- 添加的图片 -->
       <swiper-slide>
         <img class="banner-img" src="../../../public/carou/timg.jpg" />
@@ -15,26 +19,26 @@
         <img class="banner-img" src="../../../public/carou/timg4.jpg" />
       </swiper-slide>
       <!-- Optional controls -->
-       <div class="swiper-scrollbar" slot="scrollbar"></div>
+      <div class="swiper-scrollbar" slot="scrollbar"></div>
       <!-- <div class="swiper-pagination" slot="pagination"></div>
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div> -->
     </swiper>
     <div class="login-city">
-      <!-- 右上登录按钮 -->
+      <!-- 右上定位按钮 -->
       <div class="top-left-img" @click="toCityPosition">
         <a href="javascript:;">
-          <img src="../../assets/position-dark.png" alt="" @click="relocate">
+          <img src="../../assets/position-dark.png" alt="" @click="relocate" />
           <span style="color:#fff">
             <!-- 引入定位组件 -->
             <dingwei></dingwei>
           </span>
         </a>
       </div>
-      <!-- 左上定位按钮 -->
+      <!-- 左上登录按钮 -->
       <div class="top-right-img" @click="toLogin">
         <a href="javascript:;">
-          <img src="../../assets/mine.png" alt="">
+          <img src="../../assets/mine.png" alt="" />
         </a>
       </div>
     </div>
@@ -42,10 +46,11 @@
 </template>
 <script>
 /* eslint-disable */
-require("swiper/dist/css/swiper.css");//引入swiper样式文件
+import { mapState } from 'vuex'
+require("swiper/dist/css/swiper.css"); //引入swiper样式文件
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
-import Dingwei from '../../components/Dingwei.vue'
+import Dingwei from "../../components/Dingwei.vue";
 export default {
   components: {
     swiper,
@@ -80,10 +85,10 @@ export default {
         },
         //循环
         loop: true,
-        direction:'horizontal',
+        direction: "horizontal",
         scrollbar: {
-          el: '.swiper-scrollbar',
-        },
+          el: ".swiper-scrollbar"
+        }
       }
     };
   },
@@ -91,22 +96,31 @@ export default {
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
-    }
+    },
+    ...mapState({
+      islogin: state => state.user_info.status
+    })
   },
   methods: {
-     // 刷新定位位置
-    relocate(){
+    // 刷新定位位置
+    relocate() {
       // window.locatidzon.reload();
       let NewPage = "_empty" + "?time=" + new Date().getTime() / 500;
       this.$router.push(NewPage);
       this.$router.go(-1);
     },
     // 跳转到登录
-    toLogin(){
-      this.$router.push('/Myself')
+    toLogin() {
+      if (this.islogin === "on") {
+        // 用户登录跳转到/Myself
+        this.$router.push("/Myself");
+      } else {
+        // 用户未登录跳转到/Login (登录、注册页面)
+        this.$router.push("/Login");
+      }
     },
     // 城市定位
-    toCityPosition(){}
+    toCityPosition() {}
   },
   mounted() {
     this.swiper.slideTo(0, 0, false);
@@ -114,31 +128,32 @@ export default {
 };
 </script>
 <style scoped>
-  div>img{
-    width: 100%;
-    height: 257px;
-  }
-  .login-city  img{
-    width: 25px;
-    height: 25px;
-    margin-top: 8px ;
-    margin-right: 4px;
-  }
-  .login-city .top-left-img,.login-city .top-right-img{
-    width: 40px;
-    height: 40px;
-  }
-  .login-city .top-left-img{
-    position: absolute;
-    z-index: 20;
-    top: 10px;
-    left: 10px;
-  }
-  .login-city .top-right-img{
-    position: absolute;
-    z-index: 20;
-    top: 10px;
-    right: 10px;
-    opacity: 0.9;
-  }
+div > img {
+  width: 100%;
+  height: 257px;
+}
+.login-city img {
+  width: 25px;
+  height: 25px;
+  margin-top: 8px;
+  margin-right: 4px;
+}
+.login-city .top-left-img,
+.login-city .top-right-img {
+  width: 40px;
+  height: 40px;
+}
+.login-city .top-left-img {
+  position: absolute;
+  z-index: 20;
+  top: 10px;
+  left: 10px;
+}
+.login-city .top-right-img {
+  position: absolute;
+  z-index: 20;
+  top: 10px;
+  right: 10px;
+  opacity: 0.9;
+}
 </style>

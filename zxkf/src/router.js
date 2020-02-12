@@ -31,6 +31,7 @@ import SearchDetail from '../src/components/blt/SearchDetail.vue'
 import HouseSearDetails from '../src/components/common/HouseSearDetails.vue'
 import SearchHistry from '../src/components/common/SearchHistry.vue'
 
+import AccountSetting from '../src/views/personal_setting/account_setting.vue'
 import DropDown from '../src/components/common/DropDown.vue'
 Vue.use(Router)
 
@@ -59,6 +60,7 @@ export default new Router({
     { path: "/SearchDetail",  name: 'SearchDetail', component: SearchDetail },
     { path: "/HouseSearDetails", component: HouseSearDetails },
     { path: '/SearchHistry', name: 'SearchHistry', component: SearchHistry, meta: { keepAlive: true}},
+    { path: '/AccountSetting', component: AccountSetting },
 
     { path: "/ZhengzuSelect", component: ZhengzuSelect },
     { path: "/Slider", component: Slider },

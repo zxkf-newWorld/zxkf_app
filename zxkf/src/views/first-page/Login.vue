@@ -15,6 +15,7 @@
             <mt-field
               label="手机号"
               :placeholder="unameholder"
+              :attr="{maxlength: 11}"
               class="myinput1"
               v-model="uname"
             >
@@ -28,7 +29,8 @@
             <!--密码-->
             <mt-field
               label="验证码"
-              :placeholder="upwdholder"
+              :placeholder="verifyholder"
+              :attr="{maxlength:8}"
               class="myinput"
               type="password"
               v-model="upwd"
@@ -45,6 +47,7 @@
             <mt-field
               label="手机号"
               :placeholder="unameholder"
+              :attr="{maxlength: 11}"
               class="myinput1"
               v-model="uname"
             ></mt-field>
@@ -52,6 +55,7 @@
             <mt-field
               label="密码"
               :placeholder="upwdholder"
+              :attr="{maxlength: 20}"
               class="myinput"
               type="password"
               v-model="upwd"
@@ -88,6 +92,7 @@ export default {
       activeName: "a",
       unameholder: "请输入手机号",
       upwdholder: "请输入密码",
+      verifyholder:'请输入验证码',
       uname: "",
       upwd: "",
       check: []
@@ -159,13 +164,25 @@ export default {
       // var reg = /^[a-z0-9_]{3,12}$/i;
       //  字母数字下划3~12
       //3:验证用户名 出错提示，并停止执行
+      // 手机正则：/^1[3456789]\d{9}$/g
+      let phone = /^1[3456789]\d{9}$/g;
+      // 密码正则 /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/至少包含数字和英文,6-20位
+      let password = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
       if (!u) {
         this.$toast("用户名不能为空");
+        return;
+      }
+      if (!phone.test(u)) {
+        this.$toast('电话号码格式有误！');
         return;
       }
       //4:验证密码   出错提示，并停止执行
       if (!p) {
         this.$toast("密码不能为空");
+        return;
+      }
+      if (!password.test(p)) {
+        this.$toast('至少包含数字和英文,6-20位');
         return;
       }
       if (this.check.length < 1) {

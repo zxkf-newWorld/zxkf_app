@@ -27,12 +27,17 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapState ,mapMutations } from 'vuex'
 export default {
    data() {
     return {
         selected: this.$store.state.foot_bar.myselect,
     }
+  },
+  computed: {
+    ...mapState({
+      islogin: state => state.user_info.status,
+    }),
   },
   created() {},
   mounted() {},
@@ -67,7 +72,13 @@ export default {
                 break;
             case '我的':
                 this.$store.commit('FOOTTAB_CHANGE', '我的');
-                this.$router.push('/Myself');
+                if (this.islogin === 'on') {
+                  // 用户登录跳转到/Myself
+                  this.$router.push('/Myself');
+                } else {
+                  // 用户未登录跳转到/Login (登录、注册页面)
+                  this.$router.push('/Login');
+                }
                 break;
 
             default:
