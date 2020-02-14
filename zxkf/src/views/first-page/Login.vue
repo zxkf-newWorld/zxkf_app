@@ -95,7 +95,8 @@ export default {
       verifyholder:'请输入验证码',
       uname: "",
       upwd: "",
-      check: []
+      check: [],
+      timer: null, /* 计时器 */
     };
   },
   computed: {
@@ -128,17 +129,17 @@ export default {
             this.slideShow = false; /* 关闭滑块验证 */
             this.state = true; /* 禁止点击获取验证码 */
             /* 发送请求 */
-            let timer = setInterval(() => {
+            this.timer = setInterval(() => {
               if (this.time <= 0) {
                 /* 时间超时 */
                 this.verifyTip = `获取验证码`;
-                clearInterval(timer);
+                clearInterval(this.timer);
                 this.state = false; /* 允许打开滑块验证 */
                 this.$store.state.clock_count.time = 60;
               } else if(this.time > 0 && this.time <= 59) {
                 this.$Bus.$off("slide"); /* 防止多次出发监听事件 */
                 // console.log(this.time, '<<<<< this.time');
-                this.verifyTip = `${this.time}s后重新发送`;
+                this.verifyTip = `(${this.time})s后重新发送`;
                 // 将计时进行状态管理
                 this.getTimeCount(1)
               } else if(this.time === 60) {
@@ -221,7 +222,10 @@ export default {
   },
   beforeDestroy() {
     // 清空计时器，
-    this.$store.state.clock_count.time = 0;
+    clearInterval(this.timer);
+    this.timer = null;
+    this.$store.state.clock_count.time = 60;
+    this.$Bus.$off('slide');
   },
 };
 </script>

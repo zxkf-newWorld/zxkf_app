@@ -31,15 +31,17 @@
       </div>
     </main>
     <footer class="setting-foot">
-      <mt-button type="danger" size="large" @click="loginout">退出登录</mt-button>
+      <mt-button type="danger" size="large" @click="loginout('accountSetting')">退出登录</mt-button>
     </footer>
   </div>
 </template>
 
 <script>
+import mixin from './personal_setting.js'
 import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'account_setting',
+  mixins: [mixin],
   data() {
     return {
 
@@ -56,44 +58,18 @@ export default {
   },
   mounted() {},
   methods: {
-    ...mapMutations({
-      logoutStatus: 'USER_LOGIN_LOGINOUT',
-    }),
     // 返回上一级
     goBack() {
       this.$router.go(-1);
     },
     toChangePhone() {
       // 跳转到修改手机页面
+      this.$router.push('ChangePhone');
     },
     toChangePwd () {},
       // 跳转到修改密码页面
     toChangeSetting () {
       // 跳转到修改隐私页面
-    },
-    // 退出登录
-    loginout() {
-      // 提示是否退出登录
-      this.$messagebox.confirm('确定退出登录?')
-        .then(action => {
-          // 确定退出
-          sessionStorage.removeItem("uname");
-          let userStatus = {
-            status: 'off',
-            user: '',
-            password: ''
-          };
-          this.logoutStatus(userStatus);
-          this.$toast({
-            message: '您已退出登录',
-            position: 'center',
-            duration: 2000
-          });
-          this.$router.push('/Login');
-          console.log('用户账户注销', userStatus);
-        }, cancel => {
-          console.log('取消退出登录操作');
-        });
     },
   }
 
@@ -136,8 +112,8 @@ export default {
     flex-direction: column;
     margin-top: .2rem;
     background: #fff;
-    color: #686868;
-    font-size: .4rem;
+    color: #8a8787;
+    font-size: .3rem;
     font-weight: bold;
   }
   .setting-body div {
