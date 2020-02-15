@@ -168,7 +168,8 @@ export default {
       // 手机正则：/^1[3456789]\d{9}$/g
       let phone = /^1[3456789]\d{9}$/g;
       // 密码正则 /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/至少包含数字和英文,6-20位
-      let password = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+      // let password = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+      let password = /^[0-9]{6,10}$/;
       if (!u) {
         this.$toast("用户名不能为空");
         return;
@@ -196,15 +197,15 @@ export default {
       }
       //5:发送ajax请求 axios
       var url = "login_reg/login";
-      var obj = { uname: u, upwd: p };
+      var obj = { phone: u, upwd: p };
       //params 库指定的参数
       this.axios.post(url, this.qs.stringify(obj)).then(res => {
         //获取服务器返回的结果，登陆成功或者失败
         // if(err) throw err;
         console.log(res);
-        if (res.data.code == -1) {
+        if (res.data.code === 0) {
           this.$toast("用户名或密码有误");
-        } else {
+        } else if(res.data.code === 1) {
           // 改变登录状态
           let userState = {
             status: "on",

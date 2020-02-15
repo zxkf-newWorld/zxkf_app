@@ -16,9 +16,8 @@ import "mint-ui/lib/style.css"
 Vue.use(Vant);
 Vue.use(MintUI);
 //配置axios基础
-
 // 打包替换地址 http://youthhouse.applinzi.com
-axios.defaults.baseURL = "http://127.0.0.1:3000"
+axios.defaults.baseURL = "http://127.0.0.1:3000" /* 访问数据库的基础地址，后续可以省略访问的路径的基地址 */
 //配置axios，保存session信息，也可以表示在跨域请求是否使用session对象的凭证）
 axios.defaults.withCredentials = true;
 // 将axios注册示例中

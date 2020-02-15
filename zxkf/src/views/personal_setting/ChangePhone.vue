@@ -60,6 +60,7 @@ export default {
       phone: '',
       verifyCode: '',
       state: false /* 点击状态：在一定时间范围内只允许点击一次  */,
+      timer: null, /* 计时器 */
     };
   },
   computed: {
@@ -79,8 +80,9 @@ export default {
   mounted() {},
   beforeDestroy() {
     // 清空计时器，
-    // this.$Bus.$off('slide');
-    this.$store.state.clock_count.time = 0;
+    clearInterval(this.timer);
+    this.timer = null;
+    this.$store.state.clock_count.time = 60;
   },
   methods: {
     queryPwd () {
@@ -122,13 +124,22 @@ export default {
       }
       /*
       * 向后端发送请求
-      * 响应成功： 提示保存成功，并退出到登录/注册页面
+      * 响应成功： 提示保存成功，并注册手机号，退出到登录页面
       * 响应失败：提示未保存成功，提示重新设置
       */
-     setTimeout((success) => {
-      //  退出登录
-      this.loginout('changePhone');
-     }, 1000);
+     let url = 'login_reg/reg';
+     let formdata = `phone=${pho}&upwd=${pwd}`; /* 数据主体：字符串类型 */
+     this.axios.post(url, /* this.qs.stringify(formdata) */ formdata).then((result) => {
+      console.log(result, '<<<<< response res');
+      if (result.data.code === 200) {
+        this.$toast('保存成功，请登录');
+        // 注册成功，并推出到登录页面
+        this.$router.push('Login');
+      }
+     }).catch((err) => {
+       console.log(err, '<<<<< response err');
+       this.$toast('未保存成功，请重新设置');
+     });;
     },
   },
 };

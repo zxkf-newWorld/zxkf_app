@@ -43,13 +43,13 @@ export default {
             let vcode = '123456';
             /* 将请求的验证码进行状态管理 */
             this.$store.state.user_info.verifyCode = vcode;
-            let timer = setInterval(() => {
+            this.timer = setInterval(() => {
               console.log('进入计时');
               console.log(this.time, '<<<<< this.time');
               if (this.time <= 0) {
                 /* 时间超时 */
                 this.verifyTip = `获取验证码`;
-                clearInterval(timer);
+                clearInterval(this.timer);
                 this.state = false; /* 允许打开滑块验证 */
                 this.$store.state.clock_count.time = 60;
               } else if(this.time > 0 && this.time <= 59) {
