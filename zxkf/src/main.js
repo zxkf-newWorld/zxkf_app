@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from '../src/store'
 import qs from 'qs'
+import local_storage from '../src/api/local_storage.js'
 // 引入axios
 import axios from "axios"
 // import Bus from './bus.js'
@@ -26,6 +27,7 @@ Vue.prototype.axios = axios;
 // 将qs添加到Vue原型上
 Vue.prototype.qs = qs;
 Vue.prototype.$Bus = bus;
+Vue.prototype.$local_storage = local_storage;
 
 // 地图的配置+引入
 import hljs from 'highlight.js'

@@ -110,7 +110,8 @@ export default {
   methods: {
     ...mapMutations({
       loginStatus: "USER_LOGIN_LOGINOUT" /* 提交用户登录、未登录状态 */,
-      getTimeCount: "TIME_GET" /* 验证计时 */
+      getTimeCount: "TIME_GET", /* 验证计时 */
+      handleFootTab: 'FOOTTAB_CHANGE', /* 切换底部导航栏 */
     }),
     /*点击遮罩层触发关闭 */
     popupClosed() {
@@ -151,7 +152,8 @@ export default {
       } else {/* 禁止在有效时间内再次点击获取验证码 */}
     },
     toHome() {
-      // 跳转到首页
+      // foot_tab切换到首页,跳转到首页
+      this.handleFootTab('首页');
       this.$router.push("Index");
     },
     reg() {
@@ -216,6 +218,7 @@ export default {
           console.log(this.$store.state.user_info, "user_info information");
           this.$toast(`欢迎用户：${this.uname}`);
           sessionStorage.setItem("uname", this.uname);
+          this.handleFootTab('首页');
           this.$router.push("/");
         }
       });

@@ -3,7 +3,8 @@
     <!-- 红色头顶部 -->
     <div class="redhead">
       <div class="redhead-header">
-        <div class="iconfont back" @click="goBack">&#xe670;</div>
+        <div class="back"> </div>
+        <!-- <div class="iconfont back" @click="goBack">&#xe670;</div> -->
         <!-- <div @click="goBack" class="back">
           <img src="../../assets/left.png" alt="" />
         </div> -->
@@ -182,10 +183,10 @@ export default {
     toSetting () {
       this.$router.push('/AccountSetting');
     },
-    goBack() {
-      //调到前一页
-      this.$router.go(-1);
-    }
+    // goBack() {
+    //   //调到前一页
+    //   this.$router.go(-1);
+    // }
   }
 };
 </script>

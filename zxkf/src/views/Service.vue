@@ -212,6 +212,7 @@
 import evaluate from "../components/evaluate.vue";
 import Toast from "../components/toast";
 import { getEmojiData } from "../api/api.js";
+import { mapMutations } from 'vuex'
 export default {
   components: {
     evaluate,
@@ -283,6 +284,9 @@ export default {
 
   },
   methods: {
+    ...mapMutations({
+      handleFootTab: 'FOOTTAB_CHANGE', /* foot_tab 切换 */
+    }),
     handleContent (text) {
       console.log(text,'<<<<< text');
       // console.log(this.content);
@@ -292,6 +296,8 @@ export default {
       this.toShowMaskInfo = true;
     },
     back() {
+      // 处理foot_tab到首页， 跳转到首页
+      this.handleFootTab('首页');
       this.$router.push("/");
     },
     //点击控制表情切换（显示和隐藏）

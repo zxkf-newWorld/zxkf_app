@@ -405,6 +405,7 @@
     </div>
 </template>
 <script>
+import { mapState, mapGetters } from 'vuex'
 import City from './City.vue'
 import ToTop from './ToTop.vue'
 import ZhengzuSelect from './ZhengzuSelect.vue'
@@ -440,10 +441,24 @@ export default {
             tabChangedList:[],
         }
     },
+    computed: {
+      ...mapGetters([
+        'status'
+      ]),
+    },
     methods:{
         toMyself(){
             // 跳转到我的页面
-            this.$router.push('Myself');
+            /*
+             * 获取用户是否登录
+             * 已登录： 跳转到我的页面： Myself
+             * 未登录：跳转到登录页面： Login
+             */
+            if (this.status === 'on') {
+              this.$router.push('Myself');
+            } else {
+              this.$router.push('Login');
+            }
         },
         toHome(){
             // 跳转到首页

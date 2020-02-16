@@ -46,7 +46,7 @@
 </template>
 <script>
 /* eslint-disable */
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 require("swiper/dist/css/swiper.css"); //引入swiper样式文件
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
@@ -102,6 +102,9 @@ export default {
     })
   },
   methods: {
+    ...mapMutations({
+      handleFootTab: 'FOOTTAB_CHANGE', /* foot_tab切换 */
+    }),
     // 刷新定位位置
     relocate() {
       // window.locatidzon.reload();
@@ -111,6 +114,8 @@ export default {
     },
     // 跳转到登录
     toLogin() {
+      // foot_tab切换到 我的
+      this.handleFootTab('我的');
       if (this.islogin === "on") {
         // 用户登录跳转到/Myself
         this.$router.push("/Myself");

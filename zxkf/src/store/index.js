@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 import get_componet from './modules/getComponent.js'
 import foot_bar from './modules/foot_bar.js'
 import user_info from './modules/user_info.js'
