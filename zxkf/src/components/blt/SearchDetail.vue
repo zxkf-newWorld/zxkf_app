@@ -9,6 +9,7 @@
         <div class="house-search-results">
             <house-search-details></house-search-details>
         </div>
+        <ToBottom></ToBottom>
     </div>
 </template>
 
@@ -45,6 +46,13 @@ export default {
 </script>
 
 <style scoped>
+    .SearchDetail {
+      overflow: hidden;
+      overflow-y: hidden;
+    }
+    .SearchDetail::-webkit-scrollbar {
+      display: none;
+    }
     .search-head {
         position: fixed;
         width: 100%;
@@ -58,6 +66,9 @@ export default {
         z-index: 1;
         top: 3.8rem;
         left: 0;
-        overflow-y: hidden;
+        overflow:hidden;
+    }
+    .house-search-results::-webkit-scrollbar {
+      display: none;
     }
 </style>

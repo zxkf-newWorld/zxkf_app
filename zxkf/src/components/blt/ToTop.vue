@@ -58,7 +58,7 @@ export default {
     }
 };
 </script>
- 
+
 <style scoped>
 .toTop{
     position: fixed;
@@ -77,7 +77,7 @@ export default {
 }
 .toTop>p{
     position: absolute;
-    bottom: -.26rem;
+    bottom: -.1rem;
     width: 100%;
     height: 50%;
     text-align: center;

@@ -21,7 +21,7 @@ import Details from './components/blt/Details.vue'
 import Header from './components/blt/Header.vue'
 import ZhengzuSelect from './components/blt/ZhengzuSelect.vue'
 import Slider from './components/blt/Slider.vue'
-import Living from './views/Living.vue'
+import Living from './views/living/Living.vue'
 import Wishs from './views/Wishs.vue'
 import Service from './views/Service'
 import Mmap from './components/Mapbus.vue'
@@ -34,6 +34,10 @@ import SearchHistry from '../src/components/common/SearchHistry.vue'
 import ChangePhone from '../src/views/personal_setting/ChangePhone.vue'
 import AccountSetting from '../src/views/personal_setting/AccountSetting.vue'
 import DropDown from '../src/components/common/DropDown.vue'
+
+
+// 测试
+
 Vue.use(Router)
 
 export default new Router({

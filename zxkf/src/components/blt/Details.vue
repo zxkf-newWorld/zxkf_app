@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="det" >
         <!-- 详情部分 -->
         <div class="details">
             <!--返回按钮-->
@@ -15,7 +15,7 @@
                 </mt-swipe>
                 <div class="swiper-count-text">{{index+1}}/{{details.imgs.length}}</div>
             </div>
-            
+
             <!--认证-->
             <div class="renzheng"><img src="../../../public/details/renzheng.png"></div>
             <!--房屋详情信息-->
@@ -32,7 +32,7 @@
                             <li>{{details.direction}}-{{details.roomType}}</li>
                             <li>{{details.area}}</li>
                             <li>{{details.liftNum}}</li>
-                        </ul>    
+                        </ul>
                     </li>
                     <li>
                         <ul class="house-label">
@@ -44,7 +44,7 @@
                 <div class="mapText">
                     <ul>
                         <li @click="changeMapText(i)" v-for="(item,i) of mapTextList" :key="i"><div :class="{active:i==mapTextIndex}"><img :src="i==mapTextIndex?mapTextUrlChecked[i]:mapTextUrl[i]">{{item.title}}</div></li>
-                        
+
                     </ul>
                     <div class="mapTextConter" v-show="0==mapTextIndex">{{details.address}}
                     </div>
@@ -78,7 +78,7 @@
                 <div>
                     <div class="tabSheshi">
                         <ul>
-                            <li><span @click="sheshiTab" :class="{active:sheshiIndex==0}" data-index=0>独用设施</span></li> 
+                            <li><span @click="sheshiTab" :class="{active:sheshiIndex==0}" data-index=0>独用设施</span></li>
                             <li><span @click="sheshiTab" :class="{active:sheshiIndex==1}" data-index=1>公用设施</span></li>
                         </ul>
                     </div>
@@ -92,15 +92,15 @@
                     <ul class="icon-list" v-show="sheshiIndex==1">
                         <li><img src="../../../public/details/6.png"></li>
                         <li><img src="../../../public/details/7.png"></li>
-                        
+
                     </ul>
                 </div>
             </div>
             <!-- 用户点评区域 -->
             <div class="argue">
-                <h2>— 用户点评 —</h2>  
+                <h2>— 用户点评 —</h2>
                 <div class="commentNull">
-                    <p>还没有评价，评一条占个沙发</p> 
+                    <p>还没有评价，评一条占个沙发</p>
                     <span class="btn">看房评价赢积分好礼</span>
                 </div>
             </div>
@@ -250,6 +250,10 @@ export default {
         background-color: #f0f0f0;
         padding-bottom: 1rem;
     }
+    .det {
+      overflow: hidden;
+    }
+    .det::-webkit-scrollbar {display:none !important}
     /***************************返回按钮***************************/
     .backBtn{
         z-index: 999;
@@ -302,7 +306,7 @@ export default {
         width:100%;
         height:4.16rem;
         position: relative;
-        z-index: 99;    
+        z-index: 99;
     }
     #swipe img{
         width:100%;
@@ -355,7 +359,7 @@ export default {
         bottom: .2rem;
         right: .2rem;
         font-size: .24rem;
-    }   
+    }
     .swiper-count-bg{
         width: .8rem;
         height: .8rem;
@@ -381,6 +385,7 @@ export default {
         width:100%;
         box-sizing: border-box;
         padding-bottom: .2rem;
+        overflow: hidden;
     }
     .details-info>ul{
         margin-bottom: 10px;
@@ -403,10 +408,9 @@ export default {
         padding: 0 4%;
         position: relative;
         overflow: hidden;
-        line-height: .4rem;
-        margin-top:-.3rem;
         margin-bottom:-.2rem;
-        text-align: left; 
+        text-align: left;
+        font-weight: bold;
     }
     .house-price>span{
         color: #FE0036;

@@ -10,6 +10,7 @@
         <div style="width:auto;height:auto;display:none">
             <mapp></mapp>
         </div>
+        <ToBottom></ToBottom>
         <footTab class="zindex"></footTab>
     </div>
 </template>
@@ -23,6 +24,7 @@ import Yourlike from "./first-page/Yourlike.vue"
 import Mapp from "../components/Mapbus.vue"
 import FootTab from './FootTab.vue'
 import SearchHead from '../components/common/SearchHead.vue'
+import ToBottom from './common/ToBottom'
 export default {
     name: 'indexPage',
     data(){
@@ -61,6 +63,7 @@ export default {
         Mapp,
         FootTab,
         SearchHead,
+        ToBottom,
     }
 }
 
@@ -69,6 +72,7 @@ export default {
     #indexPage {
       overflow-x: scroll;
       overflow-y: hidden !important;
+      margin-bottom: 2rem;
     }
     #indexPage::-webkit-scrollbar {
       display: none;

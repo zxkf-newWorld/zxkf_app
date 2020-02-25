@@ -9,14 +9,14 @@
       <div class="pwd">
         <span class="iconfont">&#xe61f;</span>
         <span>
-          <mt-field type="password" v-model="password" placeholder="密码"  :attr="{autofocus:true}"></mt-field>
+          <mt-field type="password" v-model="password" placeholder="密码"  :attr="{autofocus:true, maxlength: 10}"></mt-field>
         </span>
         <span class="right-cont"></span>
       </div>
       <div class="phone">
         <span class="iconfont">&#xe64b;</span>
         <span>
-          <mt-field type="phone" v-model="phone" placeholder="新手机号">
+          <mt-field type="phone" :attr="{maxlength:11}" v-model="phone" placeholder="新手机号">
           </mt-field>
         </span>
         <span class="verify-style" @click="getVerifyCode($event, state)">{{verifyTip}}</span>
@@ -30,7 +30,7 @@
       <div class="verify">
         <span class="iconfont">&#xe61f;</span>
         <span>
-          <mt-field  v-model="verifyCode" placeholder="验证码"></mt-field>
+          <mt-field  v-model="verifyCode" :attr="{maxlength: 8}" placeholder="验证码"></mt-field>
         </span>
         <span class="right-cont"></span>
       </div>
@@ -232,5 +232,9 @@ export default {
   }
   .setting-foot >>> .mint-button {
     /* border-radius: 0; */
+  }
+
+  .setting-body >>> .mint-cell-wrapper {
+    background-image: none;
   }
 </style>

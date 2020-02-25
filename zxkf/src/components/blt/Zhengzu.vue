@@ -10,10 +10,10 @@
               <div class="home-icon" @click="toHome">
                   <img src="../../../public/zhengzu/home.png">
               </div>
-              <div @click="cities" class="city-select">
+              <!-- <div @click="cities" class="city-select">
                   <span>{{cityChecked}}</span>
                   <img src="../../../public/zhengzu/sanjiao.png">
-              </div>
+              </div> -->
               <!-- 隐藏显示的城市选择列表 -->
               <city :cityShow.sync=cityShow :cityChecked.sync=cityChecked v-model="cityShow"></city>
               <div class="search-box" @click="toSearch">
@@ -24,22 +24,24 @@
               </div>
           </div>
           <!-- 主体-条件设置 -->
-          <div class="tab-out">
+          <drop-down></drop-down>
+          <select-tab></select-tab>
+          <!-- <div class="tab-out">
               <ul class="tab">
                   <li v-for="(item,i) in tabList" :key="i" :class="{active:tabChangedList.includes(i)}" data-tab=0 @click="toTab(i)"><span>{{item}}</span><span class="tab-icon"></span></li>
               </ul>
-          </div>
+          </div> -->
             <!-- 主体-条件搜索 -->
-          <div class="short-cut">
+          <!-- <div class="short-cut">
               <ul>
                   <li @click="addShortcut(i)" :class="{active:shortcutChecked.includes(i)}" v-for="(item,i) of shortcutList" :key="i"><img v-if="item=='平台认证'" src="../../../public/zhengzu/trust.png"><span>{{item}}</span></li>
               </ul>
-          </div>
+          </div> -->
         </div>
         <!-- 排序按钮 -->
-        <div class="sort" @click="show">
+        <!-- <div class="sort" @click="show">
             <p>排序</p>
-        </div>
+        </div> -->
         <!-- 显示的排序列表 -->
 
         <mt-popup class="sort-container" v-model="sortShow" position="bottom">
@@ -405,10 +407,12 @@
     </div>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import City from './City.vue'
 import ToTop from './ToTop.vue'
 import ZhengzuSelect from './ZhengzuSelect.vue'
+import DropDown from '../common/DropDown'
+import SelectTab from '../common/SelectTab'
 export default {
     data(){
         return {
@@ -443,10 +447,14 @@ export default {
     },
     computed: {
       ...mapGetters([
-        'status'
+        'status', /* 用户登录状态 */
+        'myselect', /* foot-tab切换 */
       ]),
     },
     methods:{
+        ...mapMutations({
+          handleFootTab: 'FOOTTAB_CHANGE',
+        }),
         toMyself(){
             // 跳转到我的页面
             /*
@@ -455,10 +463,13 @@ export default {
              * 未登录：跳转到登录页面： Login
              */
             if (this.status === 'on') {
-              this.$router.push('Myself');
+              this.$router.push('/Myself');
             } else {
-              this.$router.push('Login');
+              this.$router.push('/Login');
             }
+            // 切换foot-tab
+            this.handleFootTab('我的');
+
         },
         toHome(){
             // 跳转到首页
@@ -506,7 +517,9 @@ export default {
     components:{
         "city":City,
         "totop":ToTop,
-        "zselect":ZhengzuSelect
+        "zselect":ZhengzuSelect,
+        DropDown,
+        SelectTab,
     },
 
 

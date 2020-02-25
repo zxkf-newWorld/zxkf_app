@@ -1,6 +1,6 @@
 <template>
     <div class="house-search-details">
-        <div class="house-list" @click="toDetails" v-for="(ele,index) in 10">
+        <div class="house-list" @click="toDetails" v-for="(ele,index) in 10" :key="index">
             <div class="house-card">
                 <div class="base-info">
                     <div class="main-photo">
@@ -44,16 +44,21 @@
                 </div>
             </div>
         </div>
+      <ToBottom></ToBottom>
     </div>
 </template>
 
 <script>
+import ToBottom from '../../views/common/ToBottom'
 export default {
     name: 'houseSearchDetails',
     data() {
         return {
 
         };
+    },
+    components: {
+      ToBottom,
     },
     created() {
 
@@ -70,6 +75,13 @@ export default {
 </script>
 
 <style scoped >
+    .house-search-details {
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .house-search-details::-webkit-scrollbar{
+      display: none;
+    }
     /***********************房源信息*************************/
     .house-list{
         width:100%;
@@ -172,7 +184,7 @@ export default {
     }
     .agency-info{
         width:2.1rem;
-        height:0.92rem; 
+        height:0.92rem;
     }
     .agency-info>.header{
         display: flex;
