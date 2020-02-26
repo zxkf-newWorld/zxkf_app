@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="zhengzu">
         <!-- 条件搜索ZhengzuSelect组件 -->
         <zselect v-show="zselectShow" :style="zselectStyle" ref="zselect" :zselectShow.sync=zselectShow :tabList[0].sync=tabList[0] :tabList[1].sync=tabList[1] :tabList[2].sync=tabList[2] :tabList[3].sync=tabList[3] :tabChangedList.sync=tabChangedList></zselect>
         <!-- 返回顶部ToTop组件 -->
@@ -526,6 +526,9 @@ export default {
 }
 </script>
 <style scoped>
+    .zhengzu::-webkit-scrollbar {
+      display: none;
+    }
     .search-header{/*表头样式*/
         width: 100%;
         background: #FE0036;

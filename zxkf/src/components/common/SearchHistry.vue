@@ -80,7 +80,9 @@ export default {
             // 数据为空
             handleRef = [];
           }
-          this.searchList = handleRef;
+          // 数组去重
+          handleRef = new Set(handleRef);
+          this.searchList = [...handleRef];
           console.log(handleRef, "<<<<<handleRef");
           this.$store.dispatch('queryUserSearchHistory', {ref: handleRef});
         })
@@ -97,7 +99,9 @@ export default {
         this.$store.dispatch('querySearchHistory', {ref: []});
       } else {
         // 搜索历史列表不为空
-        this.searchList = list;
+        // 数组去重
+        list = new Set(list);
+        this.searchList = [...list];
         this.$store.dispatch('querySearchHistory', {ref: list});
       }
     }

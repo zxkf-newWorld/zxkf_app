@@ -34,7 +34,7 @@
             <div class="describe-content">
                 {{details.content}}
             </div>
-            <ul class="describe-img clearfix"> 
+            <ul class="describe-img clearfix">
                 <li @click="fullPic">
                     <img  :src="details.img" alt="" >
                 </li>
@@ -56,9 +56,9 @@
     </div>
 </template>
 <script>
-import '../../assets/iconfont/demo.css'
-import '../../assets/iconfont/iconfont.css'
-import '../../assets/iconfont/iconfont.js'
+// import '../../assets/iconfont/demo.css'
+// import '../../assets/iconfont/iconfont.css'
+// import '../../assets/iconfont/iconfont.js'
 
 export default {
     data(){
@@ -80,8 +80,8 @@ export default {
             // console.log(err);
             throw err;
         })
-        // this.clientHeight =   `${document.getElementById("app").clientHeight}`  
-        this.clientHeight =   document.documentElement.clientHeight 
+        // this.clientHeight =   `${document.getElementById("app").clientHeight}`
+        this.clientHeight =   document.documentElement.clientHeight
         document.getElementById("detail_img").style.height=this.clientHeight+"px";
     },
     methods: {
@@ -91,12 +91,12 @@ export default {
         back(){
             this.$router.push('/Roommate');
         },
-        fullPic(){ 
+        fullPic(){
           this.isif=true
            var body= document.body
            body.style.overflow="hidden"
         },
-        closeFullPic(){ 
+        closeFullPic(){
             this.isif=false;
              var body= document.body
             body.style.overflow="auto"
@@ -219,7 +219,7 @@ export default {
 
     }
     .describe-img li{
-        margin-right:6px; 
+        margin-right:6px;
         width: 2.15rem;
         height: 2.15rem;
         overflow: hidden;
@@ -257,7 +257,7 @@ export default {
         top:0;
         left: 0;
         width:100%;
-        /* height: 100%; */ 
+        /* height: 100%; */
         /* top:0.78rem; */
         background: rgba(0,0,0,.8);
         z-index: 999;

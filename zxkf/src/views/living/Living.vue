@@ -114,7 +114,7 @@ export default {
   .icon-wrap {
     text-align: center;
     & > span.iconfont {
-      font-size: .7rem;
+      font-size: .5rem;
       color: #fff;
     }
   }
@@ -151,18 +151,20 @@ export default {
   }
 }
 .living-content {
-  margin: .2rem .2rem 0 .2rem;
+  margin: .1rem .2rem 0 .2rem;
   text-align: center;
   & > .banner {
     & > img {
       width: 98%;
       border-radius: 6px;
+      box-shadow: -1px 2px 8px #ccc;
     }
   }
   & > .scanner {
     width: 98%;
     height: 3rem;
     margin-top: .2rem;
+    margin-left: .1rem;
     border-radius: 6px;
     box-shadow: 1px 1px 6px #ccc;
     & > div.scanner-wrap {
@@ -200,12 +202,12 @@ export default {
       & > .first-one,
       & > .first-two,
       & > .first-three {
-        width: 1rem;
-        height: 1rem;
+        width: .8rem;
+        height: .8rem;
         border-radius:50%;
         & > p {
           width: 1.12rem;
-          margin: .1rem -4px;
+          margin: .1rem -8px;
           text-align: center;
           color: #5C5C5C;
         }
@@ -225,12 +227,12 @@ export default {
       & > .second-one,
       & > .second-two,
       & > .second-three {
-        width: 1rem;
-        height: 1rem;
+        width: .8rem;
+        height: .8rem;
         border-radius:50%;
         & > p {
           width: 1.12rem;
-          margin: .1rem -4px;
+          margin: .1rem -8px;
           text-align: center;
           color: #5C5C5C;
         }
@@ -250,12 +252,12 @@ export default {
       & > .third-one,
       & > .third-two,
       & > .third-three {
-        width: 1rem;
-        height: 1rem;
+        width: .8rem;
+        height: .8rem;
         border-radius:50%;
         & > p {
           width: 1.12rem;
-          margin: .1rem -4px;
+          margin: .1rem -8px;
           text-align: center;
           color: #5C5C5C;
         }

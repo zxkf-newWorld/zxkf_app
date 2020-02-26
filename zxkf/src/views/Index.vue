@@ -70,8 +70,8 @@ export default {
 </script>
 <style scoped>
     #indexPage {
-      overflow-x: scroll;
-      overflow-y: hidden !important;
+      overflow: hidden !important;
+      overflow-y: hidden;
       margin-bottom: 2rem;
     }
     #indexPage::-webkit-scrollbar {

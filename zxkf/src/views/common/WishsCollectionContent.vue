@@ -48,7 +48,7 @@ export default {
   height: 2.4rem;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0.1rem;
+  padding: 0.2rem 0;
   border-bottom: 1px solid #ccc;
 }
 .wish-image {

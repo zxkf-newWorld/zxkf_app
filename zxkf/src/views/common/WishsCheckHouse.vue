@@ -48,7 +48,7 @@ export default {
 <style scoped lang="scss">
   .wish-check-house {
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     background: #f2f2f2;
   }
   .check-house {
