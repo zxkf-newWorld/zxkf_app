@@ -7,17 +7,21 @@ import local_storage from '../src/api/local_storage.js'
 // 引入axios
 import axios from "axios"
 // import Bus from './bus.js'
+import ElementUI from 'element-ui'
 // 引入mint-ui
 import MintUI from 'mint-ui'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 //2.单独引入mini-ui组件库中样式文件
 import "mint-ui/lib/style.css"
+import 'element-ui/lib/theme-chalk/index.css'
 // 将MintUI 注册到Vue实例中
 Vue.use(Vant);
 Vue.use(MintUI);
+Vue.use(ElementUI);
 //配置axios基础
 // 打包替换地址 http://youthhouse.applinzi.com 、 http://localhost:3000
+// axios.defaults.baseURL = "http://youthhouse.applinzi.com"
 axios.defaults.baseURL = "http://localhost:3000" /* 访问数据库的基础地址，后续可以省略访问的路径的基地址 */
 //配置axios，保存session信息，也可以表示在跨域请求是否使用session对象的凭证）
 axios.defaults.withCredentials = true;

@@ -15,7 +15,7 @@
       <!-- <span class="app-res-reg">欢迎注册</span> -->
     </div>
     <div>
-      
+
     </div>
     <!--用户名-->
     <mt-field label="用户名称：" :placeholder="unameholder" class="myinput" v-model="uname"></mt-field>
@@ -29,14 +29,14 @@
     <mt-field label="出生日期：" :placeholder="birthday"  class="myinput" type="date" v-model="birthday"></mt-field>
     <!-- 上传头像 -->
      <div class="images">
-       <p>上传头像：</p> 
+       <p>上传头像：</p>
         <input style="float:left" type="file" id="upload-ele" multiple="false" accept="image/*" @change="uploadFile(url)">
     </div>
-   
+
      <br>
-     <br> 
      <br>
-     <br> 
+     <br>
+     <br>
     <!--注册按钮-->
     <mt-button type="danger" class="primary"  @click="reg" size="large">注册</mt-button>
     <br>
@@ -89,7 +89,7 @@ export default {
     },
     toHome(){
       // 跳转到首页
-      this.$router.go(-1); 
+      this.$router.go(-1);
     },
     login(){
        this.$router.push("Login");
@@ -174,7 +174,7 @@ export default {
 .images{
   text-align: left;
   font-size: 16px;
-  margin-left:20px; 
+  margin-left:20px;
 }
 .images img{
   width: 70%;

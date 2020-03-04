@@ -41,7 +41,7 @@ import DropDown from '../src/components/common/DropDown.vue'
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     { path:'/',component:Index},
     { path:'/Index',component:Index},

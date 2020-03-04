@@ -3,11 +3,7 @@
     <!-- 红色头顶部 -->
     <div class="redhead">
       <div class="redhead-header">
-        <div class="back"> </div>
-        <!-- <div class="iconfont back" @click="goBack">&#xe670;</div> -->
-        <!-- <div @click="goBack" class="back">
-          <img src="../../assets/left.png" alt="" />
-        </div> -->
+        <div class="back"></div>
         <p
           style="text-align:center;font-size:0.4rem;color:#fff; font-weight:bold"
         >
@@ -18,7 +14,25 @@
       </div>
       <div class="redhead-button">
         <div class="profile">
-          <img src="../../assets/profile.png" alt="资源不存在" />
+          <!-- 隐藏的图片上传 -->
+          <el-upload
+            class="avatar-uploader"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            accept="image/*"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+            <!-- 默认头像图片，点击可设置头像图片， -->
+            <!-- build 替换地址：http://youthhouse.applinzi.com/profile.jpg  本地地址 http://127.0.0.1:3000/profile.jpg-->
+            <img
+              v-if="isDefault"
+              class="default-img"
+              src="http://127.0.0.1:3000/profile.jpg"
+              alt="资源不存在"
+            />
+          </el-upload>
         </div>
         <div class="font-span">
           <!-- <span @click="toLogin" v-if="islogin">登录 /</span> -->
@@ -119,22 +133,24 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      islogin: false, /* 默认未登录 */
-      uname: ""
+      islogin: false /* 默认未登录 */,
+      uname: "",
+      imageUrl: "",
+      isDefault: true /* 是否为默认头像 */
     };
   },
   computed: {
     ...mapState({
-      'status': state => state.user_info.status,
-      'user': state => state.user_info.user,
-      'password': state => state.user_info.password
+      status: state => state.user_info.status,
+      user: state => state.user_info.user /* 用户手机号 */,
+      password: state => state.user_info.password
     })
   },
   created() {
-    if (this.status === 'on') {
-      console.log('用户已登录账户');
+    if (this.status === "on") {
+      console.log("用户已登录账户");
     } else {
-      console.log('用户未登录账户');
+      console.log("用户未登录账户");
     }
     if (this.status === "on") {
       // 登录
@@ -143,35 +159,83 @@ export default {
       // 未登录
       this.islogin = true;
     }
-    if (this.uname == null && this.uname === '') {
+    if (this.uname == null && this.uname === "") {
       // 未登录
       this.islogin = true;
     }
+    this.axios
+      .get("/index/searchUserAvatar", {
+        params: {
+          phone: this.user
+        }
+      })
+      .then(result => {
+        console.log(result, "<<<<<< result");
+        // build 替换地址：http://youthhouse.applinzi.com/profile.jpg
+        const defaultImageUrl = 'http://youthhouse.applinzi.com/profile.jpg';
+        // const defaultImageUrl = "http://youthhouse-zxkf.stor.sinaapp.com/avatar/cute.jpg";
+        console.log(defaultImageUrl === result.data.avatar, defaultImageUrl === result.data.avatar);
+        console.log(result.data.avatar, '<<<<<< result.data.avatar');
+        if (result.data.avatar !== defaultImageUrl) {
+          this.isDefault = false;
+          this.imageUrl = result.data.avatar;
+        } else {
+          this.isDefault = true;
+        }
+      })
+      .catch(err => {
+        throw err;
+      });
   },
   components: {
     FootTab
   },
   methods: {
     ...mapMutations({
-      logoutStatus: 'USER_LOGIN_LOGINOUT',
+      logoutStatus: "USER_LOGIN_LOGINOUT"
     }),
-    // loginout() {
-    //   sessionStorage.removeItem("uname");
-    //   let userStatus = {
-    //     status: 'off',
-    //     user: '',
-    //     password: ''
-    //   };
-    //   this.logoutStatus(userStatus);
-    //   this.islogin = true;
-    //   this.$toast({
-    //     message: '您已退出登录',
-    //     position: 'center',
-    //     duration: 2000
-    //   });
-    //   this.$router.push('/Login');
-    //   console.log('用户账户注销', userStatus);
-    // },
+    handleAvatarSuccess(res, file) {
+      // this.imageUrl = URL.createObjectURL(file.raw);
+      // 查找数据库zxkf_login 的 avatar字段 设置 imagUrl
+      console.log(this.imageUrl, "<<<<< this.imageUrl");
+    },
+    beforeAvatarUpload(file /* 上传头像文件 */) {
+      // const isJPG = file.type === 'image/*';
+      console.log(file, "<<<<< file");
+      const formdata = new FormData();
+      // console.log(formdata, '<<<<< formdata');
+      formdata.append("img", file);
+      formdata.append("userPhone", this.user);
+      console.log(formdata.get("img"), "formdata");
+      console.log(formdata.get("userPhone"), "userPhone");
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      // if (!isJPG) {
+      //   this.$message.error('上传头像只能是图片');
+      //   // this.$message.error('上传头像图片只能是 JPG 格式!');
+      // }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      // 发送图片上传的异步请求
+      this.axios
+        .post(`/login_reg/crop`, formdata)
+        .then(result => {
+          console.log(result, "<<<<< result");
+          if (result.data.code === 1) {
+            //  图片上传成功，更新我的头像
+            this.isDefault = false; /* 默认图片隐藏 */
+            this.imageUrl = result.data.imgUrl;
+            console.log(`上传图片成功`);
+          }
+        })
+        .catch(err => {
+          console.log(`上传图片失败`);
+          throw err;
+        });
+      // return isJPG && isLt2M;
+      return isLt2M;
+    },
     toLogin() {
       // 跳转到登录页面
       this.$router.push("Login");
@@ -180,13 +244,9 @@ export default {
       // 跳转都爱注册页面
       this.$router.push("Reg");
     },
-    toSetting () {
-      this.$router.push('/AccountSetting');
-    },
-    // goBack() {
-    //   //调到前一页
-    //   this.$router.go(-1);
-    // }
+    toSetting() {
+      this.$router.push("/AccountSetting");
+    }
   }
 };
 </script>
@@ -230,7 +290,7 @@ div {
 .redhead .redhead-header > div.back {
   margin-top: 0.3rem;
   flex: 1;
-  font-size: .4rem;
+  font-size: 0.4rem;
   color: #fff;
 }
 .redhead .redhead-header > p {
@@ -253,11 +313,6 @@ div {
   display: block;
   content: "";
   clear: both;
-}
-.redhead .redhead-button .profile > img {
-  width: 1.2rem;
-  margin-left: 0.6rem;
-  margin-top: 0.4rem;
 }
 .redhead .redhead-button .font-span {
   color: #fff;
@@ -297,5 +352,35 @@ div {
 .house-source {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.avatar {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-left: 0.5rem;
+  box-shadow: 0 0 4px #ccc;
+}
+.default-img {
+  width: 100px;
+  height: 100px;
+  margin-left: 0.5rem;
 }
 </style>

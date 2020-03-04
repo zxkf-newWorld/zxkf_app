@@ -19,6 +19,7 @@ import SearchTab from '../common/SearchTab'
 import DropDown from '../common/DropDown'
 import SelectTab from '../common/SelectTab'
 import HouseSearchDetails from '../common/HouseSearDetails'
+import ToBottom from '../../views/common/ToBottom'
 export default {
     name: 'SearchDetail',
     data() {
@@ -32,6 +33,7 @@ export default {
         DropDown,
         SelectTab,
         HouseSearchDetails,
+        ToBottom,
     },
     created() {
 
