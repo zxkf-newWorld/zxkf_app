@@ -412,115 +412,121 @@
 </template>
 <script>
 /* eslint-disable */
-import { mapGetters, mapMutations} from 'vuex'
-import City from './City.vue'
-import ToTop from './ToTop.vue'
-import ZhengzuSelect from './ZhengzuSelect.vue'
-import DropDown from '../common/DropDown'
-import SelectTab from '../common/SelectTab'
+import { mapGetters, mapMutations } from "vuex";
+import City from "./City.vue";
+import ToTop from "./ToTop.vue";
+import ZhengzuSelect from "./ZhengzuSelect.vue";
+import DropDown from "../common/DropDown";
+import SelectTab from "../common/SelectTab";
+import mixin from "./full_joint";
 export default {
-    data(){
-        return {
-            searchMSG:"输入区域、小区搜索源",
-            cityChecked:"西安",
-            sortIndex:0,//控制sort选中样式的中间量
-            sortList:[
-                "默认排序",
-                "最新上架时间",
-                "租金从低到高",
-                "租金从高到低",
-                "面积从小到大",
-                "面积从大到小",
-            ],
-            zselectShow:false,//控制Zhengzuselect组件的隐藏与显示
-            zselectStyle:{
-                position:"fixed",
-                left:0,
-                top:0,
-                zIndex:999,
-                width:"100%"
-            },
-            sortShow:false,//控制sort()
-            cityShow:false,//控制城市选择列表的变量
-            data: [],
-            shortcutList:["租金月付","近地铁","平台认证","独卫"],
-            shortcutChecked:[],
-            tabList:["位置","租金","合租","更多"],//保存四个大板块的列表
-            tabSelected:0,
-            tabChangedList:[],
-        }
+  mixins: [mixin],
+  data() {
+    return {
+      searchMSG: "输入区域、小区搜索源",
+      cityChecked: "西安",
+      sortIndex: 0, //控制sort选中样式的中间量
+      sortList: [
+        "默认排序",
+        "最新上架时间",
+        "租金从低到高",
+        "租金从高到低",
+        "面积从小到大",
+        "面积从大到小"
+      ],
+      zselectShow: false, //控制Zhengzuselect组件的隐藏与显示
+      zselectStyle: {
+        position: "fixed",
+        left: 0,
+        top: 0,
+        zIndex: 999,
+        width: "100%"
+      },
+      sortShow: false, //控制sort()
+      cityShow: false, //控制城市选择列表的变量
+      data: [],
+      shortcutList: ["租金月付", "近地铁", "平台认证", "独卫"],
+      shortcutChecked: [],
+      tabList: ["位置", "租金", "合租", "更多"], //保存四个大板块的列表
+      tabSelected: 0,
+      tabChangedList: []
+    };
+  },
+  created() {
+    console.log("合租列表页面", this.name);
+    this.searchHouseList(0, "index/fullrent");
+  },
+  computed: {
+    ...mapGetters({
+      status: "status" /* 用户登录状态 */
+    })
+  },
+  methods: {
+    ...mapMutations({
+      handleFootTab: "FOOTTAB_CHANGE" /* 切换foot-tab */
+    }),
+    toMyself() {
+      if (this.status === "on") {
+        // 跳转到我的页面
+        this.$router.push("/Myself");
+      } else {
+        this.$router.push("Login");
+      }
+      this.handleFootTab("我的");
     },
-    computed: {
-      ...mapGetters({
-        status: 'status', /* 用户登录状态 */
-      }),
+    toHome() {
+      // 跳转到首页
+      this.$router.push("/");
     },
-    methods:{
-        ...mapMutations({
-          handleFootTab: 'FOOTTAB_CHANGE', /* 切换foot-tab */
-        }),
-        toMyself(){
-            if (this.status === 'on') {
-              // 跳转到我的页面
-              this.$router.push('/Myself');
-            } else {
-              this.$router.push('Login');
-            }
-              this.handleFootTab('我的');
-        },
-        toHome(){
-            // 跳转到首页
-            this.$router.push('/');
-        },
-        toDetails(){//跳转到详情页
-            this.$router.push('/Details');
-        },
-        addShortcut(i){
-            if(this.shortcutChecked.includes(i)){
-                this.shortcutChecked=this.shortcutChecked.filter((el)=>{return el!=i});
-            }else{
-                this.shortcutChecked.push(i);
-            }
-            // 发送ajax请求查表
-        },
-        show(){
-            if(!this.sortShow){
-                this.sortShow=true;
-            }else{
-                this.sortShow=false;
-            }
-        },
-        cities(){
-            if(!this.cityShow){
-                this.cityShow=true;
-            }else{
-                this.cityShow=false;
-            }
-        },
-        toTab(i){//跳转到条件选择页面
-            this.$refs.zselect.tabIndex=i;
-            this.zselectShow=true;
-
-        },
-        chooseSort(i){
-            this.sortIndex=i;
-            this.sortShow=false;
-        },
-        toSearch(){
-            this.$router.push('/Search');
-        }
-
+    toDetails() {
+      //跳转到详情页
+      this.$router.push("/Details");
     },
-    components:{
-        "city":City,
-        "totop":ToTop,
-        "zselect":ZhengzuSelect,
-        DropDown,
-        SelectTab,
+    addShortcut(i) {
+      if (this.shortcutChecked.includes(i)) {
+        this.shortcutChecked = this.shortcutChecked.filter(el => {
+          return el != i;
+        });
+      } else {
+        this.shortcutChecked.push(i);
+      }
+      // 发送ajax请求查表
     },
-
-
-}
+    show() {
+      if (!this.sortShow) {
+        this.sortShow = true;
+      } else {
+        this.sortShow = false;
+      }
+    },
+    cities() {
+      if (!this.cityShow) {
+        this.cityShow = true;
+      } else {
+        this.cityShow = false;
+      }
+    },
+    toTab(i) {
+      //跳转到条件选择页面
+      this.$refs.zselect.tabIndex = i;
+      this.zselectShow = true;
+    },
+    chooseSort(i) {
+      this.sortIndex = i;
+      this.sortShow = false;
+    },
+    toSearch() {
+      this.$router.push("/Search");
+    }
+  },
+  components: {
+    city: City,
+    totop: ToTop,
+    zselect: ZhengzuSelect,
+    DropDown,
+    SelectTab
+  }
+};
 </script>
 <style scoped>
 .search-header {

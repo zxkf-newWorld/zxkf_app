@@ -1,12 +1,11 @@
-    <template>
-<div id="mymap">
-  <div class="ap" v-hljs>
-    <div class="m-part">
-      <mapDrag @drag="dragMap" class="mapbox"></mapDrag>
+<template>
+  <div id="mymap">
+    <div class="ap" v-hljs>
+      <div class="m-part">
+        <mapDrag @drag="dragMap" class="mapbox"></mapDrag>
+      </div>
     </div>
   </div>
-
-</div>
 </template>
 
 <script>
@@ -25,7 +24,7 @@ export default {
         address: null, //地址
         nearestJunction: null, //最近路口
         nearestRoad: null, //最近的路
-        nearestPOI: null, //最近的POI信息点
+        nearestPOI: null //最近的POI信息点
       }
     };
   },
@@ -41,7 +40,7 @@ export default {
         nearestPOI: data.nearestPOI
       };
     }
-  },
+  }
   // mounted:function(data){
   //   this.$emit("func",this.dragData.address);
   // }
@@ -49,7 +48,6 @@ export default {
 </script>
 
 <style>
-
 body {
   margin: 0;
 }
@@ -93,10 +91,10 @@ body {
   font-size: 16px;
   line-height: 30px;
 }
-.m-map{
-    max-width: 400px;
-    max-height: 200px;
-    min-width: 300px!important;
+.m-map {
+  max-width: 400px;
+  max-height: 200px;
+  min-width: 300px !important;
 }
 .m-part::after {
   content: "";
