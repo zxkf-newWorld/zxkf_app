@@ -1,0 +1,10 @@
+/*
+ * api test file
+ */
+
+@hostname = 127.0.0.1
+@port = 3000
+@host = {{hostname}}:{{port}}
+
+# // get jointrent information api
+GET http://{{host}}/index/fullrent?title=0&cityBelong=西安

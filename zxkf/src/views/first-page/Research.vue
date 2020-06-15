@@ -9,29 +9,29 @@
         <!-- 房间商品列表:显示4个商品 -->
         <ul>
           <li>
-            <div class="wrap bor" @click="toFunctions($event)" >
-              <img src="../../assets/research-pic1.png" data-choice="近地铁"/>
+            <div class="wrap bor" @click="toFunctions($event)">
+              <img src="../../assets/research-pic1.png" data-choice="近地铁" />
               <div class="title">地铁周边</div>
               <div class="des">地铁站附近2公里房源</div>
             </div>
           </li>
           <li>
-            <div class="wrap pl-3 bor" @click="toFunctions($event)" >
-              <img src="../../assets/research-pic2.png" data-choice="近地铁"/>
+            <div class="wrap pl-3 bor" @click="toFunctions($event)">
+              <img src="../../assets/research-pic2.png" data-choice="近地铁" />
               <div class="title">品质好房</div>
               <div class="des">2000元左右，理想生活</div>
             </div>
           </li>
           <li>
-            <div class="wrap bor" @click="toFunctions($event)" >
-              <img src="../../assets/research-pic3.png" data-choice="近地铁"/>
+            <div class="wrap bor" @click="toFunctions($event)">
+              <img src="../../assets/research-pic3.png" data-choice="近地铁" />
               <div class="title">轻松月付</div>
               <div class="des">从此告别押一付三</div>
             </div>
           </li>
           <li>
-            <div class="wrap pl-3 bor" @click="toFunctions($event)" >
-              <img src="../../assets/research-pic4.jpg" data-choice="近地铁"/>
+            <div class="wrap pl-3 bor" @click="toFunctions($event)">
+              <img src="../../assets/research-pic4.jpg" data-choice="近地铁" />
               <div class="title">精选单间</div>
               <div class="des">1500以下，精致合租</div>
             </div>
@@ -45,33 +45,38 @@
 <script>
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    toFunctions(e){
+    toFunctions(e) {
       // 跳转到相关的房屋信息列表
       let url = "index/tofunctions";
       // 获取自定义属性值，并创建参数对象params
       let datas = e.target.dataset;
       console.log(datas.choice);
       let params = {
-        choice:datas.choice
-      }
+        choice: datas.choice
+      };
       // 发送请求
-      this.axios.get(url,//传递参数
-        params
-      )
-        .then(success=>{
+      this.axios
+        .get(
+          this.baseApi.getToFunctions, //传递参数
+          params
+        )
+        // this.axios.get(url,//传递参数
+        //   params
+        // )
+        .then(success => {
           if (success.data.code == 1) {
-            this.$router.push('/Details');
+            this.$router.push("/Details");
+            console.log("custom api dispatched success");
           }
         })
-        .catch(err=>{
+        .catch(err => {
           console.log(err);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
@@ -83,7 +88,7 @@ export default {
 ul {
   padding: 0.3rem;
   padding-top: 0px;
-  background-color: #fff!important;
+  background-color: #fff !important;
 }
 
 ul li {
@@ -95,7 +100,7 @@ ul li {
 .study-title {
   height: 1.12rem;
   line-height: 1.12rem;
-  font-size: .38rem;
+  font-size: 0.38rem;
   font-weight: 700;
   padding: 0.3rem;
   padding-bottom: 0;
@@ -132,10 +137,10 @@ ul li {
 .bor {
   border-bottom: 1px solid #ccc;
 }
-.study .containul{
+.study .containul {
   width: 100%;
   height: 7.6rem;
-  background: #fff!important;
+  background: #fff !important;
 }
 /* .wrap li{
         position: relative;
