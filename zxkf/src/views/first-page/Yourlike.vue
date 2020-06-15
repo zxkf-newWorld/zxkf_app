@@ -90,8 +90,8 @@ export default {
       var obj = { title, cityBelong };
       let url = "/index/jointrent";
       this.axios
-        .get(this.baseApi.getJointRent, {
-          params: obj
+        .get(this.devApi.getJointRent, {
+          data: { city: 0, cityBelong: "西安" }
         }) //已经发送过去了数据
         .then(res => {
           console.log(res);

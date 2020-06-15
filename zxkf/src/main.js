@@ -15,7 +15,10 @@ import 'vant/lib/index.css'
 //2.单独引入mini-ui组件库中样式文件
 import "mint-ui/lib/style.css"
 import 'element-ui/lib/theme-chalk/index.css'
+// production
 import HttpUrl from './utils/api.js'
+// mock for dev
+import devApi from './utils/mock'
 require('./utils/mock')
 // 将MintUI 注册到Vue实例中
 Vue.use(Vant);
@@ -30,7 +33,10 @@ axios.defaults.withCredentials = true;
 // 将axios注册示例中
 //由于axios不支持 use，--将去添加到原型上
 Vue.prototype.axios = axios;
+// production api
 Vue.prototype.baseApi = HttpUrl;
+// dev mock api
+Vue.prototype.devApi = devApi;
 // 将qs添加到Vue原型上
 Vue.prototype.qs = qs;
 Vue.prototype.$Bus = bus;

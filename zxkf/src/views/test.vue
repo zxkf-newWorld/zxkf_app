@@ -8,8 +8,23 @@ export default {
     return {};
   },
   created() {
-    var res = this.axios.post("/News/api/mine");
-    console.log(res, "<<<<< res");
+    console.log("i am created ...");
+    // this.axios
+    //   .get("/News/api/mine", { title: 0, cityBelong: "西安" })
+    //   .then(res => {
+    //     console.log(res, "<<<<<< res");
+    //   })
+    //   .catch(err => {
+    //     console.log(err, "<<<<< err");
+    //   });
+    this.axios
+      .get(this.devApi.getJointRent, { title: 0, cityBelong: "西安" })
+      .then(success => {
+        console.log(success, "<<<<< success");
+      })
+      .catch(err => {
+        console.log(err, "<<<<< err");
+      });
   },
   components: {}
 };

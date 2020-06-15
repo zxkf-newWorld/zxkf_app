@@ -44,7 +44,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    { path:'Test',component:Test},
+    { path:'/Test',component:Test},
     { path:'/',component:Index},
     { path:'/Index',component:Index},
     { path:'/Carousel',component:Carousel},
