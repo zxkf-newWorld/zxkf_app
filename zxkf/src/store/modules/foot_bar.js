@@ -1,4 +1,6 @@
-import { FOOTTAB_CHANGE } from "./stateVariables.js";
+import {
+  FOOTTAB_CHANGE
+} from "./stateVariables.js";
 
 const state = {
   myselect: "首页" //默认首屏加载为首页
