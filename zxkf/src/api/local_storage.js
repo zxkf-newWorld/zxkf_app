@@ -1,11 +1,19 @@
 /*
+ * @Author: hp
+ * @Date: 2021-01-13 14:57:17
+ * @LastEditTime: 2021-01-13 15:37:19
+ * @LastEditors: your name
+ * @Description: 重构localStorage
+ * @FilePath: /zxkf/src/api/local_storage.js
+ */
+/*
  * 重写localStorage
  * 加入有效时间
  */
-class local_storage  {
+class local_storage {
   constructor(props) {
-    this.props = props || {}
-    this.source = this.props.source || window.localStorage
+    this.props = props || {};
+    this.source = this.props.source || window.localStorage;
     this.initRun();
   }
   initRun() {
@@ -16,14 +24,14 @@ class local_storage  {
      * @ params {String} expired 过期时间， 以分钟为单位
      * @ 由hepeng提供
      */
-    const reg = new RegExp('__expires__');
+    const reg = new RegExp("__expires__");
     let data = this.source;
     let list = Object.keys(data);
     if (list.length > 0) {
       list.map((key, v) => {
         if (!reg.test(key)) {
           let now = Date.now();
-          let expires = data[`${key}__expires__`] || Date.now+1;
+          let expires = data[`${key}__expires__`] || Date.now() + 1;
           if (now > expires) {
             this.remove(key);
           }
@@ -32,11 +40,11 @@ class local_storage  {
       });
     }
   }
-  set(key, value , expired) {
+  set(key, value, expired) {
     let source = this.source;
     source[key] = JSON.stringify(value);
     if (expired) {
-      source[`${key}__expires__`] = Date.now + 1000*60*expired; // 以分钟为基础
+      source[`${key}__expires__`] = Date.now() + 1000 * 60 * expired; // 以分钟为基础
     }
     return value; // 返回值
   }
@@ -48,20 +56,22 @@ class local_storage  {
      * 注意： 存储的数据可能是数组或对象， 取出后不能直接返回， 需要JSON.parse转换
      */
     const source = this.source,
-    /* 构造函数中已经优化 */
-    expired = source[`${key}__expires__`] || Date.now+1;
+      /* 构造函数中已经优化 */
+      expired = source[`${key}__expires__`] || Date.now() + 1;
     const now = Date.now();
     if (now >= expired) {
       this.remove(key);
       return;
     }
-    const value = source[key] ? JSON.parse(source[key])/* 数组、对象需要转换 */ : source[key];
+    const value = source[key]
+      ? JSON.parse(source[key]) /* 数组、对象需要转换 */
+      : source[key];
     return value;
     // Boolean([]) === Boolean({}) === true , Boolean('') === false
   }
   remove(key) {
     let data = this.source,
-    value = data[key];
+      value = data[key];
     delete data[key]; // 删除属性
     delete data[`${key}__expires__`]; // 删除属性对应的过期时间
     return value; // 返回删除的值
