@@ -28,6 +28,7 @@ class local_storage {
     let data = this.source;
     let list = Object.keys(data);
     if (list.length > 0) {
+      // eslint-disable-next-line no-unused-vars
       list.map((key, v) => {
         if (!reg.test(key)) {
           let now = Date.now();
@@ -63,10 +64,9 @@ class local_storage {
       this.remove(key);
       return;
     }
-    const value = source[key]
+    return source[key]
       ? JSON.parse(source[key]) /* 数组、对象需要转换 */
       : source[key];
-    return value;
     // Boolean([]) === Boolean({}) === true , Boolean('') === false
   }
   remove(key) {
